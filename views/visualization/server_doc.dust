@@ -1,0 +1,11 @@
+<h3>Server: {f_name}</h3>
+<hr>
+<span class="text-bold">Application list</span><br>
+{#r_application}
+{f_name}<br>
+{/r_application}
+<hr>
+<span class="text-bold">Service list</span><br>
+{#r_service}
+{f_name}<br>
+{/r_service}

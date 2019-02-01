@@ -1,0 +1,6 @@
+<h3>Organization: {f_name}</h3>
+<hr>
+<span class="text-bold">Server List</span><br>
+{#r_server}
+{f_name}<br>
+{/r_server}

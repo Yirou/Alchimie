@@ -19,7 +19,7 @@ $(function () {
                 if (data) {
                     console.log(data)
                     graph.data = data.data;
-                    config=data.config;
+                    config = data.config;
                     drawGraph();
                 } else {
                     alert('Data error(s):\n\n' + data.errors.join('\n'));
@@ -33,7 +33,7 @@ $(function () {
         loadData($(this).val());
     });
 
-
+    loadData();
 
 
 

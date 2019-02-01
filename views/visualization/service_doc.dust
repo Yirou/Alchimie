@@ -1,0 +1,4 @@
+Service: {f_name}<br>
+Start Command: {f_start_command}<br>
+Stop command: {f_stop_command}<br>
+Restart command: {f_restart_command}

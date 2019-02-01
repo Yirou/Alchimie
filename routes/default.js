@@ -61,7 +61,8 @@ router.get('/administration', block_access.isLoggedIn, block_access.moduleAccess
 });
 
 router.get('/get-organization-data', block_access.isLoggedIn, function (req, res) {
-    var id = req.query.organization;
+
+    var id = req.query.organization || req.session.organization;
     models.E_organization.findOne({
         where: {id: id},
         include: [

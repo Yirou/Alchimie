@@ -1,0 +1,3 @@
+Application: {f_name}<br>
+IP: {f_ip}<br>
+URL: {?f_url}<a href="{f_url}" target="_blank">{f_name}</a>{/f_url}<br>
