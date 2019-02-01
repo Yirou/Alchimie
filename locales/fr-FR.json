@@ -409,9 +409,7 @@
             "plural_entity": "Settings",
             "id_entity": "ID",
             "types_to_display": "Types à afficher",
-            "f_types": "Types",
-            "f_show_application_entities": "Show application entities",
-            "f_show_entities_fields": "Show entities fields"
+            "f_types": "Types"
         }
     },
     "global_component": {

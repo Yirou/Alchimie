@@ -8254,20 +8254,6 @@
             "optional": false,
             "field": "settings.f_types",
             "description": "<p><code>f_types</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_application_entities",
-            "description": "<p><code>f_show_application_entities</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_entities_fields",
-            "description": "<p><code>f_show_entities_fields</code> of settings</p>"
           }
         ]
       }
@@ -8326,20 +8312,6 @@
             "optional": false,
             "field": "settingss.f_types",
             "description": "<p><code>f_types</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settingss.f_show_application_entities",
-            "description": "<p><code>f_show_application_entities</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settingss.f_show_entities_fields",
-            "description": "<p><code>f_show_entities_fields</code> of settings</p>"
           },
           {
             "group": "Success 200",
@@ -8414,20 +8386,6 @@
             "optional": true,
             "field": "f_types",
             "description": "<p><code>f_types</code> of settings</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_show_application_entities",
-            "description": "<p><code>f_show_application_entities</code> of settings</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_show_entities_fields",
-            "description": "<p><code>f_show_entities_fields</code> of settings</p>"
           }
         ],
         "Query parameters": [
@@ -8464,20 +8422,6 @@
             "optional": false,
             "field": "settings.f_types",
             "description": "<p><code>f_types</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_application_entities",
-            "description": "<p><code>f_show_application_entities</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_entities_fields",
-            "description": "<p><code>f_show_entities_fields</code> of settings</p>"
           }
         ]
       }
@@ -8524,20 +8468,6 @@
             "optional": true,
             "field": "f_types",
             "description": "<p>New value of <code>f_types</code> for settings</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_show_application_entities",
-            "description": "<p>New value of <code>f_show_application_entities</code> for settings</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_show_entities_fields",
-            "description": "<p>New value of <code>f_show_entities_fields</code> for settings</p>"
           }
         ],
         "Query parameters": [
@@ -8574,20 +8504,6 @@
             "optional": false,
             "field": "settings.f_types",
             "description": "<p><code>f_types</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_application_entities",
-            "description": "<p><code>f_show_application_entities</code> of settings</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "settings.f_show_entities_fields",
-            "description": "<p><code>f_show_entities_fields</code> of settings</p>"
           }
         ]
       }

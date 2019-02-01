@@ -1278,8 +1278,6 @@
  * @apiSuccess {Integer} settingss.id <code>id</code> of settings
  * @apiSuccess {Integer} settingss.version <code>version</code> of settings
  * @apiSuccess {Enum} settingss.f_types <code>f_types</code> of settings
- * @apiSuccess {Boolean} settingss.f_show_application_entities <code>f_show_application_entities</code> of settings
- * @apiSuccess {Boolean} settingss.f_show_entities_fields <code>f_show_entities_fields</code> of settings
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for settings
@@ -1296,8 +1294,6 @@
  * @apiSuccess {Integer} settings.id <code>id</code> of settings
  * @apiSuccess {Integer} settings.version <code>version</code> of settings
  * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
- * @apiSuccess {Boolean} settings.f_show_application_entities <code>f_show_application_entities</code> of settings
- * @apiSuccess {Boolean} settings.f_show_entities_fields <code>f_show_entities_fields</code> of settings
  * @apiError (Error 404) {Object} NotFound No settings with ID <code>id</code> found
  */
 
@@ -1308,13 +1304,9 @@
  * @apiGroup e_settings
  * @apiUse token
  * @apiParam (Body parameters) {Enum} [f_types] <code>f_types</code> of settings
- * @apiParam (Body parameters) {Boolean} [f_show_application_entities] <code>f_show_application_entities</code> of settings
- * @apiParam (Body parameters) {Boolean} [f_show_entities_fields] <code>f_show_entities_fields</code> of settings
  * @apiSuccess {Object} settings Created settings
  * @apiSuccess {Integer} settings.id <code>id</code> of settings
  * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
- * @apiSuccess {Boolean} settings.f_show_application_entities <code>f_show_application_entities</code> of settings
- * @apiSuccess {Boolean} settings.f_show_entities_fields <code>f_show_entities_fields</code> of settings
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create settings
  */
 
@@ -1326,13 +1318,9 @@
  * @apiUse token
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the settings to update
  * @apiParam (Body parameters) {Enum} [f_types] New value of <code>f_types</code> for settings
- * @apiParam (Body parameters) {Boolean} [f_show_application_entities] New value of <code>f_show_application_entities</code> for settings
- * @apiParam (Body parameters) {Boolean} [f_show_entities_fields] New value of <code>f_show_entities_fields</code> for settings
  * @apiSuccess {Object} settings Updated settings
  * @apiSuccess {Integer} settings.id <code>id</code> of settings
  * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
- * @apiSuccess {Boolean} settings.f_show_application_entities <code>f_show_application_entities</code> of settings
- * @apiSuccess {Boolean} settings.f_show_entities_fields <code>f_show_entities_fields</code> of settings
  * @apiError (Error 404) {Object} NotFound No settings with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update settings
  */

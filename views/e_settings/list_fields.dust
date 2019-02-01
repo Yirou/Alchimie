@@ -8,12 +8,8 @@
             <th data-field="f_types" data-col="f_types" data-type="enum">
                 {@__ key="entity.e_settings.f_types"/}
             </th>
-            <th data-field="f_show_application_entities" data-col="f_show_application_entities" data-type="boolean">
-                {@__ key="entity.e_settings.f_show_application_entities"/}
-            </th>
-            <th data-field="f_show_entities_fields" data-col="f_show_entities_fields" data-type="boolean">
-                {@__ key="entity.e_settings.f_show_entities_fields"/}
-            </th>
+
+
             {@actionAccess entity="settings" action="read"}
             <th></th>
             {/actionAccess}
@@ -34,12 +30,8 @@
             <th data-field="f_types" data-col="f_types" data-type="enum">
                 {@__ key="entity.e_settings.f_types"/}
             </th>
-            <th data-field="f_show_application_entities" data-col="f_show_application_entities" data-type="boolean">
-                {@__ key="entity.e_settings.f_show_application_entities"/}
-            </th>
-            <th data-field="f_show_entities_fields" data-col="f_show_entities_fields" data-type="boolean">
-                {@__ key="entity.e_settings.f_show_entities_fields"/}
-            </th>
+
+
             {@actionAccess entity="settings" action="read"}
             <th></th>
             {/actionAccess}
@@ -56,8 +48,8 @@
         <tr id="bodyTR">
             <td data-field="id">{id}</td>
             <td data-field="f_types" data-type="enum">{f_types}</td>
-            <td data-field="f_show_application_entities" data-type="boolean">{f_show_application_entities}</td>
-            <td data-field="f_show_entities_fields" data-type="boolean">{f_show_entities_fields}</td>
+
+
             {@eq key=for value="fieldset"}
             {@actionAccess entity="settings" action="update"}
             <td>

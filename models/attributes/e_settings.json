@@ -16,15 +16,5 @@
             "service"
         ],
         "defaultValue": null
-    },
-    "f_show_application_entities": {
-        "type": "BOOLEAN",
-        "newmipsType": "boolean",
-        "defaultValue": null
-    },
-    "f_show_entities_fields": {
-        "type": "BOOLEAN",
-        "newmipsType": "boolean",
-        "defaultValue": null
     }
 }

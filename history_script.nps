@@ -48,3 +48,6 @@ add field Types with type enum and values Server,Application,Service
 select entity Settings
 add field Show application entities with type boolean
 add field Show entities fields with type boolean
+select entity settings
+remove field Show application entities
+remove field Show entities fields

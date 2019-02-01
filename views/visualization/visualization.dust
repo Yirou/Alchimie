@@ -40,25 +40,6 @@
                 <option value="{.value}"> {.translation} </option>
                 {/enum_radio.e_settings.f_types}
             </select>
-            <label for="f_show_application_entities">
-                {@__ key="entity.e_settings.f_show_application_entities"/}&nbsp;
-                {@inline_help field="f_show_application_entities"}
-                <i data-field="f_show_application_entities" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
-                {/inline_help}
-            </label>
-            &nbsp;
-            <br>
-            <input class="form-control input" name="f_show_application_entities" type="checkbox">
-            <br>
-            <label for="f_show_entities_fields">
-                {@__ key="entity.e_settings.f_show_entities_fields"/}&nbsp;
-                {@inline_help field="f_show_entities_fields"}
-                <i data-field="f_show_entities_fields" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
-                {/inline_help}
-            </label>
-            &nbsp;
-            <br>
-            <input class="form-control input" name="f_show_entities_fields" type="checkbox">
         </div>
         <div class="informations">
             <div id="docs-container">

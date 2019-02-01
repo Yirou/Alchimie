@@ -17,33 +17,6 @@
             {/enum_radio.e_settings.f_types}
         </div>
     </div>
-    <div data-field="f_show_application_entities" class="fieldLineHeight col-xs-12">
-        <div class="form-group">
-            <label for="f_show_application_entities">
-                {@__ key="entity.e_settings.f_show_application_entities"/}&nbsp;
-                {@inline_help field="f_show_application_entities"}
-                <i data-field="f_show_application_entities" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
-                {/inline_help}
-            </label>
-            &nbsp;
-            <br>
-            {@ifTrue key=f_show_application_entities} <input class="form-control input" name="f_show_application_entities_print" value="{f_show_application_entities}" type="checkbox" checked="" disabled="">
-            {:else} <input class="form-control input" name="f_show_application_entities_print" value="{f_show_application_entities}" type="checkbox" disabled="">
-            {/ifTrue}
-        </div>
-    </div>
-    <div data-field="f_show_entities_fields" class="fieldLineHeight col-xs-12">
-        <div class="form-group">
-            <label for="f_show_entities_fields">
-                {@__ key="entity.e_settings.f_show_entities_fields"/}&nbsp;
-                {@inline_help field="f_show_entities_fields"}
-                <i data-field="f_show_entities_fields" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
-                {/inline_help}
-            </label>
-            &nbsp;
-            <br>
-            {@ifTrue key=f_show_entities_fields} <input class="form-control input" name="f_show_entities_fields_print" value="{f_show_entities_fields}" type="checkbox" checked="" disabled="">
-            {:else} <input class="form-control input" name="f_show_entities_fields_print" value="{f_show_entities_fields}" type="checkbox" disabled="">
-            {/ifTrue}</div>
-    </div>
+
+
 </div>
