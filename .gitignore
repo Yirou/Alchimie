@@ -1,0 +1,8 @@
+node_modules/*
+*.log
+upload/*
+config/access.json
+package-lock.json
+/nbproject
+nodemon.json
+/config/data.json

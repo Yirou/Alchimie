@@ -1,0 +1,144 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_server.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_ip" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_ip">
+                {@__ key="entity.e_server.f_ip"/}&nbsp;
+                {@inline_help field="f_ip"}
+                <i data-field="f_ip" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_ip" /}' name="f_ip_print" value="{f_ip}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_location" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_location">
+                {@__ key="entity.e_server.f_location"/}&nbsp;
+                {@inline_help field="f_location"}
+                <i data-field="f_location" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_location" /}' name="f_location_print" value="{f_location}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="c_address_16" class="c_address_16 fieldLineHeight col-xs-12">{>"c_address_16/show"/}</div>
+    <div data-field="f_status" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_status">
+                {@__ key="entity.e_server.r_status"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.r_status" /}' name="r_status" value="{r_status.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+    <div data-field="f_server_category" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_server_category">
+                {@__ key="entity.e_server.r_server_category"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.r_server_category" /}' name="r_server_category" value="{r_server_category.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization"> {@__ key="entity.e_server.r_organization"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="history_16_62" }
+    <div id="r_history_status_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_history_16_62.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_history_status e_history_16_62=r_history_status}
+            {@eq key=id value=e_history_16_62[0].id}
+            {>"e_history_16_62/list_fields" associationAlias="r_history_status" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_history_16_62/list_fields" /}
+            {/r_history_status}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="server" }
+    <div id="r_server_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_server.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_server e_server=r_server}
+            {@eq key=id value=e_server[0].id}
+            {>"e_server/list_fields" associationAlias="r_server" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_server/list_fields" /}
+            {/r_server}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="service" }
+    <div id="r_service_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_service.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_service e_service=r_service}
+            {@eq key=id value=e_service[0].id}
+            {>"e_service/list_fields" associationAlias="r_service" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_service/list_fields" /}
+            {/r_service}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="application" }
+    <div id="r_application_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_application.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_application e_application=r_application}
+            {@eq key=id value=e_application[0].id}
+            {>"e_application/list_fields" associationAlias="r_application" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_application/list_fields" /}
+            {/r_application}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>

@@ -1,0 +1,120 @@
+<div class="nav-tabs-custom" id="tabs">
+    {^hideTab}
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">
+                {@__ key="entity.e_application.label_entity" /}</a></li>
+        {@entityAccess entity="history_e_application_s_status"}
+        <li><a id="r_history_status-click" data-toggle="tab" data-tabtype="hasMany" href="#r_history_status">
+                {@__ key="entity.e_application.r_history_status" /}</a></li>
+        {/entityAccess}
+    </ul>
+    {/hideTab}
+    <div class="tab-content" style="min-height:275px;">
+        <div id="home" class="tab-pane fade in active">
+            <div id="fields" class="row">
+                <div data-field="f_name" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_name">
+                            {@__ key="entity.e_application.f_name"/}&nbsp;
+                            {@inline_help field="f_name"}
+                            <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_application.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_description" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_description">
+                            {@__ key="entity.e_application.f_description"/}&nbsp;
+                            {@inline_help field="f_description"}
+                            <i data-field="f_description" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="show-textarea">{f_description|s}</div>
+                    </div>
+                </div>
+                <div data-field="f_ip" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_ip">
+                            {@__ key="entity.e_application.f_ip"/}&nbsp;
+                            {@inline_help field="f_ip"}
+                            <i data-field="f_ip" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_application.f_ip" /}' name="f_ip" value="{f_ip}" type="text" maxlength="255" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_url" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_url">
+                            {@__ key="entity.e_application.f_url"/}&nbsp;
+                            {@inline_help field="f_url"}
+                            <i data-field="f_url" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <br><a href="{f_url}" target="_blank" type="url" data-type="url" style="display: table-cell;padding-right: 5px;">{f_url}</a>
+                        {?f_url} <div class="copy-button">
+                            <i class="fa fa-copy"></i>
+                        </div>
+                        {/f_url}
+                    </div>
+                </div>
+                <div data-field="f_status" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="r_status">
+                            {@__ key="entity.e_application.r_status"/} </label>
+                        <br>
+                        <span class="badge" style="background: {r_status.f_color};">{r_status.f_name}</span>
+                    </div>
+                    <div class="form-group">
+                        {#r_status.r_children applicationid=id}
+                        {@checkStatusPermission status=.}
+                        <a data-href="/application/set_status/{applicationid}/{f_field}/{id}" data-comment="{f_comment}" class="status btn btn-info" style="margin-right: 5px;">{f_name}</a>
+                        {/checkStatusPermission}
+                        {/r_status.r_children}
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <form action="/application/delete" method="post">
+                    <div class="quicklinks">
+                        <a class="btn btn-default" href="javascript:history.back();"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;
+                            {@__ key="button.return"/}</a>
+                        {@actionAccess entity="application" action="delete"}
+                        <button class="btn btn-danger btn-confirm">
+                            <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                            <span>{@__ key="button.delete"/}</span>
+                        </button>
+                        <input name="id" type="hidden" value="{e_application.id}" class="form-control">
+                        {/actionAccess}
+                        {@actionAccess entity="application" action="update"}
+                        <a href="/application/update_form?id={e_application.id}" class="btn btn-warning">
+                            <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {^hideButton}
+                        {@actionAccess entity="application" action="create"}
+                        <a href="/application/create_form" class="btn btn-success">
+                            <i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.create"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {@actionAccess entity="application" action="read"}
+                        <a href="/application/list" type="submit" class="btn btn-primary">
+                            <i class="fa fa-list fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.list"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {/hideButton}
+                    </div>
+                </form>
+            </div>
+        </div>
+        {^hideTab}
+        {@entityAccess entity="history_e_application_s_status"}
+        <div id="r_history_status" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_history_status" data-asso-foreignkey="fk_id_application_history_status" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+    </div>
+</div>

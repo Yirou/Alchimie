@@ -1,0 +1,20 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_status" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_status">
+                {@__ key="entity.e_history_19_75.r_status"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_history_19_75.r_status" /}' name="r_status" value="{r_status.f_name|string} - {r_status.f_color|color}" type="text" readonly="">
+        </div>
+    </div>
+    <div data-field="f_comment" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_comment">
+                {@__ key="entity.e_history_19_75.f_comment"/}&nbsp;
+                {@inline_help field="f_comment"}
+                <i data-field="f_comment" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_comment|s}</div>
+        </div>
+    </div>
+</div>

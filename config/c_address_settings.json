@@ -1,0 +1,30 @@
+{
+    "entities": {
+        "e_organization": {
+            "enableMaps": false,
+            "mapsPosition": {
+                "top": false,
+                "right": true,
+                "bottom": false,
+                "left": false
+            },
+            "estimateDistance": false,
+            "zoomBar": false,
+            "navigation": true,
+            "mousePosition": false
+        },
+        "e_server": {
+            "enableMaps": false,
+            "mapsPosition": {
+                "top": false,
+                "right": true,
+                "bottom": false,
+                "left": false
+            },
+            "estimateDistance": false,
+            "zoomBar": false,
+            "navigation": true,
+            "mousePosition": false
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "queries": [
+        "ALTER TABLE 1_e_organization ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_organization ADD COLUMN `fk_id_c_address` INT DEFAULT NULL;ALTER TABLE `1_e_organization` ADD FOREIGN KEY (fk_id_c_address) REFERENCES `1_c_address_14` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_server_category ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `f_ip` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `f_location` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_c_address` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_c_address) REFERENCES `1_c_address_16` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_status_status` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_status_status) REFERENCES `1_e_status` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_server_category_server_category` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_server_category_server_category) REFERENCES `1_e_server_category` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_instruction` TEXT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_description` TEXT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_ip` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_url` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `fk_id_status_status` INT DEFAULT NULL;ALTER TABLE `1_e_application` ADD FOREIGN KEY (fk_id_status_status) REFERENCES `1_e_status` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_organization_organization` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_organization_organization) REFERENCES `1_e_organization` (id) ON DELETE SET NULL ON UPDATE CASCADE;"
+    ]
+}

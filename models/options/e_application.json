@@ -1,0 +1,24 @@
+[
+    {
+        "target": "e_history_e_application_s_status",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_application_history_status",
+        "as": "r_history_status",
+        "showAs": "History Status",
+        "structureType": "hasMany"
+    },
+    {
+        "target": "e_status",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_status_status",
+        "as": "r_status",
+        "showAs": "Status",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            }
+        ]
+    }
+]

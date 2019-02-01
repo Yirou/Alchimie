@@ -1,0 +1,89 @@
+<table id="table_e_history_e_server_s_status" data-url="/history_e_server_s_status/datalist" class="dataTable table table-bordered table-striped" data-custom-order-index="3" data-custom-order="desc">
+    <thead class="main">
+        <tr class="fields">
+
+            <th data-field="createdAt" data-col="createdAt" data-type="date">
+                {@__ key="defaults.createdAt"/}
+            </th>
+            <th data-field="r_status" data-col="r_status.f_name" data-type="string">
+                {@__ key="entity.e_history_e_server_s_status.r_status"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_status.f_name"/}
+            </th>
+            <th data-field="r_status" data-col="r_status.f_color" data-type="color">
+                {@__ key="entity.e_history_e_server_s_status.r_status"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_status.f_color"/}
+            </th>
+            <th data-field="f_comment" data-col="f_comment" data-type="text">
+                {@__ key="entity.e_history_e_server_s_status.f_comment"/}
+            </th>
+
+
+            {@actionAccess entity="history_e_server_s_status" action="read"}
+
+            {/actionAccess}
+            {@actionAccess entity="history_e_server_s_status" action="update"}
+
+            {/actionAccess}
+            {@actionAccess entity="history_e_server_s_status" action="delete"}
+
+            {/actionAccess}
+        </tr>
+    </thead>
+    <thead class="filters">
+        <tr class="fields">
+
+            <th data-field="createdAt" data-col="createdAt" data-type="date">
+                {@__ key="defaults.createdAt"/}
+            </th>
+            <th data-field="r_status" data-col="r_status.f_name" data-type="string">
+                {@__ key="entity.e_history_e_server_s_status.r_status"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_status.f_name"/}
+            </th>
+            <th data-field="r_status" data-col="r_status.f_color" data-type="color">
+                {@__ key="entity.e_history_e_server_s_status.r_status"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_status.f_color"/}
+            </th>
+            <th data-field="f_comment" data-col="f_comment" data-type="text">
+                {@__ key="entity.e_history_e_server_s_status.f_comment"/}
+            </th>
+
+
+            {@actionAccess entity="history_e_server_s_status" action="read"}
+
+            {/actionAccess}
+            {@actionAccess entity="history_e_server_s_status" action="update"}
+
+            {/actionAccess}
+            {@actionAccess entity="history_e_server_s_status" action="delete"}
+
+            {/actionAccess}
+        </tr>
+    </thead>
+    <tbody>
+        {#e_history_e_server_s_status}
+        <tr id="bodyTR">
+
+            <td data-field="r_status" data-type="string">{r_status.f_name}</td>
+            <td data-field="r_status" data-type="color">{r_status.f_color}</td>
+            <td data-field="f_comment" data-type="text">{f_comment|s}</td>
+            <td data-field="createdAt" data-type="text">{createdAt|datetime}</td>
+            {@eq key=for value="fieldset"}
+            {@actionAccess entity="history_e_server_s_status" action="update"}
+
+            {/actionAccess}
+            {/eq}
+            {@eq key=for value="hasMany"}
+            {@actionAccess entity="history_e_server_s_status" action="read"}
+
+            {/actionAccess}
+            {/eq}
+            {@actionAccess entity="history_e_server_s_status" action="update"}
+
+            {/actionAccess}
+            {@actionAccess entity="history_e_server_s_status" action="delete"}
+
+            {/actionAccess}
+        </tr>
+        {/e_history_e_server_s_status}
+    </tbody>
+</table>

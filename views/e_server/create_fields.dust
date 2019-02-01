@@ -1,0 +1,73 @@
+<div id="fields" class="row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_server.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_name" /}' name="f_name" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_ip" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_ip">
+                {@__ key="entity.e_server.f_ip"/}&nbsp;
+                {@inline_help field="f_ip"}
+                <i data-field="f_ip" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_ip" /}' name="f_ip" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_location" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_location">
+                {@__ key="entity.e_server.f_location"/}&nbsp;
+                {@inline_help field="f_location"}
+                <i data-field="f_location" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server.f_location" /}' name="f_location" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="c_address_16" class="c_address_16 fieldLineHeight col-xs-12">{>"c_address_16/create_fields"/}</div>
+
+    <div data-field="f_server_category" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_server_category">
+                {@__ key="entity.e_server.r_server_category" /}&nbsp;
+                {@inline_help field="r_server_category"}
+                <i data-field="r_server_category" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_server_category" data-source="server_category" data-using="f_name" width="100%">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_server_category}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_server_category}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization">
+                {@__ key="entity.e_server.r_organization" /}&nbsp;
+                {@inline_help field="r_organization"}
+                <i data-field="r_organization" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_organization" data-source="organization" data-using="f_name" width="100%">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_organization}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_organization}
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+[
+    {
+        "target": "c_address_14",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_c_address",
+        "as": "c_address",
+        "showAs": "",
+        "targetType": "component",
+        "structureType": "relatedTo"
+    },
+    {
+        "target": "e_server",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_organization_organization",
+        "as": "r_server",
+        "showAs": "Server",
+        "structureType": "hasMany"
+    }
+]

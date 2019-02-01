@@ -1,0 +1,78 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_application.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_description" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_description">
+                {@__ key="entity.e_application.f_description"/}&nbsp;
+                {@inline_help field="f_description"}
+                <i data-field="f_description" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_description|s}</div>
+        </div>
+    </div>
+    <div data-field="f_ip" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_ip">
+                {@__ key="entity.e_application.f_ip"/}&nbsp;
+                {@inline_help field="f_ip"}
+                <i data-field="f_ip" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application.f_ip" /}' name="f_ip_print" value="{f_ip}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_url" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_url">
+                {@__ key="entity.e_application.f_url"/}&nbsp;
+                {@inline_help field="f_url"}
+                <i data-field="f_url" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <br><a href="{f_url}" target="_blank" type="url" data-type="url" style="display: table-cell;padding-right: 5px;">{f_url}</a>
+            {?f_url} <div class="copy-button">
+                <i class="fa fa-copy"></i>
+            </div>
+            {/f_url}
+        </div>
+    </div>
+    <div data-field="f_status" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_status"> {@__ key="entity.e_application.r_status"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application.r_status" /}' name="r_status" value="{r_status.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="history_19_75" }
+    <div id="r_history_status_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_history_19_75.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_history_status e_history_19_75=r_history_status}
+            {@eq key=id value=e_history_19_75[0].id}
+            {>"e_history_19_75/list_fields" associationAlias="r_history_status" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_history_19_75/list_fields" /}
+            {/r_history_status}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>

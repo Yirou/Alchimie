@@ -1,0 +1,20 @@
+[
+    {
+        "target": "e_status",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_status_status",
+        "as": "r_status",
+        "showAs": "Status",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            },
+            {
+                "value": "f_color",
+                "type": "color"
+            }
+        ]
+    }
+]

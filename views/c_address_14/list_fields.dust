@@ -1,0 +1,27 @@
+<th data-field="c_address.f_c_address_housenumber" data-col="c_address.f_c_address_housenumber">
+    {@__ key="component.c_address_14.f_c_address_housenumber"/}
+</th>
+<th data-field="c_address.f_c_address_street" data-col="c_address.f_c_address_street">
+    {@__ key="component.c_address_14.f_c_address_street"/}
+</th>
+<th data-field="c_address.f_c_address_complement1" data-col="c_address.f_c_address_complement1">
+    {@__ key="component.c_address_14.f_c_address_complement1"/}
+</th>
+<th data-field="c_address.f_c_address_postcode" data-col="c_address.f_c_address_postcode">
+    {@__ key="component.c_address_14.f_c_address_postcode"/}
+</th>
+<th data-field="c_address.f_c_address_city" data-col="c_address.f_c_address_city">
+    {@__ key="component.c_address_14.f_c_address_city"/}
+</th>
+<th data-field="c_address.f_c_address_country" data-col="c_address.f_c_address_country">
+    {@__ key="component.c_address_14.f_c_address_country"/}
+</th>
+<th data-field="c_address.f_c_address_lat" data-col="c_address.f_c_address_lat">
+    {@__ key="component.c_address_14.f_c_address_lat"/}
+</th>
+<th data-field="c_address.f_c_address_lon" data-col="c_address.f_c_address_lon">
+    {@__ key="component.c_address_14.f_c_address_lon"/}
+</th>
+<th data-field="c_address.f_c_address_label" data-col="c_address.f_c_address_label">
+    {@__ key="component.c_address_14.f_c_address_label"/}
+</th>

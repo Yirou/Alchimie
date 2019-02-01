@@ -1,0 +1,28 @@
+
+add module Référentiel
+add entity Organization
+add field Name
+add component address with name Address
+add entity Server category
+add field Name
+add entity Server
+add field Name
+add field IP
+add field Location
+add component address with name Server address
+add component status
+add field Server category related to Server category using Name
+entity Server has many existing Server using Name
+add entity Service
+add field Name
+add field Instruction with type text
+entity Server has many existing service using Name
+entity Server has many Application
+select entity Application
+add field Name
+add field Description with type text
+add field IP
+add field Url with type url
+add component status
+select entity Server
+add field Organization related to Organization using Name

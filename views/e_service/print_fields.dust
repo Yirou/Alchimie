@@ -1,0 +1,24 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_service.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_instruction" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_instruction">
+                {@__ key="entity.e_service.f_instruction"/}&nbsp;
+                {@inline_help field="f_instruction"}
+                <i data-field="f_instruction" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_instruction|s}</div>
+        </div>
+    </div>
+</div>

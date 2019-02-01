@@ -1,0 +1,36 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_description": {
+        "type": "TEXT",
+        "newmipsType": "text",
+        "defaultValue": null
+    },
+    "f_ip": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_url": {
+        "type": "STRING",
+        "newmipsType": "url",
+        "defaultValue": null
+    },
+    "s_status": {
+        "type": "VIRTUAL",
+        "history_table": "e_history_19_75",
+        "history_model": "e_history_e_application_s_status"
+    }
+}

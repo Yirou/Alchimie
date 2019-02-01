@@ -1,0 +1,11 @@
+{
+	"version": 0,
+	"api_enabled": true,
+	"socket": {
+		"enabled": true,
+		"chat": false,
+		"notification": true
+	},
+	"contact_field_for_sms": "f_phone",
+	"maintenance": false
+}

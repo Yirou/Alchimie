@@ -1,0 +1,31 @@
+<div id="fields" class="row">
+    <div data-field="f_status" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_status">
+                {@__ key="entity.e_history_19_75.r_status" /}&nbsp;
+                {@inline_help field="r_status"}
+                <i data-field="r_status" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_status" data-source="status" data-using="f_name,f_color" width="100%">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_status}
+                <option value="{id}" selected="">{f_name|string} - {f_color|color}</option>
+                {/r_status}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_comment" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_comment">
+                {@__ key="entity.e_history_19_75.f_comment"/}&nbsp;
+                {@inline_help field="f_comment"}
+                <i data-field="f_comment" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <textarea class="form-control textarea" placeholder='{@__ key="entity.e_history_19_75.f_comment" /}' name="f_comment" id="f_comment_textareaid" type="text">{f_comment|s}</textarea>
+        </div>
+    </div>
+</div>

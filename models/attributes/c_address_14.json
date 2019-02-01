@@ -1,0 +1,55 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER"
+    },
+    "f_c_address_label": {
+        "type": "STRING",
+        "newmipsType": "STRING",
+        "defaultValue": null
+    },
+    "f_c_address_housenumber": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_c_address_street": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_c_address_complement1": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_c_address_postcode": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_c_address_city": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_c_address_country": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_c_address_lat": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
+    },
+    "f_c_address_lon": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
+    }
+}

@@ -1,0 +1,43 @@
+<div class="row">
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12 col-md-10">
+        <div class="form-group">
+            <label for="r_organization">
+                {@__ key="entity.e_server.r_organization" /}&nbsp;
+                {@inline_help field="r_organization"}
+                <i data-field="r_organization" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_organization" data-source="organization" data-using="f_name" width="100%" id="select_organization_visualization">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_organization}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_organization}
+            </select>
+        </div>
+    </div>
+</div>
+<!--<div class="row">
+    <div class="col-md-10 col-xs-12">
+        <div class="visualization">
+            <div class="alchemy" id="alchemy">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        Para
+    </div>
+</div>
+<div class="row">
+
+</div>-->
+<div id="graph-container">
+    <div id="graph">
+    </div>
+</div>
+<div id="docs-container">
+    <a id="docs-close" href="#">&times;</a>
+    <div id="docs" class="docs"></div>
+</div>
