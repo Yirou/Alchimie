@@ -70,4 +70,27 @@
             </select>
         </div>
     </div>
+    <div data-field="f_description" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_description">
+                {@__ key="entity.e_server.f_description"/}&nbsp;
+                {@inline_help field="f_description"}
+                <i data-field="f_description" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <textarea class="form-control textarea" placeholder='{@__ key="entity.e_server.f_description" /}' name="f_description" id="f_description_textareaid" type="text">{f_description|s}</textarea>
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_server.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="dropzone dropzone-field" id="f_file_dropzone" data-storage="local" data-entity="e_server"></div>
+            <input type="hidden" name="f_file" id="f_file_dropzone_hidden" value="{f_file}">
+        </div>
+    </div>
 </div>

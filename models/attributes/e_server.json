@@ -27,5 +27,15 @@
         "type": "VIRTUAL",
         "history_table": "e_history_16_62",
         "history_model": "e_history_e_server_s_status"
+    },
+    "f_description": {
+        "type": "TEXT",
+        "newmipsType": "text",
+        "defaultValue": null
+    },
+    "f_file": {
+        "type": "STRING",
+        "newmipsType": "file",
+        "defaultValue": null
     }
 }

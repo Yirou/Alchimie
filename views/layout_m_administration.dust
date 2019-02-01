@@ -428,5 +428,32 @@
     </li>
     {/actionAccess}
     {/entityAccess}
+    {@entityAccess entity="settings"}
+    <li id="settings_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_settings.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="settings" action="create"}
+            <li>
+                <a href="/settings/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="settings" action="read"}
+            <li>
+                <a href="/settings/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
 </ul>
 {/sidebar}

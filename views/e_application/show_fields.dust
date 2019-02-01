@@ -75,6 +75,33 @@
                         {/r_status.r_children}
                     </div>
                 </div>
+                <div data-field="f_port" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_port">
+                            {@__ key="entity.e_application.f_port"/}&nbsp;
+                            {@inline_help field="f_port"}
+                            <i data-field="f_port" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_application.f_port" /}' name="f_port" value="{f_port}" type="number" max="2147483648" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_file" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_file">
+                            {@__ key="entity.e_application.f_file"/}&nbsp;
+                            {@inline_help field="f_file"}
+                            <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-download"></i>
+                            </div>
+                            <a href="/default/download?entity=e_application&amp;f={f_file}" class="form-control text-left" name="f_file">{f_file|filename}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="actions">
                 <form action="/application/delete" method="post">

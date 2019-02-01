@@ -351,7 +351,10 @@
             "r_server": "Server",
             "r_service": "service",
             "r_application": "Application",
-            "r_organization": "Organization"
+            "r_organization": "Organization",
+            "r_user": "user",
+            "f_description": "Description",
+            "f_file": "File"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -369,7 +372,11 @@
             "plural_entity": "Service",
             "id_entity": "ID",
             "f_name": "Name",
-            "f_instruction": "Instruction"
+            "f_instruction": "Instruction",
+            "f_start_command": "Start command",
+            "f_stop_command": "Stop command",
+            "f_restart_command": "Restart command",
+            "f_file": "File"
         },
         "e_application": {
             "label_entity": "Application",
@@ -382,7 +389,9 @@
             "f_url": "Url",
             "r_history_status": "History Status",
             "r_status": "Status",
-            "s_status": "Status"
+            "s_status": "Status",
+            "f_port": "Port",
+            "f_file": "File"
         },
         "e_history_e_application_s_status": {
             "label_entity": "Historique status application",
@@ -393,6 +402,14 @@
             "f_comment": "Commentaire",
             "as_r_history_status": "Historique Status",
             "as_r_history_e_application_s_status": "Historique status application"
+        },
+        "e_settings": {
+            "label_entity": "Settings",
+            "name_entity": "Settings",
+            "plural_entity": "Settings",
+            "id_entity": "ID",
+            "types_to_display": "Types à afficher",
+            "f_types": "Types"
         }
     },
     "global_component": {

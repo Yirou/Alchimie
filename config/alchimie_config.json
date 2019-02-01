@@ -1,5 +1,5 @@
 {
-    "title": "Database process documentation",
+    "title": "Newmips servers",
     "graph": {
         "linkDistance": 100,
         "charge": -400,
@@ -21,7 +21,7 @@
     },
     "types": {
         "organization": {
-            "short": "Organisation",
+            "short": "Organization",
             "long": "Organisation"
         },
         "server": {

@@ -97,5 +97,13 @@
                 "type": "string"
             }
         ]
+    },
+    {
+        "target": "e_user",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_server",
+        "as": "r_user",
+        "showAs": "user",
+        "structureType": "hasMany"
     }
 ]

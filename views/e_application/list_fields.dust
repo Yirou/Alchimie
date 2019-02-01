@@ -21,6 +21,12 @@
                 {@__ key="entity.e_application.r_status"/}&nbsp;-&nbsp;
                 {@__ key="entity.e_status.f_name"/}
             </th>
+            <th data-field="f_port" data-col="f_port" data-type="integer">
+                {@__ key="entity.e_application.f_port"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_application.f_file"/}
+            </th>
 
             {@actionAccess entity="application" action="read"}
             <th></th>
@@ -55,6 +61,12 @@
                 {@__ key="entity.e_application.r_status"/}&nbsp;-&nbsp;
                 {@__ key="entity.e_status.f_name"/}
             </th>
+            <th data-field="f_port" data-col="f_port" data-type="integer">
+                {@__ key="entity.e_application.f_port"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_application.f_file"/}
+            </th>
 
             {@actionAccess entity="application" action="read"}
             <th></th>
@@ -76,6 +88,8 @@
             <td data-field="f_ip" data-type="string">{f_ip}</td>
             <td data-field="f_url" data-type="url">{f_url}</td>
             <td data-field="r_status" data-type="status" data-color="{r_status.f_color}">{r_status.f_name}</td>
+            <td data-field="f_port" data-type="integer">{f_port}</td>
+            <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_application&amp;f={f_file}" name="f_file">{f_file}</a></td>
             {@eq key=for value="fieldset"}
             {@actionAccess entity="application" action="update"}
             <td>

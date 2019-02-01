@@ -215,6 +215,16 @@
                     "read": [],
                     "delete": []
                 }
+            },
+            {
+                "name": "settings",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
             }
         ]
     },

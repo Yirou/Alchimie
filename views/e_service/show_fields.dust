@@ -21,6 +21,55 @@
             <div class="show-textarea">{f_instruction|s}</div>
         </div>
     </div>
+    <div data-field="f_start_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_command">
+                {@__ key="entity.e_service.f_start_command"/}&nbsp;
+                {@inline_help field="f_start_command"}
+                <i data-field="f_start_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_start_command" /}' name="f_start_command" value="{f_start_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_stop_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_stop_command">
+                {@__ key="entity.e_service.f_stop_command"/}&nbsp;
+                {@inline_help field="f_stop_command"}
+                <i data-field="f_stop_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_stop_command" /}' name="f_stop_command" value="{f_stop_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_restart_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_restart_command">
+                {@__ key="entity.e_service.f_restart_command"/}&nbsp;
+                {@inline_help field="f_restart_command"}
+                <i data-field="f_restart_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_restart_command" /}' name="f_restart_command" value="{f_restart_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_service.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-download"></i>
+                </div>
+                <a href="/default/download?entity=e_service&amp;f={f_file}" class="form-control text-left" name="f_file">{f_file|filename}</a>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="actions">
     <form action="/service/delete" method="post">

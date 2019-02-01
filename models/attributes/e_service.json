@@ -17,5 +17,25 @@
         "type": "TEXT",
         "newmipsType": "text",
         "defaultValue": null
+    },
+    "f_start_command": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_stop_command": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_restart_command": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_file": {
+        "type": "STRING",
+        "newmipsType": "file",
+        "defaultValue": null
     }
 }

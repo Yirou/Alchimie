@@ -41,5 +41,30 @@
                 }
             }
         ]
+    },
+    "e_settings": {
+        "f_types": [
+            {
+                "value": "server",
+                "translations": {
+                    "fr-FR": "Server",
+                    "en-EN": "Server"
+                }
+            },
+            {
+                "value": "application",
+                "translations": {
+                    "fr-FR": "Application",
+                    "en-EN": "Application"
+                }
+            },
+            {
+                "value": "service",
+                "translations": {
+                    "fr-FR": "Service",
+                    "en-EN": "Service"
+                }
+            }
+        ]
     }
 }

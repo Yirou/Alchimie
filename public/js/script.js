@@ -12,9 +12,6 @@ $(function () {
         $('body').addClass('firefox');
     }
 
-   
-
-
     function loadData(organization) {
         $.ajax({
             url: '/default/get-organization-data?organization=' + organization,
@@ -580,7 +577,6 @@ function selectObject(obj, el) {
         obj: obj,
         el: el
     };
-
     highlightObject(obj);
 
     node.classed('selected', true);

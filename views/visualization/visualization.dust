@@ -17,27 +17,38 @@
             </select>
         </div>
     </div>
+    <div class="col-xs-12 col-md-2">
+
+    </div>
 </div>
-<!--<div class="row">
+<div class="row">
     <div class="col-md-10 col-xs-12">
         <div class="visualization">
-            <div class="alchemy" id="alchemy">
-                
+            <div id="graph-container">
+                <div id="graph">
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-2 col-xs-12">
-        Para
+        <div class="parameters">
+            <label> {@__ key="entity.e_settings.label_entity" /}</label>
+            <hr>
+            <label> {@__ key="entity.e_settings.types_to_display" /}</label>
+            <select class="form-control select" name="f_types" width="100%" multiple="">
+                {#enum_radio.e_settings.f_types}
+                <option value="{.value}"> {.translation} </option>
+                {/enum_radio.e_settings.f_types}
+            </select>
+        </div>
     </div>
 </div>
 <div class="row">
-
-</div>-->
-<div id="graph-container">
-    <div id="graph">
+    <div id="docs-container">
+        <a id="docs-close" href="#">&times;</a>
+        <div id="docs" class="docs">
+            
+        </div>
     </div>
 </div>
-<div id="docs-container">
-    <a id="docs-close" href="#">&times;</a>
-    <div id="docs" class="docs"></div>
-</div>
+

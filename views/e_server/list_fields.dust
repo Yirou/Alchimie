@@ -26,7 +26,14 @@
                 {@__ key="entity.e_server_category.f_name"/}
             </th>
             <th data-field="r_organization" data-col="r_organization.f_name" data-type="string">
-                {@__ key="entity.e_server.r_organization"/}&nbsp;-&nbsp;{@__ key="entity.e_organization.f_name"/}
+                {@__ key="entity.e_server.r_organization"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_organization.f_name"/}
+            </th>
+            <th data-field="f_description" data-col="f_description" data-type="text">
+                {@__ key="entity.e_server.f_description"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_server.f_file"/}
             </th>
 
 
@@ -69,7 +76,14 @@
                 {@__ key="entity.e_server_category.f_name"/}
             </th>
             <th data-field="r_organization" data-col="r_organization.f_name" data-type="string">
-                {@__ key="entity.e_server.r_organization"/}&nbsp;-&nbsp;{@__ key="entity.e_organization.f_name"/}
+                {@__ key="entity.e_server.r_organization"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_organization.f_name"/}
+            </th>
+            <th data-field="f_description" data-col="f_description" data-type="text">
+                {@__ key="entity.e_server.f_description"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_server.f_file"/}
             </th>
 
 
@@ -96,6 +110,8 @@
             <td data-field="r_status" data-type="status" data-color="{r_status.f_color}">{r_status.f_name}</td>
             <td data-field="r_server_category" data-type="string">{r_server_category.f_name}</td>
             <td data-field="r_organization" data-type="string">{r_organization.f_name}</td>
+            <td data-field="f_description" data-type="text">{f_description|s}</td>
+            <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_server&amp;f={f_file}" name="f_file">{f_file}</a></td>
 
             {@eq key=for value="fieldset"}
             {@actionAccess entity="server" action="update"}

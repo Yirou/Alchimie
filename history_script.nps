@@ -26,3 +26,22 @@ add field Url with type url
 add component status
 select entity Server
 add field Organization related to Organization using Name
+entity Server has many user
+select entity application
+add field Port with type number
+//ERROR: add field Description with type text (database.field.error.alreadyExist)
+select entity Server
+add field Description with type text
+select entity Service
+add field Start command
+add field Stop command
+add field Restart command
+add field File with type file
+select entity application
+add field File with type file
+select entity server
+add field File with type file
+select module Administration
+add entity Settings
+select entity Settings
+add field Types with type enum and values Server,Application,Service

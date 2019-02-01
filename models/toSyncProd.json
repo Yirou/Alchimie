@@ -16,6 +16,16 @@
         "ALTER TABLE 1_e_application ADD COLUMN `f_ip` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_url` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `fk_id_status_status` INT DEFAULT NULL;ALTER TABLE `1_e_application` ADD FOREIGN KEY (fk_id_status_status) REFERENCES `1_e_status` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
-        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_organization_organization` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_organization_organization) REFERENCES `1_e_organization` (id) ON DELETE SET NULL ON UPDATE CASCADE;"
+        "ALTER TABLE 1_e_server ADD COLUMN `fk_id_organization_organization` INT DEFAULT NULL;ALTER TABLE `1_e_server` ADD FOREIGN KEY (fk_id_organization_organization) REFERENCES `1_e_organization` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 1_e_user ADD COLUMN `fk_id_server` INT DEFAULT NULL;ALTER TABLE `1_e_user` ADD FOREIGN KEY (fk_id_server) REFERENCES `1_e_server` (id);",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_port` INT DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `f_description` TEXT DEFAULT null;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_start_command` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_stop_command` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_restart_command` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_service ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_settings ADD COLUMN `f_types` ENUM('server','application','service') DEFAULT null;"
     ]
 }

@@ -21,4 +21,49 @@
             <textarea class="form-control textarea" placeholder='{@__ key="entity.e_service.f_instruction" /}' name="f_instruction" id="f_instruction_textareaid" type="text">{f_instruction|s}</textarea>
         </div>
     </div>
+    <div data-field="f_start_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_command">
+                {@__ key="entity.e_service.f_start_command"/}&nbsp;
+                {@inline_help field="f_start_command"}
+                <i data-field="f_start_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_start_command" /}' name="f_start_command" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_stop_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_stop_command">
+                {@__ key="entity.e_service.f_stop_command"/}&nbsp;
+                {@inline_help field="f_stop_command"}
+                <i data-field="f_stop_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_stop_command" /}' name="f_stop_command" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_restart_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_restart_command">
+                {@__ key="entity.e_service.f_restart_command"/}&nbsp;
+                {@inline_help field="f_restart_command"}
+                <i data-field="f_restart_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_restart_command" /}' name="f_restart_command" value="" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_service.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="dropzone dropzone-field" id="f_file_dropzone" data-storage="local" data-entity="e_service"></div>
+            <input type="hidden" name="f_file" id="f_file_dropzone_hidden" value="">
+        </div>
+    </div>
 </div>

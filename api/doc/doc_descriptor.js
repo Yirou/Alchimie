@@ -1264,6 +1264,83 @@
 
 /********************************************
  ********************************************
+ * SETTINGS
+ ********************************************
+ *******************************************/
+/** @apiDefine e_settings Settings */
+/**
+ * @api {get} /api/settings?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>settings</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_settings
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} settingss List of settings
+ * @apiSuccess {Integer} settingss.id <code>id</code> of settings
+ * @apiSuccess {Integer} settingss.version <code>version</code> of settings
+ * @apiSuccess {Enum} settingss.f_types <code>f_types</code> of settings
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for settings
+ */
+
+/**
+ * @api {get} /api/settings/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>settings</code> with <code>id</code>
+ * @apiGroup e_settings
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of settings to fetch
+ * @apiSuccess {Object} settings Object of settings
+ * @apiSuccess {Integer} settings.id <code>id</code> of settings
+ * @apiSuccess {Integer} settings.version <code>version</code> of settings
+ * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
+ * @apiError (Error 404) {Object} NotFound No settings with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/settings/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>settings</code> using values defined in request's <code>body</code>
+ * @apiGroup e_settings
+ * @apiUse token
+ * @apiParam (Body parameters) {Enum} [f_types] <code>f_types</code> of settings
+ * @apiSuccess {Object} settings Created settings
+ * @apiSuccess {Integer} settings.id <code>id</code> of settings
+ * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create settings
+ */
+
+/**
+ * @api {put} /api/settings/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>settings</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_settings
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the settings to update
+ * @apiParam (Body parameters) {Enum} [f_types] New value of <code>f_types</code> for settings
+ * @apiSuccess {Object} settings Updated settings
+ * @apiSuccess {Integer} settings.id <code>id</code> of settings
+ * @apiSuccess {Enum} settings.f_types <code>f_types</code> of settings
+ * @apiError (Error 404) {Object} NotFound No settings with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update settings
+ */
+
+/**
+ * @api {delete} /api/settings/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>settings</code> with <code>id</code>
+ * @apiGroup e_settings
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of settings to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No settings with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
  * ORGANIZATION
  ********************************************
  *******************************************/
@@ -1304,7 +1381,7 @@
  * @apiGroup e_organization
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the organization to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_14} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_14,server} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1320,6 +1397,7 @@
  * @apiUse token
  * @apiParam (Body parameters) {String} [f_name] <code>f_name</code> of organization
  * @apiParam (Body parameters) {Integer} [fk_id_c_address] <code>id</code> of entity address_14 to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity server to associate
  * @apiSuccess {Object} organization Created organization
  * @apiSuccess {Integer} organization.id <code>id</code> of organization
  * @apiSuccess {String} organization.f_name <code>f_name</code> of organization
@@ -1335,6 +1413,7 @@
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the organization to update
  * @apiParam (Body parameters) {String} [f_name] New value of <code>f_name</code> for organization
  * @apiParam (Body parameters) {Integer} [fk_id_c_address] <code>id</code> of entity address_14 to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity server to associate
  * @apiSuccess {Object} organization Updated organization
  * @apiSuccess {Integer} organization.id <code>id</code> of organization
  * @apiSuccess {String} organization.f_name <code>f_name</code> of organization
@@ -1452,6 +1531,8 @@
  * @apiSuccess {String} servers.f_ip <code>f_ip</code> of server
  * @apiSuccess {String} servers.f_location <code>f_location</code> of server
  * @apiSuccess {Virtual} servers.s_status <code>s_status</code> of server
+ * @apiSuccess {Text} servers.f_description <code>f_description</code> of server
+ * @apiSuccess {String} servers.f_file <code>f_file</code> of server
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for server
@@ -1471,6 +1552,8 @@
  * @apiSuccess {String} server.f_ip <code>f_ip</code> of server
  * @apiSuccess {String} server.f_location <code>f_location</code> of server
  * @apiSuccess {Virtual} server.s_status <code>s_status</code> of server
+ * @apiSuccess {Text} server.f_description <code>f_description</code> of server
+ * @apiSuccess {String} server.f_file <code>f_file</code> of server
  * @apiError (Error 404) {Object} NotFound No server with ID <code>id</code> found
  */
 
@@ -1481,7 +1564,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1499,18 +1582,23 @@
  * @apiParam (Body parameters) {String} [f_ip] <code>f_ip</code> of server
  * @apiParam (Body parameters) {String} [f_location] <code>f_location</code> of server
  * @apiParam (Body parameters) {Virtual} [s_status] <code>s_status</code> of server
+ * @apiParam (Body parameters) {Text} [f_description] <code>f_description</code> of server
+ * @apiParam (Body parameters) {String} [f_file] <code>f_file</code> of server
  * @apiParam (Body parameters) {Integer} [fk_id_c_address] <code>id</code> of entity address_16 to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_history_status] <code>id</code> of entity history_e_server_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_category_server_category] <code>id</code> of entity server_category to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity application to associate
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiSuccess {Object} server Created server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
  * @apiSuccess {String} server.f_ip <code>f_ip</code> of server
  * @apiSuccess {String} server.f_location <code>f_location</code> of server
  * @apiSuccess {Virtual} server.s_status <code>s_status</code> of server
+ * @apiSuccess {Text} server.f_description <code>f_description</code> of server
+ * @apiSuccess {String} server.f_file <code>f_file</code> of server
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create server
  */
 
@@ -1525,18 +1613,23 @@
  * @apiParam (Body parameters) {String} [f_ip] New value of <code>f_ip</code> for server
  * @apiParam (Body parameters) {String} [f_location] New value of <code>f_location</code> for server
  * @apiParam (Body parameters) {Virtual} [s_status] New value of <code>s_status</code> for server
+ * @apiParam (Body parameters) {Text} [f_description] New value of <code>f_description</code> for server
+ * @apiParam (Body parameters) {String} [f_file] New value of <code>f_file</code> for server
  * @apiParam (Body parameters) {Integer} [fk_id_c_address] <code>id</code> of entity address_16 to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_history_status] <code>id</code> of entity history_e_server_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_category_server_category] <code>id</code> of entity server_category to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity application to associate
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiSuccess {Object} server Updated server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
  * @apiSuccess {String} server.f_ip <code>f_ip</code> of server
  * @apiSuccess {String} server.f_location <code>f_location</code> of server
  * @apiSuccess {Virtual} server.s_status <code>s_status</code> of server
+ * @apiSuccess {Text} server.f_description <code>f_description</code> of server
+ * @apiSuccess {String} server.f_file <code>f_file</code> of server
  * @apiError (Error 404) {Object} NotFound No server with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update server
  */
@@ -1572,6 +1665,10 @@
  * @apiSuccess {Integer} services.version <code>version</code> of service
  * @apiSuccess {String} services.f_name <code>f_name</code> of service
  * @apiSuccess {Text} services.f_instruction <code>f_instruction</code> of service
+ * @apiSuccess {String} services.f_start_command <code>f_start_command</code> of service
+ * @apiSuccess {String} services.f_stop_command <code>f_stop_command</code> of service
+ * @apiSuccess {String} services.f_restart_command <code>f_restart_command</code> of service
+ * @apiSuccess {String} services.f_file <code>f_file</code> of service
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for service
@@ -1589,6 +1686,10 @@
  * @apiSuccess {Integer} service.version <code>version</code> of service
  * @apiSuccess {String} service.f_name <code>f_name</code> of service
  * @apiSuccess {Text} service.f_instruction <code>f_instruction</code> of service
+ * @apiSuccess {String} service.f_start_command <code>f_start_command</code> of service
+ * @apiSuccess {String} service.f_stop_command <code>f_stop_command</code> of service
+ * @apiSuccess {String} service.f_restart_command <code>f_restart_command</code> of service
+ * @apiSuccess {String} service.f_file <code>f_file</code> of service
  * @apiError (Error 404) {Object} NotFound No service with ID <code>id</code> found
  */
 
@@ -1600,10 +1701,18 @@
  * @apiUse token
  * @apiParam (Body parameters) {String} [f_name] <code>f_name</code> of service
  * @apiParam (Body parameters) {Text} [f_instruction] <code>f_instruction</code> of service
+ * @apiParam (Body parameters) {String} [f_start_command] <code>f_start_command</code> of service
+ * @apiParam (Body parameters) {String} [f_stop_command] <code>f_stop_command</code> of service
+ * @apiParam (Body parameters) {String} [f_restart_command] <code>f_restart_command</code> of service
+ * @apiParam (Body parameters) {String} [f_file] <code>f_file</code> of service
  * @apiSuccess {Object} service Created service
  * @apiSuccess {Integer} service.id <code>id</code> of service
  * @apiSuccess {String} service.f_name <code>f_name</code> of service
  * @apiSuccess {Text} service.f_instruction <code>f_instruction</code> of service
+ * @apiSuccess {String} service.f_start_command <code>f_start_command</code> of service
+ * @apiSuccess {String} service.f_stop_command <code>f_stop_command</code> of service
+ * @apiSuccess {String} service.f_restart_command <code>f_restart_command</code> of service
+ * @apiSuccess {String} service.f_file <code>f_file</code> of service
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create service
  */
 
@@ -1616,10 +1725,18 @@
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the service to update
  * @apiParam (Body parameters) {String} [f_name] New value of <code>f_name</code> for service
  * @apiParam (Body parameters) {Text} [f_instruction] New value of <code>f_instruction</code> for service
+ * @apiParam (Body parameters) {String} [f_start_command] New value of <code>f_start_command</code> for service
+ * @apiParam (Body parameters) {String} [f_stop_command] New value of <code>f_stop_command</code> for service
+ * @apiParam (Body parameters) {String} [f_restart_command] New value of <code>f_restart_command</code> for service
+ * @apiParam (Body parameters) {String} [f_file] New value of <code>f_file</code> for service
  * @apiSuccess {Object} service Updated service
  * @apiSuccess {Integer} service.id <code>id</code> of service
  * @apiSuccess {String} service.f_name <code>f_name</code> of service
  * @apiSuccess {Text} service.f_instruction <code>f_instruction</code> of service
+ * @apiSuccess {String} service.f_start_command <code>f_start_command</code> of service
+ * @apiSuccess {String} service.f_stop_command <code>f_stop_command</code> of service
+ * @apiSuccess {String} service.f_restart_command <code>f_restart_command</code> of service
+ * @apiSuccess {String} service.f_file <code>f_file</code> of service
  * @apiError (Error 404) {Object} NotFound No service with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update service
  */
@@ -1658,6 +1775,8 @@
  * @apiSuccess {String} applications.f_ip <code>f_ip</code> of application
  * @apiSuccess {String} applications.f_url <code>f_url</code> of application
  * @apiSuccess {Virtual} applications.s_status <code>s_status</code> of application
+ * @apiSuccess {Integer} applications.f_port <code>f_port</code> of application
+ * @apiSuccess {String} applications.f_file <code>f_file</code> of application
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for application
@@ -1678,6 +1797,8 @@
  * @apiSuccess {String} application.f_ip <code>f_ip</code> of application
  * @apiSuccess {String} application.f_url <code>f_url</code> of application
  * @apiSuccess {Virtual} application.s_status <code>s_status</code> of application
+ * @apiSuccess {Integer} application.f_port <code>f_port</code> of application
+ * @apiSuccess {String} application.f_file <code>f_file</code> of application
  * @apiError (Error 404) {Object} NotFound No application with ID <code>id</code> found
  */
 
@@ -1707,6 +1828,8 @@
  * @apiParam (Body parameters) {String} [f_ip] <code>f_ip</code> of application
  * @apiParam (Body parameters) {String} [f_url] <code>f_url</code> of application
  * @apiParam (Body parameters) {Virtual} [s_status] <code>s_status</code> of application
+ * @apiParam (Body parameters) {Integer} [f_port] <code>f_port</code> of application
+ * @apiParam (Body parameters) {String} [f_file] <code>f_file</code> of application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiSuccess {Object} application Created application
@@ -1716,6 +1839,8 @@
  * @apiSuccess {String} application.f_ip <code>f_ip</code> of application
  * @apiSuccess {String} application.f_url <code>f_url</code> of application
  * @apiSuccess {Virtual} application.s_status <code>s_status</code> of application
+ * @apiSuccess {Integer} application.f_port <code>f_port</code> of application
+ * @apiSuccess {String} application.f_file <code>f_file</code> of application
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create application
  */
 
@@ -1731,6 +1856,8 @@
  * @apiParam (Body parameters) {String} [f_ip] New value of <code>f_ip</code> for application
  * @apiParam (Body parameters) {String} [f_url] New value of <code>f_url</code> for application
  * @apiParam (Body parameters) {Virtual} [s_status] New value of <code>s_status</code> for application
+ * @apiParam (Body parameters) {Integer} [f_port] New value of <code>f_port</code> for application
+ * @apiParam (Body parameters) {String} [f_file] New value of <code>f_file</code> for application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiSuccess {Object} application Updated application
@@ -1740,6 +1867,8 @@
  * @apiSuccess {String} application.f_ip <code>f_ip</code> of application
  * @apiSuccess {String} application.f_url <code>f_url</code> of application
  * @apiSuccess {Virtual} application.s_status <code>s_status</code> of application
+ * @apiSuccess {Integer} application.f_port <code>f_port</code> of application
+ * @apiSuccess {String} application.f_file <code>f_file</code> of application
  * @apiError (Error 404) {Object} NotFound No application with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update application
  */

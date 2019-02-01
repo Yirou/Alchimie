@@ -11,6 +11,18 @@
             <th data-field="f_instruction" data-col="f_instruction" data-type="text">
                 {@__ key="entity.e_service.f_instruction"/}
             </th>
+            <th data-field="f_start_command" data-col="f_start_command" data-type="string">
+                {@__ key="entity.e_service.f_start_command"/}
+            </th>
+            <th data-field="f_stop_command" data-col="f_stop_command" data-type="string">
+                {@__ key="entity.e_service.f_stop_command"/}
+            </th>
+            <th data-field="f_restart_command" data-col="f_restart_command" data-type="string">
+                {@__ key="entity.e_service.f_restart_command"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_service.f_file"/}
+            </th>
             {@actionAccess entity="service" action="read"}
             <th></th>
             {/actionAccess}
@@ -34,6 +46,18 @@
             <th data-field="f_instruction" data-col="f_instruction" data-type="text">
                 {@__ key="entity.e_service.f_instruction"/}
             </th>
+            <th data-field="f_start_command" data-col="f_start_command" data-type="string">
+                {@__ key="entity.e_service.f_start_command"/}
+            </th>
+            <th data-field="f_stop_command" data-col="f_stop_command" data-type="string">
+                {@__ key="entity.e_service.f_stop_command"/}
+            </th>
+            <th data-field="f_restart_command" data-col="f_restart_command" data-type="string">
+                {@__ key="entity.e_service.f_restart_command"/}
+            </th>
+            <th data-field="f_file" data-col="f_file" data-type="file">
+                {@__ key="entity.e_service.f_file"/}
+            </th>
             {@actionAccess entity="service" action="read"}
             <th></th>
             {/actionAccess}
@@ -51,6 +75,10 @@
             <td data-field="id">{id}</td>
             <td data-field="f_name" data-type="string">{f_name}</td>
             <td data-field="f_instruction" data-type="text">{f_instruction|s}</td>
+            <td data-field="f_start_command" data-type="string">{f_start_command}</td>
+            <td data-field="f_stop_command" data-type="string">{f_stop_command}</td>
+            <td data-field="f_restart_command" data-type="string">{f_restart_command}</td>
+            <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_service&amp;f={f_file}" name="f_file">{f_file}</a></td>
             {@eq key=for value="fieldset"}
             {@actionAccess entity="service" action="update"}
             <td>

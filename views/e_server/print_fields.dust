@@ -49,8 +49,36 @@
     </div>
     <div data-field="f_organization" class="fieldLineHeight col-xs-12">
         <div class="form-group">
-            <label for="r_organization"> {@__ key="entity.e_server.r_organization"/} </label>
+            <label for="r_organization">
+                {@__ key="entity.e_server.r_organization"/} </label>
             <input class="form-control input" placeholder='{@__ key="entity.e_server.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+    <div data-field="f_description" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_description">
+                {@__ key="entity.e_server.f_description"/}&nbsp;
+                {@inline_help field="f_description"}
+                <i data-field="f_description" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_description|s}</div>
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_server.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-download"></i>
+                </div>
+                <a href="/default/download?entity=e_server&amp;f={f_file}" class="form-control text-left" name="f_file">{f_file|filename}</a>
+            </div>
         </div>
     </div>
 </div>
@@ -137,6 +165,28 @@
             {:else}
             {>"e_application/list_fields" /}
             {/r_application}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="user" }
+    <div id="r_user_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_user.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_user e_user=r_user}
+            {@eq key=id value=e_user[0].id}
+            {>"e_user/list_fields" associationAlias="r_user" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_user/list_fields" /}
+            {/r_user}
         </div>
         <br>
     </div>

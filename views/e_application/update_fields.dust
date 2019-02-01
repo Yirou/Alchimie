@@ -49,4 +49,27 @@
         </div>
     </div>
 
+    <div data-field="f_port" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_port">
+                {@__ key="entity.e_application.f_port"/}&nbsp;
+                {@inline_help field="f_port"}
+                <i data-field="f_port" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application.f_port" /}' name="f_port" value="{f_port}" type="number" max="2147483648">
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_application.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="dropzone dropzone-field" id="f_file_dropzone" data-storage="local" data-entity="e_application"></div>
+            <input type="hidden" name="f_file" id="f_file_dropzone_hidden" value="{f_file}">
+        </div>
+    </div>
 </div>
