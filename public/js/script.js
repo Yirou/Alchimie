@@ -11,13 +11,13 @@ $(function () {
     if ($.browser.mozilla) {
         $('body').addClass('firefox');
     }
-
+    var data = {};
     function loadData(organization) {
         $.ajax({
             url: '/default/get-organization-data?organization=' + organization,
+            data: data,
             success: function (data) {
                 if (data) {
-                    console.log(data)
                     graph.data = data.data;
                     config = data.config;
                     drawGraph();
@@ -33,6 +33,14 @@ $(function () {
         loadData($(this).val());
     });
 
+    $('input[name=f_show_application_entities],input[name=f_show_entities_fields]').on('ifChecked', function () {
+        data[$(this).attr('name')] = true;
+        loadData();
+    });
+    $('input[name=f_show_application_entities],input[name=f_show_entities_fields]').on('ifUnchecked', function () {
+        data[$(this).attr('name')] = false;
+        loadData();
+    });
     loadData();
 
 

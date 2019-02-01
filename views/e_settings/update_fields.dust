@@ -8,7 +8,9 @@
                 {/inline_help}
             </label>
             <select class="form-control select" name="f_types" width="100%">
-                <option value="">{@__ key="select.default" /}</option>
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
                 {#enum_radio.e_settings.f_types}
                 {@eq key=f_types value="{.value}" }
                 <option value="{.value}" selected=""> {.translation} </option>
@@ -18,5 +20,34 @@
                 {/enum_radio.e_settings.f_types}
             </select>
         </div>
+    </div>
+    <div data-field="f_show_application_entities" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_show_application_entities">
+                {@__ key="entity.e_settings.f_show_application_entities"/}&nbsp;
+                {@inline_help field="f_show_application_entities"}
+                <i data-field="f_show_application_entities" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_show_application_entities} <input class="form-control input" name="f_show_application_entities" value="{f_show_application_entities}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_show_application_entities" value="{f_show_application_entities}" type="checkbox">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_show_entities_fields" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_show_entities_fields">
+                {@__ key="entity.e_settings.f_show_entities_fields"/}&nbsp;
+                {@inline_help field="f_show_entities_fields"}
+                <i data-field="f_show_entities_fields" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_show_entities_fields} <input class="form-control input" name="f_show_entities_fields" value="{f_show_entities_fields}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_show_entities_fields" value="{f_show_entities_fields}" type="checkbox">
+            {/ifTrue}</div>
     </div>
 </div>

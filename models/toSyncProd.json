@@ -26,6 +26,8 @@
         "ALTER TABLE 1_e_service ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_server ADD COLUMN `f_file` VARCHAR(255) DEFAULT null;",
-        "ALTER TABLE 1_e_settings ADD COLUMN `f_types` ENUM('server','application','service') DEFAULT null;"
+        "ALTER TABLE 1_e_settings ADD COLUMN `f_types` ENUM('server','application','service') DEFAULT null;",
+        "ALTER TABLE 1_e_settings ADD COLUMN `f_show_application_entities` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 1_e_settings ADD COLUMN `f_show_entities_fields` BOOLEAN DEFAULT null;"
     ]
 }

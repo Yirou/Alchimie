@@ -395,7 +395,9 @@
             "name_entity": "Settings",
             "plural_entity": "Settings",
             "id_entity": "ID",
-            "f_types": "Types"
+            "f_types": "Types",
+            "f_show_application_entities": "Show application entities",
+            "f_show_entities_fields": "Show entities fields"
         }
     },
     "global_component": {
