@@ -94,7 +94,7 @@ var addServiceToServer = function (server, data) {
 
         if (data["Service " + service.f_name].depends.indexOf("Server " + server.f_name) < 0)
             data["Service " + service.f_name].depends.push("Server " + server.f_name);
-        buildDoc('application', data["Service " + service.f_name], service);
+        buildDoc('service', data["Service " + service.f_name], service);
     });
 }
 var buildDoc = function (type, elt, object) {
