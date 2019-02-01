@@ -1,0 +1,20 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_types" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_types">
+                {@__ key="entity.e_settings.f_types"/}&nbsp;
+                {@inline_help field="f_types"}
+                <i data-field="f_types" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            {^f_types}
+            <input class="form-control input" placeholder='{@__ key="entity.e_settings.f_types" /}' name="f_types_print" type="text" readonly="">
+            {/f_types}
+            {#enum_radio.e_settings.f_types}
+            {@eq key=f_types value="{.value}" }
+            <input class="form-control input" placeholder='{@__ key="entity.e_settings.f_types" /}' name="f_types_print" value="{.translation}" type="text" readonly="">
+            {/eq}
+            {/enum_radio.e_settings.f_types}
+        </div>
+    </div>
+</div>

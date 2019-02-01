@@ -1,0 +1,20 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_types": {
+        "type": "ENUM",
+        "values": [
+            "server",
+            "application",
+            "service"
+        ],
+        "defaultValue": null
+    }
+}
