@@ -14,7 +14,7 @@ var databaseConf = {
         port: '3306',
         user: 'newmips',
         password: 'newmips',
-        database: 'newmips',
+        database: 'alchimie',
         dialect: 'mysql' //mysql or postgres
     },
     production: {
