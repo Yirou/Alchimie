@@ -39,8 +39,8 @@ var config = {
             width: 200
         },
         ssl: {
-            key: fs.readFileSync('/etc/ssl/cacerts/newmips.com.key'),
-            cert: fs.readFileSync('/etc/ssl/cacerts/newmips.com.crt'),
+           /* key: fs.readFileSync('/etc/ssl/cacerts/newmips.com.key'),
+            cert: fs.readFileSync('/etc/ssl/cacerts/newmips.com.crt'),*/
             passphrase: ''
         }
     },

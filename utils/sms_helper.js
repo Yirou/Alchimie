@@ -1,20 +1,22 @@
 var smsConf = require('../config/sms');
+try {
+    var ovh = require('ovh')(smsConf);
+} catch (e) {
 
-var ovh = require('ovh')(smsConf);
-
-module.exports = function(phones, text) {
-	return new Promise(function(resolve, reject) {
-	    // Get the serviceName (name of your sms account)
-	    ovh.request('GET', '/sms', function(err, serviceName) {
-	        if (err)
-	            return reject(err);
+}
+module.exports = function (phones, text) {
+    return new Promise(function (resolve, reject) {
+        // Get the serviceName (name of your sms account)
+        ovh.request('GET', '/sms', function (err, serviceName) {
+            if (err)
+                return reject(err);
 
             try {
                 // Format phone number to match ovh api
                 for (var i = 0; i < phones.length; i++)
-    	           phones[i] = '0033'+phones[i].split(' ').join('').substring(1);
+                    phones[i] = '0033' + phones[i].split(' ').join('').substring(1);
 
-            } catch(e) {
+            } catch (e) {
                 return reject('Pas de numéro de téléphone.');
             }
 
@@ -23,11 +25,11 @@ module.exports = function(phones, text) {
                 message: text,
                 senderForResponse: true,
                 receivers: phones
-            }, function(errsend, result) {
+            }, function (errsend, result) {
                 if (errsend || result.invalidReceivers.length)
-                	return reject({err: errsend, result: result});
+                    return reject({err: errsend, result: result});
                 resolve(result);
             });
-	    });
-	})
+        });
+    })
 }
