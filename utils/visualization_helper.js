@@ -29,7 +29,7 @@ exports.buildData = function (organization) {
 
 var addServerToOrganization = function (organization, data) {
     organization.r_server.forEach(function (server) {
-
+        
         if (data[organization.f_name].dependedOnBy.indexOf("Server " + server.f_name) < 0)
             data[organization.f_name].dependedOnBy.push("Server " + server.f_name);
 

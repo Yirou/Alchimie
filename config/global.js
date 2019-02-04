@@ -1,7 +1,7 @@
 // Global configuration file
 
 var fs = require('fs');
-var env = 'develop';
+var env = 'recette';
 var applicationConf = require('./application.json');
 
 var config = {
@@ -26,7 +26,7 @@ var config = {
         env: 'recette',
         protocol: 'https',
         host: '127.0.0.1',
-        port: process.env.PORT || 1337,
+        port: process.env.PORT || 1339,
         localstorage: "/var/data/localstorage/",
         thumbnail: {
             folder: 'thumbnail/',
@@ -39,8 +39,8 @@ var config = {
             width: 200
         },
         ssl: {
-            key: /*fs.readFileSync('./cacerts/private.key')*/"toRemove",
-            cert: /*fs.readFileSync('./cacerts/wildcard_newmips.crt')*/"toRemove",
+            key: fs.readFileSync('/etc/ssl/cacerts/newmips.com.key'),
+            cert: fs.readFileSync('/etc/ssl/cacerts/newmips.com.crt'),
             passphrase: ''
         }
     },
