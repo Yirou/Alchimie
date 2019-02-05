@@ -1,0 +1,124 @@
+<table id="table_e_server_config" data-url="/server_config/datalist" class="dataTable table table-bordered table-striped">
+    <thead class="main">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_server_config.id_entity"/}&nbsp;
+                {@__ key="entity.e_server_config.label_entity"/}
+            </th>
+            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
+                {@__ key="entity.e_server_config.f_check_state"/}
+            </th>
+            <th data-field="f_interval" data-col="f_interval" data-type="integer">
+                {@__ key="entity.e_server_config.f_interval"/}
+            </th>
+            <th data-field="f_alert_pings_failed" data-col="f_alert_pings_failed" data-type="integer">
+                {@__ key="entity.e_server_config.f_alert_pings_failed"/}
+            </th>
+            <th data-field="f_email_alert" data-col="f_email_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_email_alert"/}
+            </th>
+            <th data-field="f_sms_alert" data-col="f_sms_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_sms_alert"/}
+            </th>
+            <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_notification_alert"/}
+            </th>
+
+            {@actionAccess entity="server_config" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <thead class="filters">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_server_config.id_entity"/}&nbsp;
+                {@__ key="entity.e_server_config.label_entity"/}
+            </th>
+            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
+                {@__ key="entity.e_server_config.f_check_state"/}
+            </th>
+            <th data-field="f_interval" data-col="f_interval" data-type="integer">
+                {@__ key="entity.e_server_config.f_interval"/}
+            </th>
+            <th data-field="f_alert_pings_failed" data-col="f_alert_pings_failed" data-type="integer">
+                {@__ key="entity.e_server_config.f_alert_pings_failed"/}
+            </th>
+            <th data-field="f_email_alert" data-col="f_email_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_email_alert"/}
+            </th>
+            <th data-field="f_sms_alert" data-col="f_sms_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_sms_alert"/}
+            </th>
+            <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
+                {@__ key="entity.e_server_config.f_notification_alert"/}
+            </th>
+
+            {@actionAccess entity="server_config" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <tbody>
+        {#e_server_config}
+        <tr id="bodyTR">
+            <td data-field="id">{id}</td>
+            <td data-field="f_check_state" data-type="boolean">{f_check_state}</td>
+            <td data-field="f_interval" data-type="integer">{f_interval}</td>
+            <td data-field="f_alert_pings_failed" data-type="integer">{f_alert_pings_failed}</td>
+            <td data-field="f_email_alert" data-type="boolean">{f_email_alert}</td>
+            <td data-field="f_sms_alert" data-type="boolean">{f_sms_alert}</td>
+            <td data-field="f_notification_alert" data-type="boolean">{f_notification_alert}</td>
+
+            {@eq key=for value="fieldset"}
+            {@actionAccess entity="server_config" action="update"}
+            <td>
+                <form class="fieldsetform">
+                    <input type="hidden" value="{id}" name="idRemove">
+                    <button type="submit" class="btn btn-danger btn-confirm"><i class="fa fa-times fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.remove" /}</span></button>
+                </form>
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@eq key=for value="hasMany"}
+            {@actionAccess entity="server_config" action="read"}
+            <td>
+                <!--<a class="btn btn-primary" href="/server_config/show?id={id}&amp;hideButton=1"><i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.show" /}-->
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@actionAccess entity="server_config" action="update"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <a class="ajax btn btn-warning" data-id="{id}" data-href="/server_config/update_form?id={id}&amp;associationAlias={associationAlias}&amp;associationForeignKey={associationForeignKey}&amp;associationFlag={associationFlag}&amp;associationSource={associationSource}&amp;associationUrl={associationUrl}&amp;ajax=true"><i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update" /}</span></a>
+                {/eq}
+            </td>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="delete"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <form action="/server_config/delete" class="ajax" method="post">
+                    <button class="btn btn-danger btn-confirm"><i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                        <span>{@__ key="button.delete" /}</span>
+                        <input name="id" value="{id}" type="hidden">
+                    </button>
+                </form>
+                {/eq}
+            </td>
+            {/actionAccess}
+        </tr>
+        {/e_server_config}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_check_state": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_interval": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_alert_pings_failed": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    }
+}

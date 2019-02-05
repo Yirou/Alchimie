@@ -1,0 +1,37 @@
+<div id="fields" class="row">
+    <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_check_state">
+                {@__ key="entity.e_application_config.f_check_state"/}&nbsp;
+                {@inline_help field="f_check_state"}
+                <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            <input class="form-control input" name="f_check_state" type="checkbox">
+        </div>
+    </div>
+    <div data-field="f_interval" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_interval">
+                {@__ key="entity.e_application_config.f_interval"/}&nbsp;
+                {@inline_help field="f_interval"}
+                <i data-field="f_interval" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application_config.f_interval" /}' name="f_interval" value="" type="number" max="2147483648">
+        </div>
+    </div>
+    <div data-field="f_alert_pings_failed" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_alert_pings_failed">
+                {@__ key="entity.e_application_config.f_alert_pings_failed"/}&nbsp;
+                {@inline_help field="f_alert_pings_failed"}
+                <i data-field="f_alert_pings_failed" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_application_config.f_alert_pings_failed" /}' name="f_alert_pings_failed" value="" type="number" max="2147483648">
+        </div>
+    </div>
+</div>

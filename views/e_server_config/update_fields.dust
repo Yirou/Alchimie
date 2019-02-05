@@ -1,0 +1,84 @@
+<div id="fields" class="row">
+    <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_check_state">
+                {@__ key="entity.e_server_config.f_check_state"/}&nbsp;
+                {@inline_help field="f_check_state"}
+                <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_interval" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_interval">
+                {@__ key="entity.e_server_config.f_interval"/}&nbsp;
+                {@inline_help field="f_interval"}
+                <i data-field="f_interval" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_interval" /}' name="f_interval" value="{f_interval}" type="number" max="2147483648">
+        </div>
+    </div>
+    <div data-field="f_alert_pings_failed" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_alert_pings_failed">
+                {@__ key="entity.e_server_config.f_alert_pings_failed"/}&nbsp;
+                {@inline_help field="f_alert_pings_failed"}
+                <i data-field="f_alert_pings_failed" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_alert_pings_failed" /}' name="f_alert_pings_failed" value="{f_alert_pings_failed}" type="number" max="2147483648">
+        </div>
+    </div>
+
+    <div data-field="f_email_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_email_alert">
+                {@__ key="entity.e_server_config.f_email_alert"/}&nbsp;
+                {@inline_help field="f_email_alert"}
+                <i data-field="f_email_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_email_alert} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_sms_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_sms_alert">
+                {@__ key="entity.e_server_config.f_sms_alert"/}&nbsp;
+                {@inline_help field="f_sms_alert"}
+                <i data-field="f_sms_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_sms_alert} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_notification_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_notification_alert">
+                {@__ key="entity.e_server_config.f_notification_alert"/}&nbsp;
+                {@inline_help field="f_notification_alert"}
+                <i data-field="f_notification_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_notification_alert} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox">
+            {/ifTrue}</div>
+    </div>
+</div>

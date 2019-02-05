@@ -1,0 +1,116 @@
+<div id="fields" class="row">
+    <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_check_state">
+                {@__ key="entity.e_server_config.f_check_state"/}&nbsp;
+                {@inline_help field="f_check_state"}
+                <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" disabled="">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_interval" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_interval">
+                {@__ key="entity.e_server_config.f_interval"/}&nbsp;
+                {@inline_help field="f_interval"}
+                <i data-field="f_interval" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_interval" /}' name="f_interval" value="{f_interval}" type="number" max="2147483648" readonly="">
+        </div>
+    </div>
+    <div data-field="f_alert_pings_failed" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_alert_pings_failed">
+                {@__ key="entity.e_server_config.f_alert_pings_failed"/}&nbsp;
+                {@inline_help field="f_alert_pings_failed"}
+                <i data-field="f_alert_pings_failed" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_alert_pings_failed" /}' name="f_alert_pings_failed" value="{f_alert_pings_failed}" type="number" max="2147483648" readonly="">
+        </div>
+    </div>
+
+    <div data-field="f_email_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_email_alert">
+                {@__ key="entity.e_server_config.f_email_alert"/}&nbsp;
+                {@inline_help field="f_email_alert"}
+                <i data-field="f_email_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_email_alert} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox" disabled="">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_sms_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_sms_alert">
+                {@__ key="entity.e_server_config.f_sms_alert"/}&nbsp;
+                {@inline_help field="f_sms_alert"}
+                <i data-field="f_sms_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_sms_alert} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox" disabled="">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_notification_alert" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_notification_alert">
+                {@__ key="entity.e_server_config.f_notification_alert"/}&nbsp;
+                {@inline_help field="f_notification_alert"}
+                <i data-field="f_notification_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_notification_alert} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox" disabled="">
+            {/ifTrue}</div>
+    </div>
+</div>
+<div class="actions">
+    <form action="/server_config/delete" method="post">
+        <div class="quicklinks">
+            <a class="btn btn-default" href="javascript:history.back();"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;
+                {@__ key="button.return"/}</a>
+            {@actionAccess entity="server_config" action="delete"}
+            <button class="btn btn-danger btn-confirm">
+                <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                <span>{@__ key="button.delete"/}</span>
+            </button>
+            <input name="id" type="hidden" value="{e_server_config.id}" class="form-control">
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="update"}
+            <a href="/server_config/update_form?id={e_server_config.id}" class="btn btn-warning">
+                <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update"/}</span>
+            </a>
+            {/actionAccess}
+            {^hideButton}
+            {@actionAccess entity="server_config" action="create"}
+            <a href="/server_config/create_form" class="btn btn-success">
+                <i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.create"/}</span>
+            </a>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="read"}
+            <a href="/server_config/list" type="submit" class="btn btn-primary">
+                <i class="fa fa-list fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.list"/}</span>
+            </a>
+            {/actionAccess}
+            {/hideButton}
+        </div>
+    </form>
+</div>
