@@ -81,6 +81,23 @@
             </div>
         </div>
     </div>
+
+
+
+    <div data-field="f_is_alive" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_is_alive">
+                {@__ key="entity.e_server.f_is_alive"/}&nbsp;
+                {@inline_help field="f_is_alive"}
+                <i data-field="f_is_alive" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_is_alive} <input class="form-control input" name="f_is_alive_print" value="{f_is_alive}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_is_alive_print" value="{f_is_alive}" type="checkbox" disabled="">
+            {/ifTrue}</div>
+    </div>
 </div>
 <div class="dontbreakitplz">
     {@entityAccess entity="history_16_62" }
@@ -189,6 +206,22 @@
             {/r_user}
         </div>
         <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="server_config" }
+    <div id="r_server_config_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_server_config.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_server_config}{>"e_server_config/print_fields" /}
+            {/r_server_config}
+        </div>
     </div>
     {/entityAccess}
 </div>

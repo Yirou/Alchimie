@@ -73,6 +73,12 @@
                         </select>
                     </div>
                 </div>
+                <div data-field="f_organizarion" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="r_organizarion"> {@__ key="entity.e_user.r_organizarion"/} </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_user.r_organizarion" /}' name="r_organizarion" value="{r_organizarion.f_name|string}" type="text" readonly="">
+                    </div>
+                </div>
             </div>
             <div class="actions">
                 <form action="/user/delete" method="post">

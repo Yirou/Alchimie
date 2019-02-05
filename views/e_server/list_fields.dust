@@ -35,9 +35,9 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_server.f_file"/}
             </th>
-
-
-
+            <th data-field="f_is_alive" data-col="f_is_alive" data-type="boolean">
+                {@__ key="entity.e_server.f_is_alive"/}
+            </th>
             {@actionAccess entity="server" action="read"}
             <th></th>
             {/actionAccess}
@@ -85,9 +85,9 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_server.f_file"/}
             </th>
-
-
-
+            <th data-field="f_is_alive" data-col="f_is_alive" data-type="boolean">
+                {@__ key="entity.e_server.f_is_alive"/}
+            </th>
             {@actionAccess entity="server" action="read"}
             <th></th>
             {/actionAccess}
@@ -112,7 +112,7 @@
             <td data-field="r_organization" data-type="string">{r_organization.f_name}</td>
             <td data-field="f_description" data-type="text">{f_description|s}</td>
             <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_server&amp;f={f_file}" name="f_file">{f_file}</a></td>
-
+            <td data-field="f_is_alive" data-type="boolean">{f_is_alive}</td>
             {@eq key=for value="fieldset"}
             {@actionAccess entity="server" action="update"}
             <td>

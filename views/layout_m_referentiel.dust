@@ -217,5 +217,59 @@
         </ul>
     </li>
     {/entityAccess}
+    {@entityAccess entity="server_config"}
+    <li id="server_config_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_server_config.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="server_config" action="create"}
+            <li>
+                <a href="/server_config/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="server_config" action="read"}
+            <li>
+                <a href="/server_config/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="application_config"}
+    <li id="application_config_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_application_config.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="application_config" action="create"}
+            <li>
+                <a href="/application_config/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="application_config" action="read"}
+            <li>
+                <a href="/application_config/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
 </ul>
 {/sidebar}

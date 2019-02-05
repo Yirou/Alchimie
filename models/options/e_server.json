@@ -105,5 +105,13 @@
         "as": "r_user",
         "showAs": "user",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_server_config",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_server_config",
+        "as": "r_server_config",
+        "showAs": "",
+        "structureType": "hasOne"
     }
 ]

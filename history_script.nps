@@ -51,3 +51,50 @@ add field Show entities fields with type boolean
 select entity settings
 remove field Show application entities
 remove field Show entities fields
+select entity Server
+add field Check state
+select entity Application
+add field Check state with type boolean
+select entity Server
+delete field Check state
+add field Check state with type boolean
+delete field Check state
+entity Server has one Server config
+add field Check state with type boolean
+delete field Check state
+select entity Server config
+add field Check state with type boolean
+add field Interval with type number
+select entity Application
+//ERROR: entity Apllication has one Application config (database.entity.notFound.withThisCodeNameAndModule)
+entity Application has one Application config
+//ERROR: add field Check state with type boolean (database.field.error.alreadyExist)
+delete field Check state
+select entity Application config
+add field Check state with type boolean
+add field Interval with type number
+select entity user
+add field Organizarion related to Organization using Name
+select entity Server config
+add field Alert Pings failed with type number
+select entity Application config
+add field Alert Pings failed with type number
+select entity Application
+//ERROR: delete tab Application tab (structure.association.error.unableTab)
+delete tab Application config
+add field Check state with type boolean
+add field Interval with type number
+add field Alert Pings failed with type number
+add field Is alive with type boolean
+select entity Server
+add field Is alive with type boolean
+select entity Server config
+add field Email alert
+delete field Email alert
+add field Email alert with type boolean
+add field SMS alert with type boolean
+add field Notification alert with type boolean
+select entity Application
+add field Email alert with type boolean
+add field SMS alert with type boolean
+add field Notification alert with type boolean

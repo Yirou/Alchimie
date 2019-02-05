@@ -178,7 +178,8 @@
             "f_enabled": "enabled",
             "r_role": "Rôle",
             "r_group": "Groupe",
-            "r_notification": "notification"
+            "r_notification": "notification",
+            "r_organizarion": "Organizarion"
         },
         "e_role": {
             "label_entity": "Rôle",
@@ -322,6 +323,15 @@
             "f_field": "Champ",
             "f_content": "Contenu"
         },
+        "e_supervisor": {
+            "label_entity": "Supervisor",
+            "name_entity": "Supervisor",
+            "plural_entity": "Supervisors",
+            "id_entity": "ID",
+            "show_servers": "Show servers",
+            "server_supervisor": "Server supervisor",
+            "app_supervisor": "Application supervisor"
+        },
         "e_organization": {
             "label_entity": "Organization",
             "name_entity": "Organization",
@@ -354,7 +364,9 @@
             "r_organization": "Organization",
             "r_user": "user",
             "f_description": "Description",
-            "f_file": "File"
+            "f_file": "File",
+            "r_server_config": "Server config",
+            "f_is_alive": "Is alive"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -391,7 +403,15 @@
             "r_status": "Status",
             "s_status": "Status",
             "f_port": "Port",
-            "f_file": "File"
+            "f_file": "File",
+            "r_application_config": "Application config",
+            "f_check_state": "Check state",
+            "f_interval": "Interval",
+            "f_alert_pings_failed": "Alert Pings failed",
+            "f_is_alive": "Is alive",
+            "f_email_alert": "Email alert",
+            "f_sms_alert": "SMS alert",
+            "f_notification_alert": "Notification alert"
         },
         "e_history_e_application_s_status": {
             "label_entity": "Historique status application",
@@ -410,6 +430,27 @@
             "id_entity": "ID",
             "types_to_display": "Types à afficher",
             "f_types": "Types"
+        },
+        "e_server_config": {
+            "label_entity": "Server config",
+            "name_entity": "Server config",
+            "plural_entity": "Server config",
+            "id_entity": "ID",
+            "f_check_state": "Check state",
+            "f_interval": "Interval",
+            "f_alert_pings_failed": "Alert Pings failed",
+            "f_email_alert": "Email alert",
+            "f_sms_alert": "SMS alert",
+            "f_notification_alert": "Notification alert"
+        },
+        "e_application_config": {
+            "label_entity": "Application config",
+            "name_entity": "Application config",
+            "plural_entity": "Application config",
+            "id_entity": "ID",
+            "f_check_state": "Check state",
+            "f_interval": "Interval",
+            "f_alert_pings_failed": "Alert Pings failed"
         }
     },
     "global_component": {

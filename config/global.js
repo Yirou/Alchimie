@@ -1,7 +1,7 @@
 // Global configuration file
 
 var fs = require('fs');
-var env = 'recette';
+var env = 'develop';
 var applicationConf = require('./application.json');
 
 var config = {
@@ -9,7 +9,7 @@ var config = {
         env: 'develop',
         protocol: 'http',
         host: '127.0.0.1',
-        port: process.env.PORT || 1337,
+        port: process.env.PORT || 1339,
         localstorage: __dirname + "/../upload/",
         thumbnail: {
             folder: 'thumbnail/',

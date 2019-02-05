@@ -300,6 +300,26 @@
                     "delete": [],
                     "update": []
                 }
+            },
+            {
+                "name": "server_config",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_config",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
             }
         ]
     }

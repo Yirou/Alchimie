@@ -7,6 +7,9 @@
         <li><a id="r_history_status-click" data-toggle="tab" data-tabtype="hasMany" href="#r_history_status">
                 {@__ key="entity.e_application.r_history_status" /}</a></li>
         {/entityAccess}
+        {@entityAccess entity="application_config"}
+
+        {/entityAccess}
     </ul>
     {/hideTab}
     <div class="tab-content" style="min-height:275px;">
@@ -102,6 +105,103 @@
                         </div>
                     </div>
                 </div>
+
+                <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_check_state">
+                            {@__ key="entity.e_application.f_check_state"/}&nbsp;
+                            {@inline_help field="f_check_state"}
+                            <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" disabled="">
+                        {/ifTrue}
+                    </div>
+                </div>
+                <div data-field="f_interval" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_interval">
+                            {@__ key="entity.e_application.f_interval"/}&nbsp;
+                            {@inline_help field="f_interval"}
+                            <i data-field="f_interval" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_application.f_interval" /}' name="f_interval" value="{f_interval}" type="number" max="2147483648" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_alert_pings_failed" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_alert_pings_failed">
+                            {@__ key="entity.e_application.f_alert_pings_failed"/}&nbsp;
+                            {@inline_help field="f_alert_pings_failed"}
+                            <i data-field="f_alert_pings_failed" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_application.f_alert_pings_failed" /}' name="f_alert_pings_failed" value="{f_alert_pings_failed}" type="number" max="2147483648" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_is_alive" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_is_alive">
+                            {@__ key="entity.e_application.f_is_alive"/}&nbsp;
+                            {@inline_help field="f_is_alive"}
+                            <i data-field="f_is_alive" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_is_alive} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox" disabled="">
+                        {/ifTrue}
+                    </div>
+                </div>
+                <div data-field="f_email_alert" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_email_alert">
+                            {@__ key="entity.e_application.f_email_alert"/}&nbsp;
+                            {@inline_help field="f_email_alert"}
+                            <i data-field="f_email_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_email_alert} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_email_alert" value="{f_email_alert}" type="checkbox" disabled="">
+                        {/ifTrue}
+                    </div>
+                </div>
+                <div data-field="f_sms_alert" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_sms_alert">
+                            {@__ key="entity.e_application.f_sms_alert"/}&nbsp;
+                            {@inline_help field="f_sms_alert"}
+                            <i data-field="f_sms_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_sms_alert} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_sms_alert" value="{f_sms_alert}" type="checkbox" disabled="">
+                        {/ifTrue}
+                    </div>
+                </div>
+                <div data-field="f_notification_alert" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_notification_alert">
+                            {@__ key="entity.e_application.f_notification_alert"/}&nbsp;
+                            {@inline_help field="f_notification_alert"}
+                            <i data-field="f_notification_alert" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_notification_alert} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_notification_alert" value="{f_notification_alert}" type="checkbox" disabled="">
+                        {/ifTrue}</div>
+                </div>
             </div>
             <div class="actions">
                 <form action="/application/delete" method="post">
@@ -141,6 +241,11 @@
         <div id="r_history_status" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_history_status" data-asso-foreignkey="fk_id_application_history_status" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
             <div class="ajax-content sub-tab-table"></div>
         </div>
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="application_config"}
+
         {/entityAccess}
         {/hideTab}
     </div>

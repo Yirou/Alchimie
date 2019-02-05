@@ -93,4 +93,21 @@
             <input type="hidden" name="f_file" id="f_file_dropzone_hidden" value="{f_file}">
         </div>
     </div>
+
+
+
+    <div data-field="f_is_alive" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_is_alive">
+                {@__ key="entity.e_server.f_is_alive"/}&nbsp;
+                {@inline_help field="f_is_alive"}
+                <i data-field="f_is_alive" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_is_alive} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox">
+            {/ifTrue}</div>
+    </div>
 </div>

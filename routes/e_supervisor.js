@@ -1,0 +1,55 @@
+// router/routes.js
+var express = require('express');
+var router = express.Router();
+var block_access = require('../utils/block_access');
+var languageConfig = require('../config/language');
+var globalConf = require('../config/global');
+var multer = require('multer');
+var fs = require('fs');
+var fse = require('fs-extra');
+var crypto = require('../utils/crypto_helper');
+var upload = multer().single('file');
+var models = require('../models/');
+var Jimp = require("jimp");
+var entity_helper = require('../utils/entity_helper');
+var dust = require('dustjs-linkedin');
+var enums_radios = require('../utils/enum_radio.js');
+var component_helper = require('../utils/component_helper');
+var visualization_helper = require('../utils/visualization_helper');
+// Datalist
+var filterDataTable = require('../utils/filter_datatable');
+var model_builder = require('../utils/model_builder');
+// Winston logger
+var logger = require('../utils/logger');
+// ===========================================
+// Redirection Home =====================
+// ===========================================
+
+// *** Dynamic Module | Do not remove ***
+
+router.get('/servers', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
+     res.render('supervisor/server');
+});
+
+router.post('/server/datalist', block_access.actionAccessMiddleware("server", "read"), function(req, res) {
+    /* Looking for include to get all associated related to data for the datalist ajax loading */
+    var include = model_builder.getDatalistInclude(models, options, req.body.columns);
+    filterDataTable("E_server", req.body, include).then(function(rawData) {
+        entity_helper.prepareDatalistResult('e_server', rawData, req.session.lang_user).then(function(preparedData) {
+            res.send(preparedData).end();
+        }).catch(function(err) {
+            console.log(err);
+            logger.debug(err);
+            res.end();
+        });
+    }).catch(function(err) {
+        console.log(err);
+        logger.debug(err);
+        res.end();
+    });
+});
+router.get('/applications',  block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
+     res.render('supervisor/application');
+});
+
+module.exports = router;

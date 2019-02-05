@@ -67,4 +67,22 @@
             </select>
         </div>
     </div>
+    <div data-field="f_organizarion" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organizarion">
+                {@__ key="entity.e_user.r_organizarion" /}&nbsp;
+                {@inline_help field="r_organizarion"}
+                <i data-field="r_organizarion" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_organizarion" data-source="organization" data-using="f_name" width="100%">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_organizarion}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_organizarion}
+            </select>
+        </div>
+    </div>
 </div>

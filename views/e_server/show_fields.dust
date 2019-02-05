@@ -23,6 +23,10 @@
         <li><a id="r_user-click" data-toggle="tab" data-tabtype="hasMany" href="#r_user">
                 {@__ key="entity.e_server.r_user" /}</a></li>
         {/entityAccess}
+        {@entityAccess entity="server_config"}
+        <li><a id="r_server_config-click" data-toggle="tab" href="#r_server_config">
+                {@__ key="entity.e_server.r_server_config" /}</a></li>
+        {/entityAccess}
     </ul>
     {/hideTab}
     <div class="tab-content" style="min-height:275px;">
@@ -118,6 +122,23 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div data-field="f_is_alive" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_is_alive">
+                            {@__ key="entity.e_server.f_is_alive"/}&nbsp;
+                            {@inline_help field="f_is_alive"}
+                            <i data-field="f_is_alive" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_is_alive} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_is_alive" value="{f_is_alive}" type="checkbox" disabled="">
+                        {/ifTrue}</div>
+                </div>
             </div>
             <div class="actions">
                 <form action="/server/delete" method="post">
@@ -184,6 +205,13 @@
         {@entityAccess entity="user"}
         <div id="r_user" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_user" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
             <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="server_config"}
+        <div id="r_server_config" class="ajax-tab tab-pane fade" data-tabtype="hasOne" data-asso-alias="r_server_config" data-asso-foreignkey="fk_id_server_config" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
+            <div class="ajax-content"></div>
         </div>
         {/entityAccess}
         {/hideTab}

@@ -9,6 +9,10 @@
             <th data-field="f_email" data-col="f_email" data-type="email">
                 {@__ key="entity.e_user.f_email"/}
             </th>
+            <th data-field="r_organizarion" data-col="r_organizarion.f_name" data-type="string">
+                {@__ key="entity.e_user.r_organizarion"/}&nbsp;-&nbsp;{@__ key="entity.e_organization.f_name"/}
+            </th>
+
 
 
             {@actionAccess entity="user" action="read"}
@@ -32,6 +36,10 @@
             <th data-field="f_email" data-col="f_email" data-type="email">
                 {@__ key="entity.e_user.f_email"/}
             </th>
+            <th data-field="r_organizarion" data-col="r_organizarion.f_name" data-type="string">
+                {@__ key="entity.e_user.r_organizarion"/}&nbsp;-&nbsp;{@__ key="entity.e_organization.f_name"/}
+            </th>
+
 
 
             {@actionAccess entity="user" action="read"}
@@ -52,6 +60,7 @@
             <td data-field="f_login" data-type="string">{f_login}</td>
 
             <td data-field="f_email" data-type="email">{f_email}</td>
+            <td data-field="r_organizarion" data-type="string">{r_organizarion.f_name}</td>
 
 
             {@eq key=for value="fieldset"}

@@ -37,5 +37,10 @@
         "type": "STRING",
         "newmipsType": "file",
         "defaultValue": null
+    },
+    "f_is_alive": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
     }
 }

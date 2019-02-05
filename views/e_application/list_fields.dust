@@ -27,6 +27,28 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_application.f_file"/}
             </th>
+            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
+                {@__ key="entity.e_application.f_check_state"/}
+            </th>
+            <th data-field="f_interval" data-col="f_interval" data-type="integer">
+                {@__ key="entity.e_application.f_interval"/}
+            </th>
+            <th data-field="f_alert_pings_failed" data-col="f_alert_pings_failed" data-type="integer">
+                {@__ key="entity.e_application.f_alert_pings_failed"/}
+            </th>
+            <th data-field="f_is_alive" data-col="f_is_alive" data-type="boolean">
+                {@__ key="entity.e_application.f_is_alive"/}
+            </th>
+            <th data-field="f_email_alert" data-col="f_email_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_email_alert"/}
+            </th>
+            <th data-field="f_sms_alert" data-col="f_sms_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_sms_alert"/}
+            </th>
+            <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_notification_alert"/}
+            </th>
+
 
             {@actionAccess entity="application" action="read"}
             <th></th>
@@ -67,6 +89,28 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_application.f_file"/}
             </th>
+            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
+                {@__ key="entity.e_application.f_check_state"/}
+            </th>
+            <th data-field="f_interval" data-col="f_interval" data-type="integer">
+                {@__ key="entity.e_application.f_interval"/}
+            </th>
+            <th data-field="f_alert_pings_failed" data-col="f_alert_pings_failed" data-type="integer">
+                {@__ key="entity.e_application.f_alert_pings_failed"/}
+            </th>
+            <th data-field="f_is_alive" data-col="f_is_alive" data-type="boolean">
+                {@__ key="entity.e_application.f_is_alive"/}
+            </th>
+            <th data-field="f_email_alert" data-col="f_email_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_email_alert"/}
+            </th>
+            <th data-field="f_sms_alert" data-col="f_sms_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_sms_alert"/}
+            </th>
+            <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
+                {@__ key="entity.e_application.f_notification_alert"/}
+            </th>
+
 
             {@actionAccess entity="application" action="read"}
             <th></th>
@@ -90,6 +134,14 @@
             <td data-field="r_status" data-type="status" data-color="{r_status.f_color}">{r_status.f_name}</td>
             <td data-field="f_port" data-type="integer">{f_port}</td>
             <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_application&amp;f={f_file}" name="f_file">{f_file}</a></td>
+            <td data-field="f_check_state" data-type="boolean">{f_check_state}</td>
+            <td data-field="f_interval" data-type="integer">{f_interval}</td>
+            <td data-field="f_alert_pings_failed" data-type="integer">{f_alert_pings_failed}</td>
+            <td data-field="f_is_alive" data-type="boolean">{f_is_alive}</td>
+            <td data-field="f_email_alert" data-type="boolean">{f_email_alert}</td>
+            <td data-field="f_sms_alert" data-type="boolean">{f_sms_alert}</td>
+            <td data-field="f_notification_alert" data-type="boolean">{f_notification_alert}</td>
+
             {@eq key=for value="fieldset"}
             {@actionAccess entity="application" action="update"}
             <td>

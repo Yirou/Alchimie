@@ -42,5 +42,19 @@
         "through": "1_e_notification_e_user",
         "otherKey": "fk_id_e_notification",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_organization",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_organization_organizarion",
+        "as": "r_organizarion",
+        "showAs": "Organizarion",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            }
+        ]
     }
 ]

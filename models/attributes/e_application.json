@@ -42,5 +42,40 @@
         "type": "STRING",
         "newmipsType": "file",
         "defaultValue": null
+    },
+    "f_check_state": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_interval": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_alert_pings_failed": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_is_alive": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_email_alert": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_sms_alert": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_notification_alert": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
     }
 }
