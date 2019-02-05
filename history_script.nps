@@ -98,3 +98,15 @@ select entity Application
 add field Email alert with type boolean
 add field SMS alert with type boolean
 add field Notification alert with type boolean
+entity Server has many History
+delete tab History
+entity Server has many Server state history
+select entity Server state history
+add field Is alive
+delete field Is alive
+add field Is alive with type boolean
+add field Comment with type text
+entity Application has many Application state history
+select entity Application state history
+add field Is alive with type boolean
+add field Comment with type text

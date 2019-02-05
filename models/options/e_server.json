@@ -113,5 +113,13 @@
         "as": "r_server_config",
         "showAs": "",
         "structureType": "hasOne"
+    },
+    {
+        "target": "e_server_state_history",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_server",
+        "as": "r_server_state_history",
+        "showAs": "Server state history",
+        "structureType": "hasMany"
     }
 ]

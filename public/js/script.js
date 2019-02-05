@@ -653,27 +653,30 @@ var showingDocs = false,
         desiredDocsHeight = 300;
 
 function resize(showDocs) {
-    var docsHeight = 0,
-            graphHeight = 0,
-            $docs = $('#docs-container'),
-            $graph = $('#graph-container'),
-            $close = $('#docs-close');
+    if ($('#graph-container').length) {
+        var docsHeight = 0,
+                graphHeight = 0,
+                $docs = $('#docs-container'),
+                $graph = $('#graph-container'),
+                $close = $('#docs-close');
 
-    if (typeof showDocs == 'boolean') {
-        showingDocs = showDocs;
-        $docs[showDocs ? 'show' : 'hide']();
+        if (typeof showDocs == 'boolean') {
+            showingDocs = showDocs;
+            $docs[showDocs ? 'show' : 'hide']();
+        }
+
+        if (showingDocs) {
+            docsHeight = desiredDocsHeight;
+            $docs.css('height', docsHeight + 'px');
+        }
+
+        graphHeight = window.innerHeight - docsHeight;
+        $graph.css('height', graphHeight + 'px');
+
+        $close.css({
+            top: graphHeight + docsClosePadding + 'px',
+            right: window.innerWidth - $docs[0].clientWidth + docsClosePadding + 'px'
+        });
     }
 
-    if (showingDocs) {
-        docsHeight = desiredDocsHeight;
-        $docs.css('height', docsHeight + 'px');
-    }
-
-    graphHeight = window.innerHeight - docsHeight;
-    $graph.css('height', graphHeight + 'px');
-
-    $close.css({
-        top: graphHeight + docsClosePadding + 'px',
-        right: window.innerWidth - $docs[0].clientWidth + docsClosePadding + 'px'
-    });
 }

@@ -1568,7 +1568,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user,server_config} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user,server_config,server_state_history} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1597,6 +1597,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
  * @apiSuccess {Object} server Created server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1631,6 +1632,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
  * @apiSuccess {Object} server Updated server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1833,7 +1835,7 @@
  * @apiGroup e_application
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the application to which <code>association</code> is related
- * @apiParam (Params parameters) {String=history_e_application_s_status,status} association Name of the related entity
+ * @apiParam (Params parameters) {String=history_e_application_s_status,status,application_state_history} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1863,6 +1865,7 @@
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] <code>f_notification_alert</code> of application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_state_history to associate
  * @apiSuccess {Object} application Created application
  * @apiSuccess {Integer} application.id <code>id</code> of application
  * @apiSuccess {String} application.f_name <code>f_name</code> of application
@@ -1905,6 +1908,7 @@
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] New value of <code>f_notification_alert</code> for application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_state_history to associate
  * @apiSuccess {Object} application Updated application
  * @apiSuccess {Integer} application.id <code>id</code> of application
  * @apiSuccess {String} application.f_name <code>f_name</code> of application
@@ -2131,6 +2135,243 @@
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  * @apiError (Error 404) {Object} NotFound No application_config with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * HISTORY
+ ********************************************
+ *******************************************/
+/** @apiDefine e_history History */
+/**
+ * @api {get} /api/history?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>history</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_history
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} historys List of history
+ * @apiSuccess {Integer} historys.id <code>id</code> of history
+ * @apiSuccess {Integer} historys.version <code>version</code> of history
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for history
+ */
+
+/**
+ * @api {get} /api/history/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>history</code> with <code>id</code>
+ * @apiGroup e_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of history to fetch
+ * @apiSuccess {Object} history Object of history
+ * @apiSuccess {Integer} history.id <code>id</code> of history
+ * @apiSuccess {Integer} history.version <code>version</code> of history
+ * @apiError (Error 404) {Object} NotFound No history with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/history/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>history</code> using values defined in request's <code>body</code>
+ * @apiGroup e_history
+ * @apiUse token
+ * @apiSuccess {Object} history Created history
+ * @apiSuccess {Integer} history.id <code>id</code> of history
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create history
+ */
+
+/**
+ * @api {put} /api/history/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>history</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the history to update
+ * @apiSuccess {Object} history Updated history
+ * @apiSuccess {Integer} history.id <code>id</code> of history
+ * @apiError (Error 404) {Object} NotFound No history with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update history
+ */
+
+/**
+ * @api {delete} /api/history/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>history</code> with <code>id</code>
+ * @apiGroup e_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of history to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No history with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * SERVER STATE HISTORY
+ ********************************************
+ *******************************************/
+/** @apiDefine e_server_state_history Server state history */
+/**
+ * @api {get} /api/server_state_history?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>server_state_history</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_server_state_history
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} server_state_historys List of server_state_history
+ * @apiSuccess {Integer} server_state_historys.id <code>id</code> of server_state_history
+ * @apiSuccess {Integer} server_state_historys.version <code>version</code> of server_state_history
+ * @apiSuccess {Boolean} server_state_historys.f_is_alive <code>f_is_alive</code> of server_state_history
+ * @apiSuccess {Text} server_state_historys.f_comment <code>f_comment</code> of server_state_history
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for server_state_history
+ */
+
+/**
+ * @api {get} /api/server_state_history/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>server_state_history</code> with <code>id</code>
+ * @apiGroup e_server_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of server_state_history to fetch
+ * @apiSuccess {Object} server_state_history Object of server_state_history
+ * @apiSuccess {Integer} server_state_history.id <code>id</code> of server_state_history
+ * @apiSuccess {Integer} server_state_history.version <code>version</code> of server_state_history
+ * @apiSuccess {Boolean} server_state_history.f_is_alive <code>f_is_alive</code> of server_state_history
+ * @apiSuccess {Text} server_state_history.f_comment <code>f_comment</code> of server_state_history
+ * @apiError (Error 404) {Object} NotFound No server_state_history with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/server_state_history/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>server_state_history</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_state_history
+ * @apiUse token
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] <code>f_is_alive</code> of server_state_history
+ * @apiParam (Body parameters) {Text} [f_comment] <code>f_comment</code> of server_state_history
+ * @apiSuccess {Object} server_state_history Created server_state_history
+ * @apiSuccess {Integer} server_state_history.id <code>id</code> of server_state_history
+ * @apiSuccess {Boolean} server_state_history.f_is_alive <code>f_is_alive</code> of server_state_history
+ * @apiSuccess {Text} server_state_history.f_comment <code>f_comment</code> of server_state_history
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_state_history
+ */
+
+/**
+ * @api {put} /api/server_state_history/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>server_state_history</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the server_state_history to update
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] New value of <code>f_is_alive</code> for server_state_history
+ * @apiParam (Body parameters) {Text} [f_comment] New value of <code>f_comment</code> for server_state_history
+ * @apiSuccess {Object} server_state_history Updated server_state_history
+ * @apiSuccess {Integer} server_state_history.id <code>id</code> of server_state_history
+ * @apiSuccess {Boolean} server_state_history.f_is_alive <code>f_is_alive</code> of server_state_history
+ * @apiSuccess {Text} server_state_history.f_comment <code>f_comment</code> of server_state_history
+ * @apiError (Error 404) {Object} NotFound No server_state_history with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_state_history
+ */
+
+/**
+ * @api {delete} /api/server_state_history/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>server_state_history</code> with <code>id</code>
+ * @apiGroup e_server_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of server_state_history to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No server_state_history with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * APPLICATION STATE HISTORY
+ ********************************************
+ *******************************************/
+/** @apiDefine e_application_state_history Application state history */
+/**
+ * @api {get} /api/application_state_history?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>application_state_history</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_application_state_history
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} application_state_historys List of application_state_history
+ * @apiSuccess {Integer} application_state_historys.id <code>id</code> of application_state_history
+ * @apiSuccess {Integer} application_state_historys.version <code>version</code> of application_state_history
+ * @apiSuccess {Boolean} application_state_historys.f_is_alive <code>f_is_alive</code> of application_state_history
+ * @apiSuccess {Text} application_state_historys.f_comment <code>f_comment</code> of application_state_history
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for application_state_history
+ */
+
+/**
+ * @api {get} /api/application_state_history/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>application_state_history</code> with <code>id</code>
+ * @apiGroup e_application_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of application_state_history to fetch
+ * @apiSuccess {Object} application_state_history Object of application_state_history
+ * @apiSuccess {Integer} application_state_history.id <code>id</code> of application_state_history
+ * @apiSuccess {Integer} application_state_history.version <code>version</code> of application_state_history
+ * @apiSuccess {Boolean} application_state_history.f_is_alive <code>f_is_alive</code> of application_state_history
+ * @apiSuccess {Text} application_state_history.f_comment <code>f_comment</code> of application_state_history
+ * @apiError (Error 404) {Object} NotFound No application_state_history with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/application_state_history/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>application_state_history</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_state_history
+ * @apiUse token
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] <code>f_is_alive</code> of application_state_history
+ * @apiParam (Body parameters) {Text} [f_comment] <code>f_comment</code> of application_state_history
+ * @apiSuccess {Object} application_state_history Created application_state_history
+ * @apiSuccess {Integer} application_state_history.id <code>id</code> of application_state_history
+ * @apiSuccess {Boolean} application_state_history.f_is_alive <code>f_is_alive</code> of application_state_history
+ * @apiSuccess {Text} application_state_history.f_comment <code>f_comment</code> of application_state_history
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create application_state_history
+ */
+
+/**
+ * @api {put} /api/application_state_history/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>application_state_history</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the application_state_history to update
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] New value of <code>f_is_alive</code> for application_state_history
+ * @apiParam (Body parameters) {Text} [f_comment] New value of <code>f_comment</code> for application_state_history
+ * @apiSuccess {Object} application_state_history Updated application_state_history
+ * @apiSuccess {Integer} application_state_history.id <code>id</code> of application_state_history
+ * @apiSuccess {Boolean} application_state_history.f_is_alive <code>f_is_alive</code> of application_state_history
+ * @apiSuccess {Text} application_state_history.f_comment <code>f_comment</code> of application_state_history
+ * @apiError (Error 404) {Object} NotFound No application_state_history with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update application_state_history
+ */
+
+/**
+ * @api {delete} /api/application_state_history/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>application_state_history</code> with <code>id</code>
+ * @apiGroup e_application_state_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of application_state_history to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No application_state_history with ID <code>id</code> found
  */
 
 

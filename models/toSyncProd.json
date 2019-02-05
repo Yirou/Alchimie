@@ -61,6 +61,13 @@
         "ALTER TABLE 1_e_server_config ADD COLUMN `f_notification_alert` BOOLEAN DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_email_alert` BOOLEAN DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_sms_alert` BOOLEAN DEFAULT null;",
-        "ALTER TABLE 1_e_application ADD COLUMN `f_notification_alert` BOOLEAN DEFAULT null;"
+        "ALTER TABLE 1_e_application ADD COLUMN `f_notification_alert` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 1_e_history DROP FOREIGN KEY 1_e_history_ibfk_1; ALTER TABLE 1_e_history DROP fk_id_server;",
+        "ALTER TABLE 1_e_server_state_history ADD COLUMN `f_is_alive` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_server_state_history DROP f_is_alive;",
+        "ALTER TABLE 1_e_server_state_history ADD COLUMN `f_is_alive` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 1_e_server_state_history ADD COLUMN `f_comment` TEXT DEFAULT null;",
+        "ALTER TABLE 1_e_application_state_history ADD COLUMN `f_is_alive` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 1_e_application_state_history ADD COLUMN `f_comment` TEXT DEFAULT null;"
     ]
 }

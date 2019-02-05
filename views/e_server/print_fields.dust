@@ -96,7 +96,8 @@
             <br>
             {@ifTrue key=f_is_alive} <input class="form-control input" name="f_is_alive_print" value="{f_is_alive}" type="checkbox" checked="" disabled="">
             {:else} <input class="form-control input" name="f_is_alive_print" value="{f_is_alive}" type="checkbox" disabled="">
-            {/ifTrue}</div>
+            {/ifTrue}
+        </div>
     </div>
 </div>
 <div class="dontbreakitplz">
@@ -222,6 +223,31 @@
             {#r_server_config}{>"e_server_config/print_fields" /}
             {/r_server_config}
         </div>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="history" }
+
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="server_state_history" }
+    <div id="r_server_state_history_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_server_state_history.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_server_state_history e_server_state_history=r_server_state_history}
+            {@eq key=id value=e_server_state_history[0].id}
+            {>"e_server_state_history/list_fields" associationAlias="r_server_state_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_server_state_history/list_fields" /}
+            {/r_server_state_history}
+        </div>
+        <br>
     </div>
     {/entityAccess}
 </div>

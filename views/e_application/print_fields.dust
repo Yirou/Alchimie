@@ -176,7 +176,8 @@
             <br>
             {@ifTrue key=f_notification_alert} <input class="form-control input" name="f_notification_alert_print" value="{f_notification_alert}" type="checkbox" checked="" disabled="">
             {:else} <input class="form-control input" name="f_notification_alert_print" value="{f_notification_alert}" type="checkbox" disabled="">
-            {/ifTrue}</div>
+            {/ifTrue}
+        </div>
     </div>
 </div>
 <div class="dontbreakitplz">
@@ -204,5 +205,25 @@
 <div class="dontbreakitplz">
     {@entityAccess entity="application_config" }
 
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="application_state_history" }
+    <div id="r_application_state_history_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_application_state_history.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_application_state_history e_application_state_history=r_application_state_history}
+            {@eq key=id value=e_application_state_history[0].id}
+            {>"e_application_state_history/list_fields" associationAlias="r_application_state_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_application_state_history/list_fields" /}
+            {/r_application_state_history}
+        </div>
+        <br>
+    </div>
     {/entityAccess}
 </div>

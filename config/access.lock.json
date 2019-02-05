@@ -242,6 +242,16 @@
                 }
             },
             {
+                "name": "supervisor",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
                 "name": "server_category",
                 "groups": [],
                 "actions": {
@@ -313,6 +323,36 @@
             },
             {
                 "name": "application_config",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_state_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_state_history",
                 "groups": [],
                 "actions": {
                     "read": [],

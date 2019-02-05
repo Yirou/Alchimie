@@ -20,5 +20,13 @@
                 "type": "string"
             }
         ]
+    },
+    {
+        "target": "e_application_state_history",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_application",
+        "as": "r_application_state_history",
+        "showAs": "Application state history",
+        "structureType": "hasMany"
     }
 ]

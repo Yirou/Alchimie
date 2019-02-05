@@ -28,28 +28,25 @@ var logger = require('../utils/logger');
 // *** Dynamic Module | Do not remove ***
 
 router.get('/servers', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
-     res.render('supervisor/server');
+    res.render('supervisor/server');
 });
 
-router.post('/server/datalist', block_access.actionAccessMiddleware("server", "read"), function(req, res) {
-    /* Looking for include to get all associated related to data for the datalist ajax loading */
-    var include = model_builder.getDatalistInclude(models, options, req.body.columns);
-    filterDataTable("E_server", req.body, include).then(function(rawData) {
-        entity_helper.prepareDatalistResult('e_server', rawData, req.session.lang_user).then(function(preparedData) {
-            res.send(preparedData).end();
-        }).catch(function(err) {
-            console.log(err);
-            logger.debug(err);
-            res.end();
-        });
-    }).catch(function(err) {
-        console.log(err);
-        logger.debug(err);
-        res.end();
+
+router.get('/applications', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
+    res.render('supervisor/application');
+});
+
+router.get('/server/:id/state', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
+
+    var from_date = req.query.fromd_date;
+    var to_date = req.query.to_date;
+    models.E_server.findOne({
+        where: {id: req.params.id},
+        include: [
+            {model: models.E_server_state_history, as: 'r_server_state_history', required: true}
+        ]
+    }).then(function (server) {
+
     });
 });
-router.get('/applications',  block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
-     res.render('supervisor/application');
-});
-
 module.exports = router;
