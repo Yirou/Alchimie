@@ -1,5 +1,6 @@
 var serverMonitor = require('./serverMonitor_helper');
 var appMonitor = require('./appMonitor_helper');
+var models = require('../models/');
 
 var defaultsServerConf = {
     interval: 10000,
@@ -10,28 +11,37 @@ var defaultsAppConf = {
     nb_pings_failed: 1
 };
 exports.monitor = {
-    addServer: function (server) {
+    addServer: function (serverID) {
         return new Promise(function (resolve, reject) {
-            if (server.f_ip) {
-                try {
-                    var conf = {
-                        url: server.f_ip,
-                        checkState: server.r_server_config.f_check_state,
-                        interval: server.r_server_config.f_interval || defaultsServerConf.interval,
-                        nb_pings_failed: server.r_server_config.f_alert_pings_failed || defaultsServerConf.nb_pings_failed,
-                        alert: {
-                            mailAlert: server.r_server_config.f_email_alert,
-                            smsAlert: server.r_server_config.f_sms_alert,
-                            notificationAlert: server.r_server_config.f_notification_alert
-                        }
-                    };
-                    serverMonitor.addServer(conf);
-                    resolve(conf);
-                } catch (e) {
-                    reject(e);
-                }
-            }
-            reject();
+            models.E_server.findOne({
+                where: {id: serverID},
+                include: [
+                    {model: models.E_server_config, as: 'r_server_config', required: true}
+                ]}).then(function (server) {
+                if (server) {
+                    try {
+                        var conf = {
+                            id: server.id,
+                            url: server.f_ip,
+                            checkState: server.r_server_config.f_check_state,
+                            interval: server.r_server_config.f_interval || defaultsServerConf.interval,
+                            nb_pings_failed: server.r_server_config.f_alert_pings_failed || defaultsServerConf.nb_pings_failed,
+                            alert: {
+                                mailAlert: server.r_server_config.f_email_alert,
+                                smsAlert: server.r_server_config.f_sms_alert,
+                                notificationAlert: server.r_server_config.f_notification_alert
+                            },
+                            server:server
+                        };
+                        serverMonitor.addServer(conf);
+                        resolve(conf);
+                    } catch (e) {
+                        serverMonitor.removeServer({id: server.id});
+                        reject(e);
+                    }
+                } else
+                    reject({status: 404});
+            });
         });
     },
     addApp: function (app) {

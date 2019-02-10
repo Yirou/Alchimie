@@ -6,7 +6,7 @@ var databaseConf = {
         port: '3306', //mysql: 3306 - postgres: 5432
         user: 'newmips',
         password: 'newmips',
-        database: 'newmips',
+        database: 'alchimie',
         dialect: 'mysql'  //mysql or postgres
     },
     recette: {

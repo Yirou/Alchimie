@@ -18,43 +18,43 @@ var fs = require('fs-extra');
 var dust = require('dustjs-linkedin');
 var moment = require("moment");
 var SELECT_PAGE_SIZE = 10;
-
+var monitor = require('../utils/monitor_helper');
 // Enum and radio managment
 var enums_radios = require('../utils/enum_radio.js');
 
 // Winston logger
 var logger = require('../utils/logger');
 
-router.get('/list', block_access.actionAccessMiddleware("server_config", "read"), function(req, res) {
+router.get('/list', block_access.actionAccessMiddleware("server_config", "read"), function (req, res) {
     res.render('e_server_config/list');
 });
 
-router.post('/datalist', block_access.actionAccessMiddleware("server_config", "read"), function(req, res) {
+router.post('/datalist', block_access.actionAccessMiddleware("server_config", "read"), function (req, res) {
     /* Looking for include to get all associated related to data for the datalist ajax loading */
     var include = model_builder.getDatalistInclude(models, options, req.body.columns);
-    filterDataTable("E_server_config", req.body, include).then(function(rawData) {
-        entity_helper.prepareDatalistResult('e_server_config', rawData, req.session.lang_user).then(function(preparedData) {
+    filterDataTable("E_server_config", req.body, include).then(function (rawData) {
+        entity_helper.prepareDatalistResult('e_server_config', rawData, req.session.lang_user).then(function (preparedData) {
             res.send(preparedData).end();
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
             logger.debug(err);
             res.end();
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         console.log(err);
         logger.debug(err);
         res.end();
     });
 });
 
-router.post('/subdatalist', block_access.actionAccessMiddleware("server_config", "read"), function(req, res) {
+router.post('/subdatalist', block_access.actionAccessMiddleware("server_config", "read"), function (req, res) {
     var start = parseInt(req.body.start || 0);
     var length = parseInt(req.body.length || 10);
 
     var sourceId = req.query.sourceId;
     var subentityAlias = req.query.subentityAlias;
     var subentityModel = entity_helper.capitalizeFirstLetter(req.query.subentityModel);
-    var subentityOptions = JSON.parse(fs.readFileSync(__dirname+"/../models/options/"+req.query.subentityModel+".json"));
+    var subentityOptions = JSON.parse(fs.readFileSync(__dirname + "/../models/options/" + req.query.subentityModel + ".json"));
     var subentityInclude = model_builder.getDatalistInclude(models, subentityOptions, req.body.columns);
     var doPagination = req.query.paginate;
 
@@ -109,13 +109,13 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("server_config",
             id: parseInt(sourceId)
         },
         include: include
-    }).then(function(e_server_config) {
+    }).then(function (e_server_config) {
         if (!e_server_config['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]) {
             console.error('/subdatalist: count' + entity_helper.capitalizeFirstLetter(subentityAlias) + ' is undefined');
             return res.status(500).end();
         }
 
-        e_server_config['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]().then(function(count) {
+        e_server_config['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]().then(function (count) {
             var rawData = {
                 recordsTotal: count,
                 recordsFiltered: count,
@@ -126,9 +126,9 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("server_config",
                     plain: true
                 }));
 
-            entity_helper.prepareDatalistResult(req.query.subentityModel, rawData, req.session.lang_user).then(function(preparedData) {
+            entity_helper.prepareDatalistResult(req.query.subentityModel, rawData, req.session.lang_user).then(function (preparedData) {
                 res.send(preparedData).end();
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.log(err);
                 logger.debug(err);
                 res.end();
@@ -137,7 +137,7 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("server_config",
     });
 });
 
-router.get('/show', block_access.actionAccessMiddleware("server_config", "read"), function(req, res) {
+router.get('/show', block_access.actionAccessMiddleware("server_config", "read"), function (req, res) {
     var id_e_server_config = req.query.id;
     var tab = req.query.tab;
     var data = {
@@ -149,7 +149,7 @@ router.get('/show', block_access.actionAccessMiddleware("server_config", "read")
     if (typeof req.query.hideButton !== 'undefined')
         data.hideButton = req.query.hideButton;
 
-    entity_helper.optimizedFindOne('E_server_config', id_e_server_config, options).then(function(e_server_config) {
+    entity_helper.optimizedFindOne('E_server_config', id_e_server_config, options).then(function (e_server_config) {
         if (!e_server_config) {
             data.error = 404;
             logger.debug("No data entity found.");
@@ -159,24 +159,24 @@ router.get('/show', block_access.actionAccessMiddleware("server_config", "read")
         /* Update local e_server_config data before show */
         data.e_server_config = e_server_config;
         // Update some data before show, e.g get picture binary
-        entity_helper.getPicturesBuffers(e_server_config, "e_server_config").then(function() {
+        entity_helper.getPicturesBuffers(e_server_config, "e_server_config").then(function () {
             status_helper.translate(e_server_config, attributes, req.session.lang_user);
             data.componentAddressConfig = component_helper.getMapsConfigIfComponentAddressExist("e_server_config");
             // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
-            entity_helper.getLoadOnStartData(data, options).then(function(data) {
+            entity_helper.getLoadOnStartData(data, options).then(function (data) {
                 res.render('e_server_config/show', data);
-            }).catch(function(err) {
+            }).catch(function (err) {
                 entity_helper.error(err, req, res, "/");
             })
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, "/");
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, "/");
     });
 });
 
-router.get('/create_form', block_access.actionAccessMiddleware("server_config", "create"), function(req, res) {
+router.get('/create_form', block_access.actionAccessMiddleware("server_config", "create"), function (req, res) {
     var data = {
         enum_radio: enums_radios.translated("e_server_config", req.session.lang_user, options)
     };
@@ -190,35 +190,35 @@ router.get('/create_form', block_access.actionAccessMiddleware("server_config", 
     }
 
     // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
-    entity_helper.getLoadOnStartData(data, options).then(function(data) {
+    entity_helper.getLoadOnStartData(data, options).then(function (data) {
         var view = req.query.ajax ? 'e_server_config/create_fields' : 'e_server_config/create';
         res.render(view, data);
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, '/bb/create_form');
     })
 });
 
-router.post('/create', block_access.actionAccessMiddleware("server_config", "create"), function(req, res) {
+router.post('/create', block_access.actionAccessMiddleware("server_config", "create"), function (req, res) {
 
     var createObject = model_builder.buildForRoute(attributes, options, req.body);
 
-    models.E_server_config.create(createObject).then(function(e_server_config) {
+    models.E_server_config.create(createObject).then(function (e_server_config) {
         var redirect = '/server_config/show?id=' + e_server_config.id;
         req.session.toastr = [{
-            message: 'message.create.success',
-            level: "success"
-        }];
+                message: 'message.create.success',
+                level: "success"
+            }];
 
         var promises = [];
-
+        console.log(req.body)
         if (typeof req.body.associationFlag !== 'undefined') {
             redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
-            promises.push(new Promise(function(resolve, reject) {
+            promises.push(new Promise(function (resolve, reject) {
                 models[entity_helper.capitalizeFirstLetter(req.body.associationSource)].findOne({
                     where: {
                         id: req.body.associationFlag
                     }
-                }).then(function(association) {
+                }).then(function (association) {
                     if (!association) {
                         e_server_config.destroy();
                         var err = new Error();
@@ -228,13 +228,13 @@ router.post('/create', block_access.actionAccessMiddleware("server_config", "cre
 
                     var modelName = req.body.associationAlias.charAt(0).toUpperCase() + req.body.associationAlias.slice(1).toLowerCase();
                     if (typeof association['add' + modelName] !== 'undefined') {
-                        association['add' + modelName](e_server_config.id).then(resolve).catch(function(err) {
+                        association['add' + modelName](e_server_config.id).then(resolve).catch(function (err) {
                             reject(err);
                         });
                     } else {
                         var obj = {};
                         obj[req.body.associationForeignKey] = e_server_config.id;
-                        association.update(obj).then(resolve).catch(function(err) {
+                        association.update(obj).then(resolve).catch(function (err) {
                             reject(err);
                         });
                     }
@@ -244,21 +244,22 @@ router.post('/create', block_access.actionAccessMiddleware("server_config", "cre
 
         // We have to find value in req.body that are linked to an hasMany or belongsToMany association
         // because those values are not updated for now
-        model_builder.setAssocationManyValues(e_server_config, req.body, createObject, options).then(function() {
-            Promise.all(promises).then(function() {
-                component_helper.setAddressIfComponentExist(e_server_config, options, req.body).then(function() {
+        model_builder.setAssocationManyValues(e_server_config, req.body, createObject, options).then(function () {
+            Promise.all(promises).then(function () {
+                component_helper.setAddressIfComponentExist(e_server_config, options, req.body).then(function () {
+                    monitor.monitor.addServer(req.body.associationFlag);
                     res.redirect(redirect);
                 });
-            }).catch(function(err) {
+            }).catch(function (err) {
                 entity_helper.error(err, req, res, '/server_config/create_form');
             });
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, '/server_config/create_form');
     });
 });
 
-router.get('/update_form', block_access.actionAccessMiddleware("server_config", "update"), function(req, res) {
+router.get('/update_form', block_access.actionAccessMiddleware("server_config", "update"), function (req, res) {
     var id_e_server_config = req.query.id;
     var data = {
         enum_radio: enums_radios.translated("e_server_config", req.session.lang_user, options)
@@ -272,7 +273,7 @@ router.get('/update_form', block_access.actionAccessMiddleware("server_config", 
         data.associationUrl = req.query.associationUrl;
     }
 
-    entity_helper.optimizedFindOne('E_server_config', id_e_server_config, options).then(function(e_server_config) {
+    entity_helper.optimizedFindOne('E_server_config', id_e_server_config, options).then(function (e_server_config) {
         if (!e_server_config) {
             data.error = 404;
             return res.render('common/error', data);
@@ -281,9 +282,9 @@ router.get('/update_form', block_access.actionAccessMiddleware("server_config", 
         e_server_config.dataValues.enum_radio = data.enum_radio;
         data.e_server_config = e_server_config;
         // Update some data before show, e.g get picture binary
-        entity_helper.getPicturesBuffers(e_server_config, "e_server_config", true).then(function() {
+        entity_helper.getPicturesBuffers(e_server_config, "e_server_config", true).then(function () {
             // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
-            entity_helper.getLoadOnStartData(req.query.ajax ? e_server_config.dataValues : data, options).then(function(data) {
+            entity_helper.getLoadOnStartData(req.query.ajax ? e_server_config.dataValues : data, options).then(function (data) {
                 if (req.query.ajax) {
                     e_server_config.dataValues = data;
                     res.render('e_server_config/update_fields', e_server_config.get({
@@ -291,18 +292,18 @@ router.get('/update_form', block_access.actionAccessMiddleware("server_config", 
                     }));
                 } else
                     res.render('e_server_config/update', data);
-            }).catch(function(err) {
+            }).catch(function (err) {
                 entity_helper.error(err, req, res, "/");
             })
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, "/");
         })
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, "/");
     })
 });
 
-router.post('/update', block_access.actionAccessMiddleware("server_config", "update"), function(req, res) {
+router.post('/update', block_access.actionAccessMiddleware("server_config", "update"), function (req, res) {
     var id_e_server_config = parseInt(req.body.id);
 
     if (typeof req.body.version !== "undefined" && req.body.version != null && !isNaN(req.body.version) && req.body.version != '')
@@ -316,41 +317,41 @@ router.post('/update', block_access.actionAccessMiddleware("server_config", "upd
         where: {
             id: id_e_server_config
         }
-    }).then(function(e_server_config) {
+    }).then(function (e_server_config) {
         if (!e_server_config) {
             data.error = 404;
             logger.debug("Not found - Update");
             return res.render('common/error', data);
         }
         component_helper.updateAddressIfComponentExist(e_server_config, options, req.body);
-        e_server_config.update(updateObject).then(function() {
-
+        e_server_config.update(updateObject).then(function () {
+            monitor.monitor.addServer(req.body.associationFlag);
             // We have to find value in req.body that are linked to an hasMany or belongsToMany association
             // because those values are not updated for now
-            model_builder.setAssocationManyValues(e_server_config, req.body, updateObject, options).then(function() {
+            model_builder.setAssocationManyValues(e_server_config, req.body, updateObject, options).then(function () {
 
                 var redirect = '/server_config/show?id=' + id_e_server_config;
                 if (typeof req.body.associationFlag !== 'undefined')
                     redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
 
                 req.session.toastr = [{
-                    message: 'message.update.success',
-                    level: "success"
-                }];
+                        message: 'message.update.success',
+                        level: "success"
+                    }];
 
                 res.redirect(redirect);
-            }).catch(function(err) {
+            }).catch(function (err) {
                 entity_helper.error(err, req, res, '/server_config/update_form?id=' + id_e_server_config);
             });
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, '/server_config/update_form?id=' + id_e_server_config);
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, '/server_config/update_form?id=' + id_e_server_config);
     });
 });
 
-router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_config', 'read'), function(req, res) {
+router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_config', 'read'), function (req, res) {
     var alias = req.params.alias;
     var id = req.params.id;
 
@@ -384,7 +385,7 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_co
         }
 
     // Fetch tab data
-    models.E_server_config.findOne(queryOpts).then(function(e_server_config) {
+    models.E_server_config.findOne(queryOpts).then(function (e_server_config) {
         if (!e_server_config)
             return res.status(404).end();
 
@@ -407,9 +408,9 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_co
                     dustData.componentAddressConfig = component_helper.getMapsConfigIfComponentAddressExist(option.target);
                     for (var i = 0; i < subentityOptions.length; i++)
                         if (subentityOptions[i].target.indexOf('e_status') == 0)
-                            (function(alias) {
-                                promisesData.push(new Promise(function(resolve, reject) {
-                                    dustData[alias].getR_children().then(function(children) {
+                            (function (alias) {
+                                promisesData.push(new Promise(function (resolve, reject) {
+                                    dustData[alias].getR_children().then(function (children) {
                                         dustData[alias].r_children = children;
                                         resolve();
                                     });
@@ -425,7 +426,7 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_co
                 if (option.target.indexOf('e_history_e_') == 0)
                     option.noCreateBtn = true;
                 dustData = {
-                    for: 'hasMany'
+                    for : 'hasMany'
                 };
                 if (typeof req.query.associationFlag !== 'undefined') {
                     dustData.associationFlag = req.query.associationFlag;
@@ -467,12 +468,12 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_co
         }
 
         // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
-        entity_helper.getLoadOnStartData(dustData, subentityOptions).then(function(dustData) {
+        entity_helper.getLoadOnStartData(dustData, subentityOptions).then(function (dustData) {
             // Image buffer promise
-            Promise.all(promisesData).then(function() {
+            Promise.all(promisesData).then(function () {
                 // Open and render dust file
                 var file = fs.readFileSync(__dirname + '/../views/' + dustFile + '.dust', 'utf8');
-                dust.renderSource(file, dustData || {}, function(err, rendered) {
+                dust.renderSource(file, dustData || {}, function (err, rendered) {
                     if (err) {
                         console.error(err);
                         return res.status(500).end();
@@ -486,29 +487,29 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('server_co
                         option: option
                     });
                 });
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.error(err);
                 res.status(500).send(err);
             });
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.error(err);
             res.status(500).send(err);
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         console.error(err);
         res.status(500).send(err);
     });
 });
 
-router.get('/set_status/:id_server_config/:status/:id_new_status', block_access.actionAccessMiddleware("server_config", "read"), function(req, res) {
-    status_helper.setStatus('e_server_config', req.params.id_server_config, req.params.status, req.params.id_new_status, req.query.comment).then(()=> {
+router.get('/set_status/:id_server_config/:status/:id_new_status', block_access.actionAccessMiddleware("server_config", "read"), function (req, res) {
+    status_helper.setStatus('e_server_config', req.params.id_server_config, req.params.status, req.params.id_new_status, req.query.comment).then(() => {
         res.redirect(req.headers.referer);
-    }).catch((err)=> {
+    }).catch((err) => {
         entity_helper.error(err, req, res, '/server_config/show?id=' + req.params.id_server_config);
     });
 });
 
-router.post('/search', block_access.actionAccessMiddleware('server_config', 'read'), function(req, res) {
+router.post('/search', block_access.actionAccessMiddleware('server_config', 'read'), function (req, res) {
     var search = '%' + (req.body.search || '') + '%';
     var limit = SELECT_PAGE_SIZE;
     var offset = (req.body.page - 1) * limit;
@@ -532,8 +533,8 @@ router.post('/search', block_access.actionAccessMiddleware('server_config', 'rea
             for (var i = 0; i < req.body.searchField.length; i++) {
                 if (req.body.searchField[i] != "id") {
                     var currentOrObj = {};
-                    if(req.body.searchField[i].indexOf(".") != -1){
-                        currentOrObj["$"+req.body.searchField[i]+"$"] = {
+                    if (req.body.searchField[i].indexOf(".") != -1) {
+                        currentOrObj["$" + req.body.searchField[i] + "$"] = {
                             $like: search
                         }
                     } else {
@@ -553,27 +554,27 @@ router.post('/search', block_access.actionAccessMiddleware('server_config', 'rea
     // Notice that customwhere feature do not work with related to many field if the field is a foreignKey !
 
     // Possibility to add custom where in select2 ajax instanciation
-    if (typeof req.body.customwhere !== "undefined"){
+    if (typeof req.body.customwhere !== "undefined") {
         // If customwhere from select HTML attribute, we need to parse to object
-        if(typeof req.body.customwhere === "string")
+        if (typeof req.body.customwhere === "string")
             req.body.customwhere = JSON.parse(req.body.customwhere);
         for (var param in req.body.customwhere) {
             // If the custom where is on a foreign key
             if (param.indexOf("fk_") != -1) {
                 for (var option in options) {
                     // We only add where condition on key that are standard hasMany relation, not belongsToMany association
-                    if ((options[option].foreignKey == param || options[option].otherKey == param) && options[option].relation != "belongsToMany"){
+                    if ((options[option].foreignKey == param || options[option].otherKey == param) && options[option].relation != "belongsToMany") {
                         // Where on include managment if fk
-                        if(param.indexOf(".") != -1){
-                            where.where["$"+param+"$"] = req.body.customwhere[param];
+                        if (param.indexOf(".") != -1) {
+                            where.where["$" + param + "$"] = req.body.customwhere[param];
                         } else {
                             where.where[param] = req.body.customwhere[param];
                         }
                     }
                 }
             } else {
-                if(param.indexOf(".") != -1){
-                    where.where["$"+param+"$"] = req.body.customwhere[param];
+                if (param.indexOf(".") != -1) {
+                    where.where["$" + param + "$"] = req.body.customwhere[param];
                 } else {
                     where.where[param] = req.body.customwhere[param];
                 }
@@ -588,14 +589,14 @@ router.post('/search', block_access.actionAccessMiddleware('server_config', 'rea
     // You have to include those entity here
     // where.include = [{model: models.E_myentity, as: "r_myentity"}]
 
-    models.E_server_config.findAndCountAll(where).then(function(results) {
+    models.E_server_config.findAndCountAll(where).then(function (results) {
         results.more = results.count > req.body.page * SELECT_PAGE_SIZE ? true : false;
         // Format value like date / datetime / etc...
         for (var field in attributes) {
             for (var i = 0; i < results.rows.length; i++) {
                 for (var fieldSelect in results.rows[i]) {
-                    if(fieldSelect == field){
-                        switch(attributes[field].newmipsType) {
+                    if (fieldSelect == field) {
+                        switch (attributes[field].newmipsType) {
                             case "date":
                                 results.rows[i][fieldSelect] = moment(results.rows[i][fieldSelect]).format(req.session.lang_user == "fr-FR" ? "DD/MM/YYYY" : "YYYY-MM-DD")
                                 break;
@@ -608,13 +609,13 @@ router.post('/search', block_access.actionAccessMiddleware('server_config', 'rea
             }
         }
         res.json(results);
-    }).catch(function(e) {
+    }).catch(function (e) {
         console.error(e);
         res.status(500).json(e);
     });
 });
 
-router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("server_config", "delete"), function(req, res) {
+router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("server_config", "delete"), function (req, res) {
     var alias = req.params.alias;
     var idToRemove = req.body.idRemove;
     var idEntity = req.body.idEntity;
@@ -622,7 +623,7 @@ router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("serv
         where: {
             id: idEntity
         }
-    }).then(function(e_server_config) {
+    }).then(function (e_server_config) {
         if (!e_server_config) {
             var data = {
                 error: 404
@@ -631,24 +632,24 @@ router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("serv
         }
 
         // Get all associations
-        e_server_config['remove' + entity_helper.capitalizeFirstLetter(alias)](idToRemove).then(function(aliasEntities) {
+        e_server_config['remove' + entity_helper.capitalizeFirstLetter(alias)](idToRemove).then(function (aliasEntities) {
             res.sendStatus(200).end();
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, "/");
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, "/");
     });
 });
 
-router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("server_config", "create"), function(req, res) {
+router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("server_config", "create"), function (req, res) {
     var alias = req.params.alias;
     var idEntity = req.body.idEntity;
     models.E_server_config.findOne({
         where: {
             id: idEntity
         }
-    }).then(function(e_server_config) {
+    }).then(function (e_server_config) {
         if (!e_server_config) {
             var data = {
                 error: 404
@@ -658,7 +659,7 @@ router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("server_
         }
 
         var toAdd;
-        if (typeof(toAdd = req.body.ids) === 'undefined') {
+        if (typeof (toAdd = req.body.ids) === 'undefined') {
             req.session.toastr.push({
                 message: 'message.create.failure',
                 level: "error"
@@ -666,43 +667,43 @@ router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("server_
             return res.redirect('/server_config/show?id=' + idEntity + "#" + alias);
         }
 
-        e_server_config['add' + entity_helper.capitalizeFirstLetter(alias)](toAdd).then(function() {
+        e_server_config['add' + entity_helper.capitalizeFirstLetter(alias)](toAdd).then(function () {
             res.redirect('/server_config/show?id=' + idEntity + "#" + alias);
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, "/");
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, "/");
     });
 });
 
-router.post('/delete', block_access.actionAccessMiddleware("server_config", "delete"), function(req, res) {
+router.post('/delete', block_access.actionAccessMiddleware("server_config", "delete"), function (req, res) {
     var id_e_server_config = parseInt(req.body.id);
 
     models.E_server_config.findOne({
         where: {
             id: id_e_server_config
         }
-    }).then(function(deleteObject) {
+    }).then(function (deleteObject) {
         models.E_server_config.destroy({
             where: {
                 id: id_e_server_config
             }
-        }).then(function() {
+        }).then(function () {
             req.session.toastr = [{
-                message: 'message.delete.success',
-                level: "success"
-            }];
+                    message: 'message.delete.success',
+                    level: "success"
+                }];
 
             var redirect = '/server_config/list';
             if (typeof req.body.associationFlag !== 'undefined')
                 redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
             res.redirect(redirect);
             entity_helper.remove_files("e_server_config", deleteObject, attributes);
-        }).catch(function(err) {
+        }).catch(function (err) {
             entity_helper.error(err, req, res, '/server_config/list');
         });
-    }).catch(function(err) {
+    }).catch(function (err) {
         entity_helper.error(err, req, res, '/server_config/list');
     });
 });
