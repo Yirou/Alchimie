@@ -121,5 +121,13 @@
         "as": "r_server_state_history",
         "showAs": "Server state history",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_server_user_account",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_server",
+        "as": "r_server_user_account",
+        "showAs": "Server user account",
+        "structureType": "hasMany"
     }
 ]

@@ -1,7 +1,18 @@
 {
     "home": {
         "groups": [],
-        "entities": []
+        "entities": [
+            {
+                "name": "server_user_account",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            }
+        ]
     },
     "administration": {
         "groups": [],

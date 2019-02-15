@@ -55,6 +55,89 @@
 
 /********************************************
  ********************************************
+ * SERVER USER ACCOUNT
+ ********************************************
+ *******************************************/
+/** @apiDefine e_server_user_account Server user account */
+/**
+ * @api {get} /api/server_user_account?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>server_user_account</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_server_user_account
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} server_user_accounts List of server_user_account
+ * @apiSuccess {Integer} server_user_accounts.id <code>id</code> of server_user_account
+ * @apiSuccess {Integer} server_user_accounts.version <code>version</code> of server_user_account
+ * @apiSuccess {String} server_user_accounts.f_account <code>f_account</code> of server_user_account
+ * @apiSuccess {String} server_user_accounts.f_group <code>f_group</code> of server_user_account
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for server_user_account
+ */
+
+/**
+ * @api {get} /api/server_user_account/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>server_user_account</code> with <code>id</code>
+ * @apiGroup e_server_user_account
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of server_user_account to fetch
+ * @apiSuccess {Object} server_user_account Object of server_user_account
+ * @apiSuccess {Integer} server_user_account.id <code>id</code> of server_user_account
+ * @apiSuccess {Integer} server_user_account.version <code>version</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_account <code>f_account</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_group <code>f_group</code> of server_user_account
+ * @apiError (Error 404) {Object} NotFound No server_user_account with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/server_user_account/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>server_user_account</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_user_account
+ * @apiUse token
+ * @apiParam (Body parameters) {String} [f_account] <code>f_account</code> of server_user_account
+ * @apiParam (Body parameters) {String} [f_group] <code>f_group</code> of server_user_account
+ * @apiSuccess {Object} server_user_account Created server_user_account
+ * @apiSuccess {Integer} server_user_account.id <code>id</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_account <code>f_account</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_group <code>f_group</code> of server_user_account
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_user_account
+ */
+
+/**
+ * @api {put} /api/server_user_account/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>server_user_account</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_user_account
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the server_user_account to update
+ * @apiParam (Body parameters) {String} [f_account] New value of <code>f_account</code> for server_user_account
+ * @apiParam (Body parameters) {String} [f_group] New value of <code>f_group</code> for server_user_account
+ * @apiSuccess {Object} server_user_account Updated server_user_account
+ * @apiSuccess {Integer} server_user_account.id <code>id</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_account <code>f_account</code> of server_user_account
+ * @apiSuccess {String} server_user_account.f_group <code>f_group</code> of server_user_account
+ * @apiError (Error 404) {Object} NotFound No server_user_account with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_user_account
+ */
+
+/**
+ * @api {delete} /api/server_user_account/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>server_user_account</code> with <code>id</code>
+ * @apiGroup e_server_user_account
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of server_user_account to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No server_user_account with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
  * USER
  ********************************************
  *******************************************/
@@ -1568,7 +1651,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user,server_config,server_state_history} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user,server_config,server_state_history,server_user_account} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1598,6 +1681,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
  * @apiSuccess {Object} server Created server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1633,6 +1717,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
  * @apiSuccess {Object} server Updated server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server

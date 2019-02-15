@@ -110,3 +110,7 @@ entity Application has many Application state history
 select entity Application state history
 add field Is alive with type boolean
 add field Comment with type text
+entity server has many Server user account
+select entity Server user account
+add field Account
+add field Group

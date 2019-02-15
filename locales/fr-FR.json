@@ -331,8 +331,8 @@
             "show_servers": "Show servers",
             "server_supervisor": "Server supervisor",
             "app_supervisor": "Application supervisor",
-            "from_date":"De",
-            "to_date":"À"
+            "from_date": "De",
+            "to_date": "À"
         },
         "e_organization": {
             "label_entity": "Organization",
@@ -370,7 +370,8 @@
             "r_server_config": "Server config",
             "f_is_alive": "Is alive",
             "r_history": "History",
-            "r_server_state_history": "Server state history"
+            "r_server_state_history": "Server state history",
+            "r_server_user_account": "Server user account"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -478,6 +479,14 @@
             "id_entity": "ID",
             "f_is_alive": "Is alive",
             "f_comment": "Comment"
+        },
+        "e_server_user_account": {
+            "label_entity": "Server user account",
+            "name_entity": "Server user account",
+            "plural_entity": "Server user account",
+            "id_entity": "ID",
+            "f_account": "Account",
+            "f_group": "Groupe"
         }
     },
     "global_component": {

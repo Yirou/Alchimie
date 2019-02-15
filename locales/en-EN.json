@@ -348,7 +348,8 @@
             "r_server_config": "Server config",
             "f_is_alive": "Is alive",
             "r_history": "History",
-            "r_server_state_history": "Server state history"
+            "r_server_state_history": "Server state history",
+            "r_server_user_account": "Server user account"
         },
         "e_history_e_server_s_status": {
             "label_entity": "History server status",
@@ -453,6 +454,14 @@
             "id_entity": "ID",
             "f_is_alive": "Is alive",
             "f_comment": "Comment"
+        },
+        "e_server_user_account": {
+            "label_entity": "Server user account",
+            "name_entity": "Server user account",
+            "plural_entity": "Server user account",
+            "id_entity": "ID",
+            "f_account": "Account",
+            "f_group": "Group"
         }
     },
     "global_component": {
