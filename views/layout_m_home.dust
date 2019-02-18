@@ -48,12 +48,12 @@
                     {@__ key="entity.e_supervisor.server_supervisor" /}
                 </a>
             </li>
-            <li>
+            {!<li>
                 <a href="/supervisor/applications">
                     <i class="fa fa-angle-double-right"></i>
                     {@__ key="entity.e_supervisor.app_supervisor" /}
                 </a>
-            </li>
+            </li>!}
         </ul>
     </li>
     {/entityAccess}

@@ -2,7 +2,7 @@ var apps = {};
 const isReachable = require('is-reachable');
 var models = require('../models/');
 
-exports.addServer = function (appConfig) {
+exports.addApp = function (appConfig) {
     stop(appConfig);
     if (appConfig.checkState) {
         apps[appConfig.id] = {};
@@ -10,7 +10,7 @@ exports.addServer = function (appConfig) {
         apps[appConfig.id].check = start(appConfig);
     }
 };
-exports.removeServer = function (appConfig) {
+exports.removeApp = function (appConfig) {
     stop(apps[appConfig.id]);
 };
 

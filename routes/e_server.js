@@ -709,12 +709,44 @@ router.post('/delete', block_access.actionAccessMiddleware("server", "delete"), 
 
 router.get('/status-data', block_access.actionAccessMiddleware("server", "read"), function (req, res) {
     var idServer = req.query.server;
+    var today = moment();
+    var todayCopy = today.clone();
+    var lastID = req.query.last;
+
+    var whereCreatedAt = {
+        $between: [today.subtract(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'), todayCopy.endOf('day').format('YYYY-MM-DD HH:mm:ss')]
+    };
+    if (req.query.startDate && !req.query.endDate)
+        whereCreatedAt = {
+            $gte: moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+        };
+    if (!req.query.startDate && req.query.endDate)
+        whereCreatedAt = {
+            $lte: moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+        };
+    if (req.query.startDate && req.query.endDate)
+        whereCreatedAt = {
+            $between: [
+                moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                moment(req.query.endDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+            ]
+        };
+    var where = {
+        fk_id_server: idServer,
+        createdAt: whereCreatedAt
+    };
+    if (lastID)
+        where.id = {
+            $gt: lastID
+        };
     models.E_server_state_history.findAll({
         where: {
-            fk_id_server: idServer
+            fk_id_server: idServer,
+            createdAt: whereCreatedAt
         },
-        limit:24,
-        order:[['id','DESC']]
+        attributes: ['f_is_alive', 'createdAt'],
+        limit: 100,
+        order: [['id', 'DESC']]
     }).then(function (statusData) {
         res.status(200).json(statusData);
     }).catch(function (err) {

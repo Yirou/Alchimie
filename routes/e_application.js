@@ -724,11 +724,16 @@ router.get('/ajax-list', block_access.actionAccessMiddleware("application", "rea
 
 router.get('/status-data', block_access.actionAccessMiddleware("application", "read"), function (req, res) {
     var idApplication = req.query.app;
-
+    var today = moment();
+    var todayCopy=today.clone();
     models.E_application_state_history.findAll({
         where: {
-            fk_id_application: idApplication
-        }
+            fk_id_application: idApplication,
+            createdAt: {
+                $between: [today.subtract(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'), todayCopy.endOf('day').format('YYYY-MM-DD HH:mm:ss')]
+            }
+        },
+        attributes:['f_is_alive','createdAt']
     }).then(function (statusData) {
         res.status(200).json(statusData);
     }).catch(function (err) {

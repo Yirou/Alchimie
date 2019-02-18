@@ -13,21 +13,22 @@ $(function () {
     }
     var data = {};
     function loadData(organization) {
-        $.ajax({
-            url: '/default/get-organization-data?organization=' + organization,
-            data: data,
-            success: function (data) {
-                if (data) {
-                    graph.data = data.data;
-                    config = data.config;
-                    drawGraph();
-                } else {
-                    alert('Data error(s):\n\n' + data.errors.join('\n'));
-                    return;
-                }
+        if (organization)
+            $.ajax({
+                url: '/default/get-organization-data?organization=' + organization,
+                data: data,
+                success: function (data) {
+                    if (data) {
+                        graph.data = data.data;
+                        config = data.config;
+                        drawGraph();
+                    } else {
+                        alert('Data error(s):\n\n' + data.errors.join('\n'));
+                        return;
+                    }
 
-            }
-        });
+                }
+            });
     }
     $('#select_organization_visualization').change(function () {
         loadData($(this).val());

@@ -31,7 +31,7 @@ exports.monitor = {
                                 smsAlert: server.r_server_config.f_sms_alert,
                                 notificationAlert: server.r_server_config.f_notification_alert
                             },
-                            server:server
+                            server: server
                         };
                         serverMonitor.addServer(conf);
                         resolve(conf);
@@ -85,6 +85,36 @@ exports.monitor = {
                 resolve(conf);
             }
             reject();
+        });
+    },
+    loadServersOnStart: function () {
+        models.E_server.findAll({
+            attributes: ['id'],
+            include: [
+                {
+                    model: models.E_server_config,
+                    as: 'r_server_config',
+                    required: true,
+                    where: {f_check_state: true},
+                    attributes: ['id']
+                }
+            ]}).then(function (servers) {
+            servers.forEach(function (server) {
+                this.addServer(server);
+            });
+        }).catch(e => {
+
+        });
+    },
+    loadApplicationsOnStart: function () {
+        models.E_application.findAll({
+            where: {f_check_state: true}
+        }).then(function (applications) {
+            applications.forEach(function (application) {
+                this.addApp(application);
+            });
+        }).catch(e => {
+
         });
     }
 
