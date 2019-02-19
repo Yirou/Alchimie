@@ -2,5 +2,5 @@
 <hr>
 <span class="text-bold">Server List</span><br>
 {#r_server}
-{f_name}<br>
+<a href="/server/show?id={id}">{f_name}</a><br>
 {/r_server}

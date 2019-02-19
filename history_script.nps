@@ -114,3 +114,5 @@ entity server has many Server user account
 select entity Server user account
 add field Account
 add field Group
+select entity server
+delete tab user

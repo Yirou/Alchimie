@@ -70,6 +70,7 @@
         "ALTER TABLE 1_e_application_state_history ADD COLUMN `f_is_alive` BOOLEAN DEFAULT null;",
         "ALTER TABLE 1_e_application_state_history ADD COLUMN `f_comment` TEXT DEFAULT null;",
         "ALTER TABLE 1_e_server_user_account ADD COLUMN `f_account` VARCHAR(255) DEFAULT null;",
-        "ALTER TABLE 1_e_server_user_account ADD COLUMN `f_group` VARCHAR(255) DEFAULT null;"
+        "ALTER TABLE 1_e_server_user_account ADD COLUMN `f_group` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_user DROP FOREIGN KEY 1_e_user_ibfk_1; ALTER TABLE 1_e_user DROP fk_id_server;"
     ]
 }

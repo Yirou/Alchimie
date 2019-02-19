@@ -2,10 +2,10 @@
 <hr>
 <span class="text-bold">Application list</span><br>
 {#r_application}
-{f_name}<br>
+<a href="/application/show?id={id}">{f_name}</a><br>
 {/r_application}
 <hr>
 <span class="text-bold">Service list</span><br>
 {#r_service}
-{f_name}<br>
+<a href="/service/show?id={id}">{f_name}</a><br>
 {/r_service}

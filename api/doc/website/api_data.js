@@ -7995,7 +7995,6 @@ define({ "api": [
               "service",
               "application",
               "organization",
-              "user",
               "server_config",
               "server_state_history",
               "server_user_account"

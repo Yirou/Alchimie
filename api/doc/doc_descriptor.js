@@ -1651,7 +1651,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,user,server_config,server_state_history,server_user_account} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,server_config,server_state_history,server_user_account} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1678,7 +1678,6 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server_category_server_category] <code>id</code> of entity server_category to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity application to associate
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
- * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
@@ -1714,7 +1713,6 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server_category_server_category] <code>id</code> of entity server_category to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity application to associate
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
- * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity user to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_state_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
