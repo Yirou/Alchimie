@@ -27,6 +27,10 @@ $(function () {
                         return;
                     }
 
+                },
+                error: function (data) {
+                    if (data && data.responseJSON)
+                        toastr.error(data.responseJSON.message);
                 }
             });
     }

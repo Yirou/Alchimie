@@ -17,7 +17,6 @@ exports.buildData = function (organization) {
                 "depends": [
                 ]
             };
-
             addServerToOrganization(organization, data, organization);
             buildDoc('organization', data[organization.f_name], organization);
             resolve(data);

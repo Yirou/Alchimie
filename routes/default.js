@@ -76,12 +76,16 @@ router.get('/get-organization-data', block_access.isLoggedIn, function (req, res
             }
         ]
     }).then(function (organization) {
-        visualization_helper.buildData(organization).then(function (data) {
-            var alchimie_config = require('../config/alchimie_config');
-            res.status(200).json({data: data, config: alchimie_config});
-        }).catch(function (e) {
-            res.status(500).end();
-        });
+        if (organization) {
+            visualization_helper.buildData(organization).then(function (data) {
+                var alchimie_config = require('../config/alchimie_config');
+                res.status(200).json({data: data, config: alchimie_config});
+            }).catch(function (e) {
+                res.status(500).end();
+            });
+        } else {
+            res.status(404).json({message: 'Servers not found'});
+        }
     }).catch(e => {
         res.status(500).end();
     });
