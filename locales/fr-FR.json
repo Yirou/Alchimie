@@ -435,7 +435,8 @@
             "plural_entity": "Settings",
             "id_entity": "ID",
             "types_to_display": "Types à afficher",
-            "f_types": "Types"
+            "f_types": "Types",
+            "input_search_node":"Search"
         },
         "e_server_config": {
             "label_entity": "Server config",

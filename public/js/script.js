@@ -48,7 +48,18 @@ $(function () {
     });
     loadData();
 
-
+    $('#input_search_node').keyup(function (e) {
+        var val = $(this).val();
+        if (val) {
+            graph.node.each(function (d) {
+                if (d.name.toLowerCase().indexOf(val.toLowerCase()) >= 0) {
+                    if (d) {
+                        selectObject(d);
+                    }
+                }
+            });
+        }
+    });
 
     $('#docs-close').on('click', function () {
         deselectObject();

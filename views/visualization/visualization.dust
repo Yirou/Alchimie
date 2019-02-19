@@ -34,12 +34,8 @@
         <div class="parameters">
             <label> {@__ key="entity.e_settings.label_entity" /}</label>
             <hr>
-            <label> {@__ key="entity.e_settings.types_to_display" /}</label>
-            <select class="form-control select" name="f_types" width="100%" multiple="">
-                {#enum_radio.e_settings.f_types}
-                <option value="{.value}"> {.translation} </option>
-                {/enum_radio.e_settings.f_types}
-            </select>
+            <label> {@__ key="entity.e_settings.input_search_node" /}</label>
+            <input name="input_search_node" type="text" class="input form-control" id="input_search_node">
         </div>
         <div class="informations">
             <div id="docs-container">
