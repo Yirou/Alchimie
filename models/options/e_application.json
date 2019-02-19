@@ -22,11 +22,11 @@
         ]
     },
     {
-        "target": "e_application_state_history",
+        "target": "e_application_status_history",
         "relation": "hasMany",
         "foreignKey": "fk_id_application",
-        "as": "r_application_state_history",
-        "showAs": "Application state history",
+        "as": "r_application_status_history",
+        "showAs": "Application status history",
         "structureType": "hasMany"
     }
 ]

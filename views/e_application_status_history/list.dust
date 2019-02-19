@@ -14,14 +14,14 @@
         </li>
         <li>   <a class='sub-module-arianne' href='/default/referentiel'>       {@__ key="module.m_referentiel"/}   </a></li>
         <li class="active">
-            {@__ key="entity.e_server_state_history.name_entity"/}
+            {@__ key="entity.e_application_status_history.name_entity"/}
         </li>
     </ol>
 {/header}
 {<content}
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">{@__ key="operation.list"/} {@__ key="entity.e_server_state_history.plural_entity"/}</h3>
+            <h3 class="box-title">{@__ key="operation.list"/} {@__ key="entity.e_application_status_history.plural_entity"/}</h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i></button>
@@ -30,11 +30,11 @@
         <div class="box-body">
             <div class="table-responsive">
                 <div class="col-xs-12 connectedSortable">
-                    {>"e_server_state_history/list_fields"/}
+                    {>"e_application_status_history/list_fields"/}
                     <br>
                     <a class="btn btn-default" href="javascript:history.back();"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;{@__ key="button.return"/}</a>&nbsp;&nbsp;
-                    {@actionAccess entity="server_state_history" action="create"}
-                    <a href="/server_state_history/create_form">
+                    {@actionAccess entity="application_status_history" action="create"}
+                    <a href="/application_status_history/create_form">
                         <button class="btn btn-success"><i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.create"/}</span>
                         </button>
                     </a>
@@ -50,12 +50,12 @@
         var DATALIST_BUTTONS = [];
     </script>
     {! SHOW !}
-    {@actionAccess entity="server_state_history" action="read"}
+    {@actionAccess entity="application_status_history" action="read"}
     <script type="text/javascript">
         DATALIST_BUTTONS.push({
             render: function (data, type, row) {
                 var aTag = '\
-                    <a class="btn-show" href="/server_state_history/show?id='+row['id']+'">\
+                    <a class="btn-show" href="/application_status_history/show?id='+row['id']+'">\
                         <button class="btn btn-primary">\
                             <i class="fa fa-desktop fa-md">&nbsp;&nbsp;</i>\
                             <span>{@__ key="button.show" /}</span>\
@@ -68,12 +68,12 @@
     </script>
     {/actionAccess}
     {! UPDATE !}
-    {@actionAccess entity="server_state_history" action="update"}
+    {@actionAccess entity="application_status_history" action="update"}
     <script type="text/javascript">
         DATALIST_BUTTONS.push({
             render: function (data, type, row) {
                 var aTag = '\
-                <a href="/server_state_history/update_form?id='+row['id']+'">\
+                <a href="/application_status_history/update_form?id='+row['id']+'">\
                     <button class="btn btn-warning">\
                         <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i>\
                         <span>{@__ key="button.update" /}</span>\
@@ -86,12 +86,12 @@
     </script>
     {/actionAccess}
     {! DELETE !}
-    {@actionAccess entity="server_state_history" action="delete"}
+    {@actionAccess entity="application_status_history" action="delete"}
     <script type="text/javascript">
         DATALIST_BUTTONS.push({
             render: function (data, type, row) {
                 var form = '\
-                <form action="/server_state_history/delete" method="post">\
+                <form action="/application_status_history/delete" method="post">\
                     <button class="btn btn-danger btn-confirm">\
                         <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>\
                         <span>{@__ key="button.delete" /}</span>\

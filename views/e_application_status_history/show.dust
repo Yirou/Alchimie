@@ -14,7 +14,7 @@
         </li>
         <li>   <a class='sub-module-arianne' href='/default/referentiel'>       {@__ key="module.m_referentiel"/}   </a></li>
         <li class="active">
-            {@__ key="entity.e_application_state_history.name_entity"/}
+            {@__ key="entity.e_application_status_history.name_entity"/}
         </li>
     </ol>
 {/header}
@@ -23,21 +23,21 @@
         <div class="col-xs-12 connectedSortable">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">{@__ key="operation.show"/} {@__ key="entity.e_application_state_history.name_entity" /}</h3>
+                    <h3 class="box-title">{@__ key="operation.show"/} {@__ key="entity.e_application_status_history.name_entity" /}</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
                     </div>
                 </div>
                 <div class="box-body">
-                    {#e_application_state_history}
+                    {#e_application_status_history}
                         <div class="form-group">
-                            <label for="id">{@__ key="entity.e_application_state_history.id_entity"/} {@__ key="entity.e_application_state_history.name_entity"/}</label>
-                            <input type="text" name="sourceId" value="{e_application_state_history.id}" disabled="" class="form-control"/>
-                            <input type="text" name="sourceName" value="e_application_state_history" disabled="" class="form-control" style="display:none;" />
+                            <label for="id">{@__ key="entity.e_application_status_history.id_entity"/} {@__ key="entity.e_application_status_history.name_entity"/}</label>
+                            <input type="text" name="sourceId" value="{e_application_status_history.id}" disabled="" class="form-control"/>
+                            <input type="text" name="sourceName" value="e_application_status_history" disabled="" class="form-control" style="display:none;" />
                         </div>
-                        {>"e_application_state_history/show_fields"/}
-                    {/e_application_state_history}
+                        {>"e_application_status_history/show_fields"/}
+                    {/e_application_status_history}
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
         var CREATE_BUTTON = '<a href="#" data-href="" class="ajax btn btn-success"><i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>'+CREATE_TEXT+'</span></a>';
         var UPDATE_BUTTON = '<a style="margin-right:8px;" data-href="" href="#" class="ajax btn btn-warning"><i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>'+UPDATE_TEXT+'</span></a>';
         var DELETE_FORM = '<form action="" class="ajax" method="post"><button class="btn btn-danger btn-confirm"><i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.delete" /}</span><input name="id" type="hidden"></button></form>';
-        var FIELDSET_SELECT = '<form action="" class="ajax" method="post" style="margin-bottom: 20px;"><select style="width:200px;" class="form-control regular-select" name="ids" required="" multiple=""></select><button style="margin-left:7px;" type="submit" class="btn btn-success">{@__ key="button.add"/}</button><input type="hidden" value="{e_application_state_history.id}" name="idEntity"></form>';
+        var FIELDSET_SELECT = '<form action="" class="ajax" method="post" style="margin-bottom: 20px;"><select style="width:200px;" class="form-control regular-select" name="ids" required="" multiple=""></select><button style="margin-left:7px;" type="submit" class="btn btn-success">{@__ key="button.add"/}</button><input type="hidden" value="{e_application_status_history.id}" name="idEntity"></form>';
 
         var DATALIST_BUTTONS = [];
     </script>
@@ -80,7 +80,7 @@
                 var component = $(this).attr("data-component");
                 var url = '/'+component+'/delete';
                 var data = $(this).serialize();
-                data += '&idEntity={e_application_state_history.id}&ajax=true';
+                data += '&idEntity={e_application_status_history.id}&ajax=true';
                 var form = this;
                 $.ajax({
                     url: url,

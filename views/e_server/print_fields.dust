@@ -215,22 +215,22 @@
     {/entityAccess}
 </div>
 <div class="dontbreakitplz">
-    {@entityAccess entity="server_state_history" }
-    <div id="r_server_state_history_print" class="row">
+    {@entityAccess entity="server_status_history" }
+    <div id="r_server_status_history_print" class="row">
         <div class="col-xs-12">
             <h3>
-                {@__ key="entity.e_server_state_history.name_entity" /}
+                {@__ key="entity.e_server_status_history.name_entity" /}
             </h3>
             <hr>
         </div>
         <div class="col-xs-12">
-            {#r_server_state_history e_server_state_history=r_server_state_history}
-            {@eq key=id value=e_server_state_history[0].id}
-            {>"e_server_state_history/list_fields" associationAlias="r_server_state_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {#r_server_status_history e_server_status_history=r_server_status_history}
+            {@eq key=id value=e_server_status_history[0].id}
+            {>"e_server_status_history/list_fields" associationAlias="r_server_status_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
             {/eq}
             {:else}
-            {>"e_server_state_history/list_fields" /}
-            {/r_server_state_history}
+            {>"e_server_status_history/list_fields" /}
+            {/r_server_status_history}
         </div>
         <br>
     </div>

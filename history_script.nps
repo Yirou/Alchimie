@@ -116,3 +116,12 @@ add field Account
 add field Group
 select entity server
 delete tab user
+select entity server
+select entity Server state history
+add field Time with type double
+add field Min With type double
+add field Max with type double
+select entity Application state history
+add field Time with type double
+add field Min With type double
+add field Max with type double

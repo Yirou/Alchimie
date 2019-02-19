@@ -6,8 +6,8 @@ var filterDataTable = require('../utils/filter_datatable');
 
 // Sequelize
 var models = require('../models/');
-var attributes = require('../models/attributes/e_application_state_history');
-var options = require('../models/options/e_application_state_history');
+var attributes = require('../models/attributes/e_application_status_history');
+var options = require('../models/options/e_application_status_history');
 var model_builder = require('../utils/model_builder');
 var entity_helper = require('../utils/entity_helper');
 var file_helper = require('../utils/file_helper');
@@ -25,15 +25,15 @@ var enums_radios = require('../utils/enum_radio.js');
 // Winston logger
 var logger = require('../utils/logger');
 
-router.get('/list', block_access.actionAccessMiddleware("application_state_history", "read"), function(req, res) {
-    res.render('e_application_state_history/list');
+router.get('/list', block_access.actionAccessMiddleware("application_status_history", "read"), function(req, res) {
+    res.render('e_application_status_history/list');
 });
 
-router.post('/datalist', block_access.actionAccessMiddleware("application_state_history", "read"), function(req, res) {
+router.post('/datalist', block_access.actionAccessMiddleware("application_status_history", "read"), function(req, res) {
     /* Looking for include to get all associated related to data for the datalist ajax loading */
     var include = model_builder.getDatalistInclude(models, options, req.body.columns);
-    filterDataTable("E_application_state_history", req.body, include).then(function(rawData) {
-        entity_helper.prepareDatalistResult('e_application_state_history', rawData, req.session.lang_user).then(function(preparedData) {
+    filterDataTable("E_application_status_history", req.body, include).then(function(rawData) {
+        entity_helper.prepareDatalistResult('e_application_status_history', rawData, req.session.lang_user).then(function(preparedData) {
             res.send(preparedData).end();
         }).catch(function(err) {
             console.log(err);
@@ -47,7 +47,7 @@ router.post('/datalist', block_access.actionAccessMiddleware("application_state_
     });
 });
 
-router.post('/subdatalist', block_access.actionAccessMiddleware("application_state_history", "read"), function(req, res) {
+router.post('/subdatalist', block_access.actionAccessMiddleware("application_status_history", "read"), function(req, res) {
     var start = parseInt(req.body.start || 0);
     var length = parseInt(req.body.length || 10);
 
@@ -104,25 +104,25 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("application_sta
         include.offset = start;
     }
 
-    models.E_application_state_history.findOne({
+    models.E_application_status_history.findOne({
         where: {
             id: parseInt(sourceId)
         },
         include: include
-    }).then(function(e_application_state_history) {
-        if (!e_application_state_history['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]) {
+    }).then(function(e_application_status_history) {
+        if (!e_application_status_history['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]) {
             console.error('/subdatalist: count' + entity_helper.capitalizeFirstLetter(subentityAlias) + ' is undefined');
             return res.status(500).end();
         }
 
-        e_application_state_history['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]().then(function(count) {
+        e_application_status_history['count' + entity_helper.capitalizeFirstLetter(subentityAlias)]().then(function(count) {
             var rawData = {
                 recordsTotal: count,
                 recordsFiltered: count,
                 data: []
             };
-            for (var i = 0; i < e_application_state_history[subentityAlias].length; i++)
-                rawData.data.push(e_application_state_history[subentityAlias][i].get({
+            for (var i = 0; i < e_application_status_history[subentityAlias].length; i++)
+                rawData.data.push(e_application_status_history[subentityAlias][i].get({
                     plain: true
                 }));
 
@@ -137,34 +137,34 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("application_sta
     });
 });
 
-router.get('/show', block_access.actionAccessMiddleware("application_state_history", "read"), function(req, res) {
-    var id_e_application_state_history = req.query.id;
+router.get('/show', block_access.actionAccessMiddleware("application_status_history", "read"), function(req, res) {
+    var id_e_application_status_history = req.query.id;
     var tab = req.query.tab;
     var data = {
         tab: tab,
-        enum_radio: enums_radios.translated("e_application_state_history", req.session.lang_user, options)
+        enum_radio: enums_radios.translated("e_application_status_history", req.session.lang_user, options)
     };
 
     /* If we arrive from an associated tab, hide the create and the list button */
     if (typeof req.query.hideButton !== 'undefined')
         data.hideButton = req.query.hideButton;
 
-    entity_helper.optimizedFindOne('E_application_state_history', id_e_application_state_history, options).then(function(e_application_state_history) {
-        if (!e_application_state_history) {
+    entity_helper.optimizedFindOne('E_application_status_history', id_e_application_status_history, options).then(function(e_application_status_history) {
+        if (!e_application_status_history) {
             data.error = 404;
             logger.debug("No data entity found.");
             return res.render('common/error', data);
         }
 
-        /* Update local e_application_state_history data before show */
-        data.e_application_state_history = e_application_state_history;
+        /* Update local e_application_status_history data before show */
+        data.e_application_status_history = e_application_status_history;
         // Update some data before show, e.g get picture binary
-        entity_helper.getPicturesBuffers(e_application_state_history, "e_application_state_history").then(function() {
-            status_helper.translate(e_application_state_history, attributes, req.session.lang_user);
-            data.componentAddressConfig = component_helper.getMapsConfigIfComponentAddressExist("e_application_state_history");
+        entity_helper.getPicturesBuffers(e_application_status_history, "e_application_status_history").then(function() {
+            status_helper.translate(e_application_status_history, attributes, req.session.lang_user);
+            data.componentAddressConfig = component_helper.getMapsConfigIfComponentAddressExist("e_application_status_history");
             // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
             entity_helper.getLoadOnStartData(data, options).then(function(data) {
-                res.render('e_application_state_history/show', data);
+                res.render('e_application_status_history/show', data);
             }).catch(function(err) {
                 entity_helper.error(err, req, res, "/");
             })
@@ -176,9 +176,9 @@ router.get('/show', block_access.actionAccessMiddleware("application_state_histo
     });
 });
 
-router.get('/create_form', block_access.actionAccessMiddleware("application_state_history", "create"), function(req, res) {
+router.get('/create_form', block_access.actionAccessMiddleware("application_status_history", "create"), function(req, res) {
     var data = {
-        enum_radio: enums_radios.translated("e_application_state_history", req.session.lang_user, options)
+        enum_radio: enums_radios.translated("e_application_status_history", req.session.lang_user, options)
     };
 
     if (typeof req.query.associationFlag !== 'undefined') {
@@ -191,19 +191,19 @@ router.get('/create_form', block_access.actionAccessMiddleware("application_stat
 
     // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
     entity_helper.getLoadOnStartData(data, options).then(function(data) {
-        var view = req.query.ajax ? 'e_application_state_history/create_fields' : 'e_application_state_history/create';
+        var view = req.query.ajax ? 'e_application_status_history/create_fields' : 'e_application_status_history/create';
         res.render(view, data);
     }).catch(function(err) {
         entity_helper.error(err, req, res, '/bb/create_form');
     })
 });
 
-router.post('/create', block_access.actionAccessMiddleware("application_state_history", "create"), function(req, res) {
+router.post('/create', block_access.actionAccessMiddleware("application_status_history", "create"), function(req, res) {
 
     var createObject = model_builder.buildForRoute(attributes, options, req.body);
 
-    models.E_application_state_history.create(createObject).then(function(e_application_state_history) {
-        var redirect = '/application_state_history/show?id=' + e_application_state_history.id;
+    models.E_application_status_history.create(createObject).then(function(e_application_status_history) {
+        var redirect = '/application_status_history/show?id=' + e_application_status_history.id;
         req.session.toastr = [{
             message: 'message.create.success',
             level: "success"
@@ -220,7 +220,7 @@ router.post('/create', block_access.actionAccessMiddleware("application_state_hi
                     }
                 }).then(function(association) {
                     if (!association) {
-                        e_application_state_history.destroy();
+                        e_application_status_history.destroy();
                         var err = new Error();
                         err.message = "Association not found.";
                         reject(err);
@@ -228,12 +228,12 @@ router.post('/create', block_access.actionAccessMiddleware("application_state_hi
 
                     var modelName = req.body.associationAlias.charAt(0).toUpperCase() + req.body.associationAlias.slice(1).toLowerCase();
                     if (typeof association['add' + modelName] !== 'undefined') {
-                        association['add' + modelName](e_application_state_history.id).then(resolve).catch(function(err) {
+                        association['add' + modelName](e_application_status_history.id).then(resolve).catch(function(err) {
                             reject(err);
                         });
                     } else {
                         var obj = {};
-                        obj[req.body.associationForeignKey] = e_application_state_history.id;
+                        obj[req.body.associationForeignKey] = e_application_status_history.id;
                         association.update(obj).then(resolve).catch(function(err) {
                             reject(err);
                         });
@@ -244,24 +244,24 @@ router.post('/create', block_access.actionAccessMiddleware("application_state_hi
 
         // We have to find value in req.body that are linked to an hasMany or belongsToMany association
         // because those values are not updated for now
-        model_builder.setAssocationManyValues(e_application_state_history, req.body, createObject, options).then(function() {
+        model_builder.setAssocationManyValues(e_application_status_history, req.body, createObject, options).then(function() {
             Promise.all(promises).then(function() {
-                component_helper.setAddressIfComponentExist(e_application_state_history, options, req.body).then(function() {
+                component_helper.setAddressIfComponentExist(e_application_status_history, options, req.body).then(function() {
                     res.redirect(redirect);
                 });
             }).catch(function(err) {
-                entity_helper.error(err, req, res, '/application_state_history/create_form');
+                entity_helper.error(err, req, res, '/application_status_history/create_form');
             });
         });
     }).catch(function(err) {
-        entity_helper.error(err, req, res, '/application_state_history/create_form');
+        entity_helper.error(err, req, res, '/application_status_history/create_form');
     });
 });
 
-router.get('/update_form', block_access.actionAccessMiddleware("application_state_history", "update"), function(req, res) {
-    var id_e_application_state_history = req.query.id;
+router.get('/update_form', block_access.actionAccessMiddleware("application_status_history", "update"), function(req, res) {
+    var id_e_application_status_history = req.query.id;
     var data = {
-        enum_radio: enums_radios.translated("e_application_state_history", req.session.lang_user, options)
+        enum_radio: enums_radios.translated("e_application_status_history", req.session.lang_user, options)
     };
 
     if (typeof req.query.associationFlag !== 'undefined') {
@@ -272,25 +272,25 @@ router.get('/update_form', block_access.actionAccessMiddleware("application_stat
         data.associationUrl = req.query.associationUrl;
     }
 
-    entity_helper.optimizedFindOne('E_application_state_history', id_e_application_state_history, options).then(function(e_application_state_history) {
-        if (!e_application_state_history) {
+    entity_helper.optimizedFindOne('E_application_status_history', id_e_application_status_history, options).then(function(e_application_status_history) {
+        if (!e_application_status_history) {
             data.error = 404;
             return res.render('common/error', data);
         }
 
-        e_application_state_history.dataValues.enum_radio = data.enum_radio;
-        data.e_application_state_history = e_application_state_history;
+        e_application_status_history.dataValues.enum_radio = data.enum_radio;
+        data.e_application_status_history = e_application_status_history;
         // Update some data before show, e.g get picture binary
-        entity_helper.getPicturesBuffers(e_application_state_history, "e_application_state_history", true).then(function() {
+        entity_helper.getPicturesBuffers(e_application_status_history, "e_application_status_history", true).then(function() {
             // Get association data that needed to be load directly here (to do so set loadOnStart param to true in options).
-            entity_helper.getLoadOnStartData(req.query.ajax ? e_application_state_history.dataValues : data, options).then(function(data) {
+            entity_helper.getLoadOnStartData(req.query.ajax ? e_application_status_history.dataValues : data, options).then(function(data) {
                 if (req.query.ajax) {
-                    e_application_state_history.dataValues = data;
-                    res.render('e_application_state_history/update_fields', e_application_state_history.get({
+                    e_application_status_history.dataValues = data;
+                    res.render('e_application_status_history/update_fields', e_application_status_history.get({
                         plain: true
                     }));
                 } else
-                    res.render('e_application_state_history/update', data);
+                    res.render('e_application_status_history/update', data);
             }).catch(function(err) {
                 entity_helper.error(err, req, res, "/");
             })
@@ -302,8 +302,8 @@ router.get('/update_form', block_access.actionAccessMiddleware("application_stat
     })
 });
 
-router.post('/update', block_access.actionAccessMiddleware("application_state_history", "update"), function(req, res) {
-    var id_e_application_state_history = parseInt(req.body.id);
+router.post('/update', block_access.actionAccessMiddleware("application_status_history", "update"), function(req, res) {
+    var id_e_application_status_history = parseInt(req.body.id);
 
     if (typeof req.body.version !== "undefined" && req.body.version != null && !isNaN(req.body.version) && req.body.version != '')
         req.body.version = parseInt(req.body.version) + 1;
@@ -312,24 +312,24 @@ router.post('/update', block_access.actionAccessMiddleware("application_state_hi
 
     var updateObject = model_builder.buildForRoute(attributes, options, req.body);
 
-    models.E_application_state_history.findOne({
+    models.E_application_status_history.findOne({
         where: {
-            id: id_e_application_state_history
+            id: id_e_application_status_history
         }
-    }).then(function(e_application_state_history) {
-        if (!e_application_state_history) {
+    }).then(function(e_application_status_history) {
+        if (!e_application_status_history) {
             data.error = 404;
             logger.debug("Not found - Update");
             return res.render('common/error', data);
         }
-        component_helper.updateAddressIfComponentExist(e_application_state_history, options, req.body);
-        e_application_state_history.update(updateObject).then(function() {
+        component_helper.updateAddressIfComponentExist(e_application_status_history, options, req.body);
+        e_application_status_history.update(updateObject).then(function() {
 
             // We have to find value in req.body that are linked to an hasMany or belongsToMany association
             // because those values are not updated for now
-            model_builder.setAssocationManyValues(e_application_state_history, req.body, updateObject, options).then(function() {
+            model_builder.setAssocationManyValues(e_application_status_history, req.body, updateObject, options).then(function() {
 
-                var redirect = '/application_state_history/show?id=' + id_e_application_state_history;
+                var redirect = '/application_status_history/show?id=' + id_e_application_status_history;
                 if (typeof req.body.associationFlag !== 'undefined')
                     redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
 
@@ -340,17 +340,17 @@ router.post('/update', block_access.actionAccessMiddleware("application_state_hi
 
                 res.redirect(redirect);
             }).catch(function(err) {
-                entity_helper.error(err, req, res, '/application_state_history/update_form?id=' + id_e_application_state_history);
+                entity_helper.error(err, req, res, '/application_status_history/update_form?id=' + id_e_application_status_history);
             });
         }).catch(function(err) {
-            entity_helper.error(err, req, res, '/application_state_history/update_form?id=' + id_e_application_state_history);
+            entity_helper.error(err, req, res, '/application_status_history/update_form?id=' + id_e_application_status_history);
         });
     }).catch(function(err) {
-        entity_helper.error(err, req, res, '/application_state_history/update_form?id=' + id_e_application_state_history);
+        entity_helper.error(err, req, res, '/application_status_history/update_form?id=' + id_e_application_status_history);
     });
 });
 
-router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('application_state_history', 'read'), function(req, res) {
+router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('application_status_history', 'read'), function(req, res) {
     var alias = req.params.alias;
     var id = req.params.id;
 
@@ -384,11 +384,11 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('applicati
         }
 
     // Fetch tab data
-    models.E_application_state_history.findOne(queryOpts).then(function(e_application_state_history) {
-        if (!e_application_state_history)
+    models.E_application_status_history.findOne(queryOpts).then(function(e_application_status_history) {
+        if (!e_application_status_history)
             return res.status(404).end();
 
-        var dustData = e_application_state_history[option.as] || null;
+        var dustData = e_application_status_history[option.as] || null;
         var empty = !dustData || (dustData instanceof Array && dustData.length == 0) ? true : false;
         var dustFile, idSubentity, promisesData = [];
         var subentityOptions = [];
@@ -500,15 +500,15 @@ router.get('/loadtab/:id/:alias', block_access.actionAccessMiddleware('applicati
     });
 });
 
-router.get('/set_status/:id_application_state_history/:status/:id_new_status', block_access.actionAccessMiddleware("application_state_history", "read"), function(req, res) {
-    status_helper.setStatus('e_application_state_history', req.params.id_application_state_history, req.params.status, req.params.id_new_status, req.query.comment).then(()=> {
+router.get('/set_status/:id_application_status_history/:status/:id_new_status', block_access.actionAccessMiddleware("application_status_history", "read"), function(req, res) {
+    status_helper.setStatus('e_application_status_history', req.params.id_application_status_history, req.params.status, req.params.id_new_status, req.query.comment).then(()=> {
         res.redirect(req.headers.referer);
     }).catch((err)=> {
-        entity_helper.error(err, req, res, '/application_state_history/show?id=' + req.params.id_application_state_history);
+        entity_helper.error(err, req, res, '/application_status_history/show?id=' + req.params.id_application_status_history);
     });
 });
 
-router.post('/search', block_access.actionAccessMiddleware('application_state_history', 'read'), function(req, res) {
+router.post('/search', block_access.actionAccessMiddleware('application_status_history', 'read'), function(req, res) {
     var search = '%' + (req.body.search || '') + '%';
     var limit = SELECT_PAGE_SIZE;
     var offset = (req.body.page - 1) * limit;
@@ -588,7 +588,7 @@ router.post('/search', block_access.actionAccessMiddleware('application_state_hi
     // You have to include those entity here
     // where.include = [{model: models.E_myentity, as: "r_myentity"}]
 
-    models.E_application_state_history.findAndCountAll(where).then(function(results) {
+    models.E_application_status_history.findAndCountAll(where).then(function(results) {
         results.more = results.count > req.body.page * SELECT_PAGE_SIZE ? true : false;
         // Format value like date / datetime / etc...
         for (var field in attributes) {
@@ -614,16 +614,16 @@ router.post('/search', block_access.actionAccessMiddleware('application_state_hi
     });
 });
 
-router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("application_state_history", "delete"), function(req, res) {
+router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("application_status_history", "delete"), function(req, res) {
     var alias = req.params.alias;
     var idToRemove = req.body.idRemove;
     var idEntity = req.body.idEntity;
-    models.E_application_state_history.findOne({
+    models.E_application_status_history.findOne({
         where: {
             id: idEntity
         }
-    }).then(function(e_application_state_history) {
-        if (!e_application_state_history) {
+    }).then(function(e_application_status_history) {
+        if (!e_application_status_history) {
             var data = {
                 error: 404
             };
@@ -631,7 +631,7 @@ router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("appl
         }
 
         // Get all associations
-        e_application_state_history['remove' + entity_helper.capitalizeFirstLetter(alias)](idToRemove).then(function(aliasEntities) {
+        e_application_status_history['remove' + entity_helper.capitalizeFirstLetter(alias)](idToRemove).then(function(aliasEntities) {
             res.sendStatus(200).end();
         }).catch(function(err) {
             entity_helper.error(err, req, res, "/");
@@ -641,15 +641,15 @@ router.post('/fieldset/:alias/remove', block_access.actionAccessMiddleware("appl
     });
 });
 
-router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("application_state_history", "create"), function(req, res) {
+router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("application_status_history", "create"), function(req, res) {
     var alias = req.params.alias;
     var idEntity = req.body.idEntity;
-    models.E_application_state_history.findOne({
+    models.E_application_status_history.findOne({
         where: {
             id: idEntity
         }
-    }).then(function(e_application_state_history) {
-        if (!e_application_state_history) {
+    }).then(function(e_application_status_history) {
+        if (!e_application_status_history) {
             var data = {
                 error: 404
             };
@@ -663,11 +663,11 @@ router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("applica
                 message: 'message.create.failure',
                 level: "error"
             });
-            return res.redirect('/application_state_history/show?id=' + idEntity + "#" + alias);
+            return res.redirect('/application_status_history/show?id=' + idEntity + "#" + alias);
         }
 
-        e_application_state_history['add' + entity_helper.capitalizeFirstLetter(alias)](toAdd).then(function() {
-            res.redirect('/application_state_history/show?id=' + idEntity + "#" + alias);
+        e_application_status_history['add' + entity_helper.capitalizeFirstLetter(alias)](toAdd).then(function() {
+            res.redirect('/application_status_history/show?id=' + idEntity + "#" + alias);
         }).catch(function(err) {
             entity_helper.error(err, req, res, "/");
         });
@@ -676,17 +676,17 @@ router.post('/fieldset/:alias/add', block_access.actionAccessMiddleware("applica
     });
 });
 
-router.post('/delete', block_access.actionAccessMiddleware("application_state_history", "delete"), function(req, res) {
-    var id_e_application_state_history = parseInt(req.body.id);
+router.post('/delete', block_access.actionAccessMiddleware("application_status_history", "delete"), function(req, res) {
+    var id_e_application_status_history = parseInt(req.body.id);
 
-    models.E_application_state_history.findOne({
+    models.E_application_status_history.findOne({
         where: {
-            id: id_e_application_state_history
+            id: id_e_application_status_history
         }
     }).then(function(deleteObject) {
-        models.E_application_state_history.destroy({
+        models.E_application_status_history.destroy({
             where: {
-                id: id_e_application_state_history
+                id: id_e_application_status_history
             }
         }).then(function() {
             req.session.toastr = [{
@@ -694,16 +694,16 @@ router.post('/delete', block_access.actionAccessMiddleware("application_state_hi
                 level: "success"
             }];
 
-            var redirect = '/application_state_history/list';
+            var redirect = '/application_status_history/list';
             if (typeof req.body.associationFlag !== 'undefined')
                 redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
             res.redirect(redirect);
-            entity_helper.remove_files("e_application_state_history", deleteObject, attributes);
+            entity_helper.remove_files("e_application_status_history", deleteObject, attributes);
         }).catch(function(err) {
-            entity_helper.error(err, req, res, '/application_state_history/list');
+            entity_helper.error(err, req, res, '/application_status_history/list');
         });
     }).catch(function(err) {
-        entity_helper.error(err, req, res, '/application_state_history/list');
+        entity_helper.error(err, req, res, '/application_status_history/list');
     });
 });
 

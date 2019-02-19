@@ -5,8 +5,8 @@
                 {@__ key="entity.e_server_config.id_entity"/}&nbsp;
                 {@__ key="entity.e_server_config.label_entity"/}
             </th>
-            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
-                {@__ key="entity.e_server_config.f_check_state"/}
+            <th data-field="f_check_status" data-col="f_check_status" data-type="boolean">
+                {@__ key="entity.e_server_config.f_check_status"/}
             </th>
             <th data-field="f_interval" data-col="f_interval" data-type="integer">
                 {@__ key="entity.e_server_config.f_interval"/}
@@ -41,8 +41,8 @@
                 {@__ key="entity.e_server_config.id_entity"/}&nbsp;
                 {@__ key="entity.e_server_config.label_entity"/}
             </th>
-            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
-                {@__ key="entity.e_server_config.f_check_state"/}
+            <th data-field="f_check_status" data-col="f_check_status" data-type="boolean">
+                {@__ key="entity.e_server_config.f_check_status"/}
             </th>
             <th data-field="f_interval" data-col="f_interval" data-type="integer">
                 {@__ key="entity.e_server_config.f_interval"/}
@@ -75,7 +75,7 @@
         {#e_server_config}
         <tr id="bodyTR">
             <td data-field="id">{id}</td>
-            <td data-field="f_check_state" data-type="boolean">{f_check_state}</td>
+            <td data-field="f_check_status" data-type="boolean">{f_check_status}</td>
             <td data-field="f_interval" data-type="integer">{f_interval}</td>
             <td data-field="f_alert_pings_failed" data-type="integer">{f_alert_pings_failed}</td>
             <td data-field="f_email_alert" data-type="boolean">{f_email_alert}</td>

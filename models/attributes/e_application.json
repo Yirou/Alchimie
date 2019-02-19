@@ -43,7 +43,7 @@
         "newmipsType": "file",
         "defaultValue": null
     },
-    "f_check_state": {
+    "f_check_status": {
         "type": "BOOLEAN",
         "newmipsType": "boolean",
         "defaultValue": null

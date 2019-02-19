@@ -107,11 +107,11 @@
         "structureType": "hasOne"
     },
     {
-        "target": "e_server_state_history",
+        "target": "e_server_status_history",
         "relation": "hasMany",
         "foreignKey": "fk_id_server",
-        "as": "r_server_state_history",
-        "showAs": "Server state history",
+        "as": "r_server_status_history",
+        "showAs": "Server status history",
         "structureType": "hasMany"
     },
     {

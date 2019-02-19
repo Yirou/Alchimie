@@ -726,7 +726,7 @@ router.get('/status-data', block_access.actionAccessMiddleware("application", "r
     var idApplication = req.query.app;
     var today = moment();
     var todayCopy=today.clone();
-    models.E_application_state_history.findAll({
+    models.E_application_status_history.findAll({
         where: {
             fk_id_application: idApplication,
             createdAt: {

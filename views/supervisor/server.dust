@@ -26,7 +26,7 @@
                                 <i data-field="r_server" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
                                 {/inline_help}
                             </label>
-                            <select class="ajax form-control" name="r_server" data-source="server" data-using="f_name" width="100%" id="select_server_state_visualization">
+                            <select class="ajax form-control" name="r_server" data-source="server" data-using="f_name" width="100%" id="select_server_status_visualization">
                                 <option value="">
                                     {@__ key="select.default" /}
                                 </option>
@@ -44,7 +44,7 @@
                                 <i data-field="f_application" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
                                 {/inline_help}
                             </label>
-                            <select class="form-control" name="f_application"  width="100%" id="select_application_state_visualization">
+                            <select class="form-control" name="f_application"  width="100%" id="select_application_status_visualization">
                                 <option value="">
                                     {@__ key="select.default" /}
                                 </option>

@@ -29,9 +29,9 @@
         {@entityAccess entity="history"}
 
         {/entityAccess}
-        {@entityAccess entity="server_state_history"}
-        <li><a id="r_server_state_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_state_history">
-                {@__ key="entity.e_server.r_server_state_history" /}</a></li>
+        {@entityAccess entity="server_status_history"}
+        <li><a id="r_server_status_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_status_history">
+                {@__ key="entity.e_server.r_server_status_history" /}</a></li>
         {/entityAccess}
         {@entityAccess entity="server_user_account"}
         <li><a id="r_server_user_account-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_user_account">
@@ -230,8 +230,8 @@
         {/entityAccess}
         {/hideTab}
         {^hideTab}
-        {@entityAccess entity="server_state_history"}
-        <div id="r_server_state_history" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_server_state_history" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
+        {@entityAccess entity="server_status_history"}
+        <div id="r_server_status_history" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_server_status_history" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
             <div class="ajax-content sub-tab-table"></div>
         </div>
         {/entityAccess}

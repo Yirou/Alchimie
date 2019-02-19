@@ -1,16 +1,16 @@
 <div id="fields" class="row">
-    <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+    <div data-field="f_check_status" class="fieldLineHeight col-xs-12">
         <div class="form-group">
-            <label for="f_check_state">
-                {@__ key="entity.e_server_config.f_check_state"/}&nbsp;
-                {@inline_help field="f_check_state"}
-                <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+            <label for="f_check_status">
+                {@__ key="entity.e_server_config.f_check_status"/}&nbsp;
+                {@inline_help field="f_check_status"}
+                <i data-field="f_check_status" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
                 {/inline_help}
             </label>
             &nbsp;
             <br>
-            {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" checked="">
-            {:else} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox">
+            {@ifTrue key=f_check_status} <input class="form-control input" name="f_check_status" value="{f_check_status}" type="checkbox" checked="">
+            {:else} <input class="form-control input" name="f_check_status" value="{f_check_status}" type="checkbox">
             {/ifTrue}
         </div>
     </div>

@@ -17,5 +17,20 @@
         "type": "TEXT",
         "newmipsType": "text",
         "defaultValue": null
+    },
+    "f_time": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
+    },
+    "f_min": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
+    },
+    "f_max": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
     }
 }

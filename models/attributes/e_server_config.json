@@ -8,7 +8,7 @@
         "type": "INTEGER",
         "defaultValue": 1
     },
-    "f_check_state": {
+    "f_check_status": {
         "type": "BOOLEAN",
         "newmipsType": "boolean",
         "defaultValue": null

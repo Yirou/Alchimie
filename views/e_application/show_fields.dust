@@ -10,8 +10,8 @@
         {@entityAccess entity="application_config"}
 
         {/entityAccess}
-        {@entityAccess entity="application_state_history"}
-        <li><a id="r_application_state_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_application_state_history">{@__ key="entity.e_application.r_application_state_history" /}</a></li>
+        {@entityAccess entity="application_status_history"}
+        <li><a id="r_application_status_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_application_status_history">{@__ key="entity.e_application.r_application_status_history" /}</a></li>
         {/entityAccess}
     </ul>
     {/hideTab}
@@ -109,18 +109,18 @@
                     </div>
                 </div>
 
-                <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+                <div data-field="f_check_status" class="fieldLineHeight col-xs-12">
                     <div class="form-group">
-                        <label for="f_check_state">
-                            {@__ key="entity.e_application.f_check_state"/}&nbsp;
-                            {@inline_help field="f_check_state"}
-                            <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                        <label for="f_check_status">
+                            {@__ key="entity.e_application.f_check_status"/}&nbsp;
+                            {@inline_help field="f_check_status"}
+                            <i data-field="f_check_status" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
                             {/inline_help}
                         </label>
                         &nbsp;
                         <br>
-                        {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" checked="" disabled="">
-                        {:else} <input class="form-control input" name="f_check_state" value="{f_check_state}" type="checkbox" disabled="">
+                        {@ifTrue key=f_check_status} <input class="form-control input" name="f_check_status" value="{f_check_status}" type="checkbox" checked="" disabled="">
+                        {:else} <input class="form-control input" name="f_check_status" value="{f_check_status}" type="checkbox" disabled="">
                         {/ifTrue}
                     </div>
                 </div>
@@ -253,8 +253,8 @@
         {/entityAccess}
         {/hideTab}
         {^hideTab}
-        {@entityAccess entity="application_state_history"}
-        <div id="r_application_state_history" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_application_state_history" data-asso-foreignkey="fk_id_application" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
+        {@entityAccess entity="application_status_history"}
+        <div id="r_application_status_history" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_application_status_history" data-asso-foreignkey="fk_id_application" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
             <div class="ajax-content sub-tab-table"></div>
         </div>
         {/entityAccess}

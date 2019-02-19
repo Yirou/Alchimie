@@ -739,7 +739,7 @@ router.get('/status-data', block_access.actionAccessMiddleware("server", "read")
         where.id = {
             $gt: lastID
         };
-    models.E_server_state_history.findAll({
+    models.E_server_status_history.findAll({
         where: {
             fk_id_server: idServer,
             createdAt: whereCreatedAt

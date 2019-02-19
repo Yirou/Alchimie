@@ -23,7 +23,7 @@ exports.monitor = {
                         var conf = {
                             id: server.id,
                             url: server.f_ip,
-                            checkState: server.r_server_config.f_check_state,
+                            checkstatus: server.r_server_config.f_check_status,
                             interval: server.r_server_config.f_interval || defaultsServerConf.interval,
                             nb_pings_failed: server.r_server_config.f_alert_pings_failed || defaultsServerConf.nb_pings_failed,
                             alert: {
@@ -49,7 +49,7 @@ exports.monitor = {
             if (app.f_ip) {
                 var conf = {
                     url: app.f_ip + (app.f_port ? ':' + app.f_port : ''),
-                    checkState: app.f_check_state,
+                    checkstatus: app.f_check_status,
                     interval: app.f_interval || defaultsAppConf.interval,
                     nb_pings_failed: app.f_alert_pings_failed || defaultsAppConf.nb_pings_failed
                 };
@@ -95,7 +95,7 @@ exports.monitor = {
                     model: models.E_server_config,
                     as: 'r_server_config',
                     required: true,
-                    where: {f_check_state: true},
+                    where: {f_check_status: true},
                     attributes: ['id']
                 }
             ]}).then(function (servers) {
@@ -108,7 +108,7 @@ exports.monitor = {
     },
     loadApplicationsOnStart: function () {
         models.E_application.findAll({
-            where: {f_check_state: true}
+            where: {f_check_status: true}
         }).then(function (applications) {
             applications.forEach(function (application) {
                 this.addApp(application);

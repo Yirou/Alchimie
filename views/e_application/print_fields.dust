@@ -82,18 +82,18 @@
         </div>
     </div>
 
-    <div data-field="f_check_state" class="fieldLineHeight col-xs-12">
+    <div data-field="f_check_status" class="fieldLineHeight col-xs-12">
         <div class="form-group">
-            <label for="f_check_state">
-                {@__ key="entity.e_application.f_check_state"/}&nbsp;
-                {@inline_help field="f_check_state"}
-                <i data-field="f_check_state" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+            <label for="f_check_status">
+                {@__ key="entity.e_application.f_check_status"/}&nbsp;
+                {@inline_help field="f_check_status"}
+                <i data-field="f_check_status" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
                 {/inline_help}
             </label>
             &nbsp;
             <br>
-            {@ifTrue key=f_check_state} <input class="form-control input" name="f_check_state_print" value="{f_check_state}" type="checkbox" checked="" disabled="">
-            {:else} <input class="form-control input" name="f_check_state_print" value="{f_check_state}" type="checkbox" disabled="">
+            {@ifTrue key=f_check_status} <input class="form-control input" name="f_check_status_print" value="{f_check_status}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_check_status_print" value="{f_check_status}" type="checkbox" disabled="">
             {/ifTrue}
         </div>
     </div>
@@ -208,20 +208,20 @@
     {/entityAccess}
 </div>
 <div class="dontbreakitplz">
-    {@entityAccess entity="application_state_history" }
-    <div id="r_application_state_history_print" class="row">
+    {@entityAccess entity="application_status_history" }
+    <div id="r_application_status_history_print" class="row">
         <div class="col-xs-12">
-            <h3>{@__ key="entity.e_application_state_history.name_entity" /}</h3>
+            <h3>{@__ key="entity.e_application_status_history.name_entity" /}</h3>
             <hr>
         </div>
         <div class="col-xs-12">
-            {#r_application_state_history e_application_state_history=r_application_state_history}
-            {@eq key=id value=e_application_state_history[0].id}
-            {>"e_application_state_history/list_fields" associationAlias="r_application_state_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {#r_application_status_history e_application_status_history=r_application_status_history}
+            {@eq key=id value=e_application_status_history[0].id}
+            {>"e_application_status_history/list_fields" associationAlias="r_application_status_history" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
             {/eq}
             {:else}
-            {>"e_application_state_history/list_fields" /}
-            {/r_application_state_history}
+            {>"e_application_status_history/list_fields" /}
+            {/r_application_status_history}
         </div>
         <br>
     </div>

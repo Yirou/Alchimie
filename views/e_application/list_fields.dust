@@ -27,8 +27,8 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_application.f_file"/}
             </th>
-            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
-                {@__ key="entity.e_application.f_check_state"/}
+            <th data-field="f_check_status" data-col="f_check_status" data-type="boolean">
+                {@__ key="entity.e_application.f_check_status"/}
             </th>
             <th data-field="f_interval" data-col="f_interval" data-type="integer">
                 {@__ key="entity.e_application.f_interval"/}
@@ -89,8 +89,8 @@
             <th data-field="f_file" data-col="f_file" data-type="file">
                 {@__ key="entity.e_application.f_file"/}
             </th>
-            <th data-field="f_check_state" data-col="f_check_state" data-type="boolean">
-                {@__ key="entity.e_application.f_check_state"/}
+            <th data-field="f_check_status" data-col="f_check_status" data-type="boolean">
+                {@__ key="entity.e_application.f_check_status"/}
             </th>
             <th data-field="f_interval" data-col="f_interval" data-type="integer">
                 {@__ key="entity.e_application.f_interval"/}
@@ -134,7 +134,7 @@
             <td data-field="r_status" data-type="status" data-color="{r_status.f_color}">{r_status.f_name}</td>
             <td data-field="f_port" data-type="integer">{f_port}</td>
             <td data-field="f_file" data-type="file"><a href="/default/download?entity=e_application&amp;f={f_file}" name="f_file">{f_file}</a></td>
-            <td data-field="f_check_state" data-type="boolean">{f_check_state}</td>
+            <td data-field="f_check_status" data-type="boolean">{f_check_status}</td>
             <td data-field="f_interval" data-type="integer">{f_interval}</td>
             <td data-field="f_alert_pings_failed" data-type="integer">{f_alert_pings_failed}</td>
             <td data-field="f_is_alive" data-type="boolean">{f_is_alive}</td>

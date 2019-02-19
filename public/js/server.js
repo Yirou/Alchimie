@@ -35,25 +35,25 @@ $(function () {
     $('#from_date,#to_date').on('changeDate', function () {
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
-        var idServer = $('#select_server_state_visualization').val();
-        var idApplication = $('#select_application_state_visualization').val();
+        var idServer = $('#select_server_status_visualization').val();
+        var idApplication = $('#select_application_status_visualization').val();
         if (idApplication)
             loadApplicationData(idApplication, startDate, endDate);
         else if (idServer)
             loadServerData(idServer, startDate, endDate);
     });
-    $('#select_application_state_visualization').change(function () {
+    $('#select_application_status_visualization').change(function () {
         var idApplication = $(this).val();
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
         if (idApplication)
             loadApplicationData(idApplication, startDate, endDate);
     });
-    $('#select_server_state_visualization').change(function () {
+    $('#select_server_status_visualization').change(function () {
         var idServer = $(this).val();
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
-        $('#select_application_state_visualization').empty();
+        $('#select_application_status_visualization').empty();
         if (idServer) {
             loadServerData(idServer, startDate, endDate);
             loadApplications(idServer);
@@ -63,9 +63,9 @@ $(function () {
         $.ajax({
             url: '/application/ajax-list?server=' + idServer,
             success: function (applications) {
-                $('#select_application_state_visualization').append('<option value="">Select an application</option>');
+                $('#select_application_status_visualization').append('<option value="">Select an application</option>');
                 applications.forEach(function (application) {
-                    $('#select_application_state_visualization').append('<option value=' + application.id + '>' + application.f_name + '</option>');
+                    $('#select_application_status_visualization').append('<option value=' + application.id + '>' + application.f_name + '</option>');
                 });
             }
         })
@@ -191,8 +191,8 @@ $(function () {
     var realtime = 'on'; //If == to on then fetch data every x seconds. else stop fetching
 
     function update() {
-        var idServer = $('#select_server_state_visualization').val();
-        var idApplication = $('#select_application_state_visualization').val();
+        var idServer = $('#select_server_status_visualization').val();
+        var idApplication = $('#select_application_status_visualization').val();
         if (idApplication)
             loadApplicationData(idApplication);
         else if (idServer)

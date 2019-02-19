@@ -3,8 +3,8 @@ var router = express.Router();
 var block_access = require('../utils/block_access');
 
 var models = require('../models/');
-var attributes = require('../models/attributes/e_server_state_history');
-var options = require('../models/options/e_server_state_history');
+var attributes = require('../models/attributes/e_server_status_history');
+var options = require('../models/options/e_server_status_history');
 var model_builder = require('../utils/model_builder');
 var enums_radios = require('../utils/enum_radio.js');
 var entity_helper = require('../utils/entity_helper');
@@ -42,10 +42,10 @@ router.get('/', function(req, res) {
     if (Object.keys(where).length)
         query.where = where;
 
-    models.E_server_state_history.findAndCountAll(query).then(function(e_server_state_historys) {
-        answer["e_server_state_historys".substring(2)] = e_server_state_historys.rows || [];
-        answer.totalCount = e_server_state_historys.count;
-        answer.rowsCount = answer["e_server_state_historys".substring(2)].length;
+    models.E_server_status_history.findAndCountAll(query).then(function(e_server_status_historys) {
+        answer["e_server_status_historys".substring(2)] = e_server_status_historys.rows || [];
+        answer.totalCount = e_server_status_historys.count;
+        answer.rowsCount = answer["e_server_status_historys".substring(2)].length;
 
         res.status(200).json(answer);
     }).catch(function(err) {
@@ -61,7 +61,7 @@ router.get('/:id', function(req, res) {
     var answer = {
         error: null
     };
-    var id_e_server_state_history = parseInt(req.params.id);
+    var id_e_server_status_history = parseInt(req.params.id);
 
     // Build include from query parameter: `?include=r_asso1,r_asso2`
     var include = [];
@@ -75,16 +75,16 @@ router.get('/:id', function(req, res) {
                         as: options[j].as
                     });
     }
-    var query = {limit: answer.limit, offset: answer.offset, where: {id: id_e_server_state_history}};
+    var query = {limit: answer.limit, offset: answer.offset, where: {id: id_e_server_status_history}};
     if (include.length)
         query.include = include;
 
-    models.E_server_state_history.findOne(query).then(function(e_server_state_history) {
-        if (!e_server_state_history) {
-            answer.error = "No e_server_state_history with ID "+id_e_server_state_history;
+    models.E_server_status_history.findOne(query).then(function(e_server_status_history) {
+        if (!e_server_status_history) {
+            answer.error = "No e_server_status_history with ID "+id_e_server_status_history;
             return res.status(404).json(answer);
         }
-        answer["e_server_state_history".substring(2)] = e_server_state_history;
+        answer["e_server_status_history".substring(2)] = e_server_status_history;
 
         res.status(200).json(answer);
     }).catch(function(err){
@@ -102,7 +102,7 @@ router.get('/:id/:association', function(req, res) {
         limit: parseInt(req.query.limit || 50),
         offset: parseInt(req.query.offset || 0)
     };
-    var id_e_server_state_history = req.params.id;
+    var id_e_server_status_history = req.params.id;
     var association = req.params.association;
 
     var include = null;
@@ -130,15 +130,15 @@ router.get('/:id/:association', function(req, res) {
     if (Object.keys(where).length)
         include.where = where;
 
-    models.E_server_state_history.findOne({
-        where: {id: id_e_server_state_history},
+    models.E_server_status_history.findOne({
+        where: {id: id_e_server_status_history},
         include: include
-    }).then(function(e_server_state_history) {
-        if (!e_server_state_history) {
-            answer.error = "No e_server_state_history with ID "+id_e_server_state_history;
+    }).then(function(e_server_status_history) {
+        if (!e_server_status_history) {
+            answer.error = "No e_server_status_history with ID "+id_e_server_status_history;
             return res.status(404).json(answer);
         }
-        answer[association] = e_server_state_history[include.as];
+        answer[association] = e_server_status_history[include.as];
 
         res.status(200).json(answer);
     }).catch(function(err){
@@ -157,17 +157,17 @@ router.post('/', function(req, res) {
 
     var createObject = model_builder.buildForRoute(attributes, options, req.body);
 
-    models.E_server_state_history.create(createObject).then(function(e_server_state_history) {
-        answer["e_server_state_history".substring(2)] = e_server_state_history;
+    models.E_server_status_history.create(createObject).then(function(e_server_status_history) {
+        answer["e_server_status_history".substring(2)] = e_server_status_history;
 
         // Set associations
         var associationPromises = [];
         for (var prop in req.body)
             if (prop.indexOf('r_') == 0) {
-                if (e_server_state_history['set'+entity_helper.capitalizeFirstLetter(prop)] !== 'undefined')
-                    associationPromises.push(e_server_state_history['set'+entity_helper.capitalizeFirstLetter(prop)](req.body[prop]));
+                if (e_server_status_history['set'+entity_helper.capitalizeFirstLetter(prop)] !== 'undefined')
+                    associationPromises.push(e_server_status_history['set'+entity_helper.capitalizeFirstLetter(prop)](req.body[prop]));
                 else
-                    console.error("API: Couldn't set association.\nAPI: e_server_state_history.set"+entity_helper.capitalizeFirstLetter(prop)+"() is undefined.");
+                    console.error("API: Couldn't set association.\nAPI: e_server_status_history.set"+entity_helper.capitalizeFirstLetter(prop)+"() is undefined.");
             }
 
         Promise.all(associationPromises).then(function() {
@@ -189,28 +189,28 @@ router.put('/:id', function(req, res) {
     var answer = {
         error: null
     };
-    var id_e_server_state_history = parseInt(req.params.id);
+    var id_e_server_status_history = parseInt(req.params.id);
     var updateObject = model_builder.buildForRoute(attributes, options, req.body);
 
-    // Fetch e_server_state_history to update
-    models.E_server_state_history.findOne({where: {id: id_e_server_state_history}}).then(function(e_server_state_history) {
-        if (!e_server_state_history) {
-            answer.error = "No e_server_state_history with ID "+id_e_server_state_history;
+    // Fetch e_server_status_history to update
+    models.E_server_status_history.findOne({where: {id: id_e_server_status_history}}).then(function(e_server_status_history) {
+        if (!e_server_status_history) {
+            answer.error = "No e_server_status_history with ID "+id_e_server_status_history;
             return res.status(404).json(answer);
         }
 
-        // Update e_server_state_history
-        e_server_state_history.update(updateObject, {where: {id: id_e_server_state_history}}).then(function() {
-            answer["e_server_state_history".substring(2)] = e_server_state_history;
+        // Update e_server_status_history
+        e_server_status_history.update(updateObject, {where: {id: id_e_server_status_history}}).then(function() {
+            answer["e_server_status_history".substring(2)] = e_server_status_history;
 
             // Set associations
             var associationPromises = [];
             for (var prop in req.body)
                 if (prop.indexOf('r_') == 0) {
-                    if (e_server_state_history['set'+entity_helper.capitalizeFirstLetter(prop)] !== 'undefined')
-                        associationPromises.push(e_server_state_history['set'+entity_helper.capitalizeFirstLetter(prop)](req.body[prop]));
+                    if (e_server_status_history['set'+entity_helper.capitalizeFirstLetter(prop)] !== 'undefined')
+                        associationPromises.push(e_server_status_history['set'+entity_helper.capitalizeFirstLetter(prop)](req.body[prop]));
                     else
-                        console.error("API: Couldn't set association.\nAPI: e_server_state_history.set"+entity_helper.capitalizeFirstLetter(prop)+"() is undefined.");
+                        console.error("API: Couldn't set association.\nAPI: e_server_status_history.set"+entity_helper.capitalizeFirstLetter(prop)+"() is undefined.");
                 }
 
             Promise.all(associationPromises).then(function() {
@@ -236,9 +236,9 @@ router.delete('/:id', function(req, res) {
     var answer = {
         error: null
     }
-    var id_e_server_state_history = req.params.id;
+    var id_e_server_status_history = req.params.id;
 
-    models.E_server_state_history.destroy({where: {id: id_e_server_state_history}}).then(function() {
+    models.E_server_status_history.destroy({where: {id: id_e_server_status_history}}).then(function() {
         res.status(200).end();
     }).catch(function(err){
         answer.error = err;

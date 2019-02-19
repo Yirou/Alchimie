@@ -36,14 +36,14 @@ router.get('/applications', block_access.actionAccessMiddleware("supervisor", "r
     res.render('supervisor/application');
 });
 
-router.get('/server/:id/state', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
+router.get('/server/:id/status', block_access.actionAccessMiddleware("supervisor", "read"), function (req, res) {
 
     var from_date = req.query.fromd_date;
     var to_date = req.query.to_date;
     models.E_server.findOne({
         where: {id: req.params.id},
         include: [
-            {model: models.E_server_state_history, as: 'r_server_state_history', required: true}
+            {model: models.E_server_status_history, as: 'r_server_status_history', required: true}
         ]
     }).then(function (server) {
 

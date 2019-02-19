@@ -732,7 +732,7 @@ define({ "api": [
             "allowedValues": [
               "history_e_application_s_status",
               "status",
-              "application_state_history"
+              "application_status_history"
             ],
             "optional": false,
             "field": "association",
@@ -923,8 +923,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application.f_check_state",
-            "description": "<p><code>f_check_state</code> of application</p>"
+            "field": "application.f_check_status",
+            "description": "<p><code>f_check_status</code> of application</p>"
           },
           {
             "group": "Success 200",
@@ -1072,8 +1072,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "applications.f_check_state",
-            "description": "<p><code>f_check_state</code> of application</p>"
+            "field": "applications.f_check_status",
+            "description": "<p><code>f_check_status</code> of application</p>"
           },
           {
             "group": "Success 200",
@@ -1237,8 +1237,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p><code>f_check_state</code> of application</p>"
+            "field": "f_check_status",
+            "description": "<p><code>f_check_status</code> of application</p>"
           },
           {
             "group": "Body parameters",
@@ -1301,7 +1301,7 @@ define({ "api": [
             "type": "Integer",
             "optional": true,
             "field": "fk_id_application",
-            "description": "<p><code>id</code> of entity application_state_history to associate</p>"
+            "description": "<p><code>id</code> of entity application_status_history to associate</p>"
           }
         ],
         "Query parameters": [
@@ -1385,8 +1385,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application.f_check_state",
-            "description": "<p><code>f_check_state</code> of application</p>"
+            "field": "application.f_check_status",
+            "description": "<p><code>f_check_status</code> of application</p>"
           },
           {
             "group": "Success 200",
@@ -1522,8 +1522,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p>New value of <code>f_check_state</code> for application</p>"
+            "field": "f_check_status",
+            "description": "<p>New value of <code>f_check_status</code> for application</p>"
           },
           {
             "group": "Body parameters",
@@ -1586,7 +1586,7 @@ define({ "api": [
             "type": "Integer",
             "optional": true,
             "field": "fk_id_application",
-            "description": "<p><code>id</code> of entity application_state_history to associate</p>"
+            "description": "<p><code>id</code> of entity application_status_history to associate</p>"
           }
         ],
         "Query parameters": [
@@ -1670,8 +1670,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application.f_check_state",
-            "description": "<p><code>f_check_state</code> of application</p>"
+            "field": "application.f_check_status",
+            "description": "<p><code>f_check_status</code> of application</p>"
           },
           {
             "group": "Success 200",
@@ -1856,8 +1856,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of application_config</p>"
+            "field": "application_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of application_config</p>"
           },
           {
             "group": "Success 200",
@@ -1928,8 +1928,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application_configs.f_check_state",
-            "description": "<p><code>f_check_state</code> of application_config</p>"
+            "field": "application_configs.f_check_status",
+            "description": "<p><code>f_check_status</code> of application_config</p>"
           },
           {
             "group": "Success 200",
@@ -2016,8 +2016,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p><code>f_check_state</code> of application_config</p>"
+            "field": "f_check_status",
+            "description": "<p><code>f_check_status</code> of application_config</p>"
           },
           {
             "group": "Body parameters",
@@ -2066,8 +2066,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of application_config</p>"
+            "field": "application_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of application_config</p>"
           },
           {
             "group": "Success 200",
@@ -2126,8 +2126,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p>New value of <code>f_check_state</code> for application_config</p>"
+            "field": "f_check_status",
+            "description": "<p>New value of <code>f_check_status</code> for application_config</p>"
           },
           {
             "group": "Body parameters",
@@ -2176,8 +2176,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "application_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of application_config</p>"
+            "field": "application_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of application_config</p>"
           },
           {
             "group": "Success 200",
@@ -2221,442 +2221,6 @@ define({ "api": [
     "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
     "groupTitle": "Application config",
     "name": "PutApiApplication_configIdTokenToken"
-  },
-  {
-    "type": "delete",
-    "url": "/api/application_state_history/:id?token=TOKEN",
-    "title": "5 - Delete",
-    "version": "1.0.0",
-    "description": "<p>Permanently delete a record of <code>application_state_history</code> with <code>id</code></p>",
-    "group": "e_application_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p><code>id</code> of application_state_history to delete</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No application_state_history with ID <code>id</code> found</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Application state history",
-    "name": "DeleteApiApplication_state_historyIdTokenToken"
-  },
-  {
-    "type": "get",
-    "url": "/api/application_state_history/:id?token=TOKEN",
-    "title": "2 - Find one",
-    "version": "1.0.0",
-    "description": "<p>Fetch one record of <code>application_state_history</code> with <code>id</code></p>",
-    "group": "e_application_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p>The <code>id</code> of application_state_history to fetch</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "application_state_history",
-            "description": "<p>Object of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_history.id",
-            "description": "<p><code>id</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_history.version",
-            "description": "<p><code>version</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "application_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "application_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No application_state_history with ID <code>id</code> found</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Application state history",
-    "name": "GetApiApplication_state_historyIdTokenToken"
-  },
-  {
-    "type": "get",
-    "url": "/api/application_state_history?token=TOKEN&limit=10&offset=0",
-    "title": "1 - Find all",
-    "version": "1.0.0",
-    "description": "<p>Fetch records of <code>application_state_history</code> from <code>offset</code> until <code>limit</code></p>",
-    "group": "e_application_state_history",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "application_state_historys",
-            "description": "<p>List of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_historys.id",
-            "description": "<p><code>id</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_historys.version",
-            "description": "<p><code>version</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "application_state_historys.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "application_state_historys.f_comment",
-            "description": "<p><code>f_comment</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "limit",
-            "description": "<p>Limit used to fetch data</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "offset",
-            "description": "<p>Offset used to fetch data</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "totalCount",
-            "description": "<p>The total count of records for application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Application state history",
-    "name": "GetApiApplication_state_historyTokenTokenLimit10Offset0",
-    "parameter": {
-      "fields": {
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          },
-          {
-            "group": "Query parameters",
-            "type": "Integer",
-            "optional": true,
-            "field": "limit",
-            "defaultValue": "50",
-            "description": "<p>The number of rows to be fetched</p>"
-          },
-          {
-            "group": "Query parameters",
-            "type": "Integer",
-            "optional": true,
-            "field": "offset",
-            "defaultValue": "0",
-            "description": "<p>The offset by which rows will be fetched</p>"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "post",
-    "url": "/api/application_state_history/?token=TOKEN",
-    "title": "3 - Create",
-    "version": "1.0.0",
-    "description": "<p>Create a record of <code>application_state_history</code> using values defined in request's <code>body</code></p>",
-    "group": "e_application_state_history",
-    "parameter": {
-      "fields": {
-        "Body parameters": [
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_is_alive",
-            "description": "<p><code>f_is_alive</code> of application_state_history</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Text",
-            "optional": true,
-            "field": "f_comment",
-            "description": "<p><code>f_comment</code> of application_state_history</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "application_state_history",
-            "description": "<p>Created application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_history.id",
-            "description": "<p><code>id</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "application_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "application_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 500": [
-          {
-            "group": "Error 500",
-            "type": "Object",
-            "optional": false,
-            "field": "ServerError",
-            "description": "<p>An error occured when trying to create application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Application state history",
-    "name": "PostApiApplication_state_historyTokenToken"
-  },
-  {
-    "type": "put",
-    "url": "/api/application_state_history/:id?token=TOKEN",
-    "title": "4 - Update",
-    "version": "1.0.0",
-    "description": "<p>Update record of <code>application_state_history</code> with <code>id</code> using values defined in request's <code>body</code></p>",
-    "group": "e_application_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p><code>id</code> of the application_state_history to update</p>"
-          }
-        ],
-        "Body parameters": [
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_is_alive",
-            "description": "<p>New value of <code>f_is_alive</code> for application_state_history</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Text",
-            "optional": true,
-            "field": "f_comment",
-            "description": "<p>New value of <code>f_comment</code> for application_state_history</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "application_state_history",
-            "description": "<p>Updated application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "application_state_history.id",
-            "description": "<p><code>id</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "application_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of application_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "application_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No application_state_history with ID <code>id</code> found</p>"
-          }
-        ],
-        "Error 500": [
-          {
-            "group": "Error 500",
-            "type": "Object",
-            "optional": false,
-            "field": "ServerError",
-            "description": "<p>An error occured when trying to update application_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Application state history",
-    "name": "PutApiApplication_state_historyIdTokenToken"
   },
   {
     "type": "delete",
@@ -7996,7 +7560,7 @@ define({ "api": [
               "application",
               "organization",
               "server_config",
-              "server_state_history",
+              "server_status_history",
               "server_user_account"
             ],
             "optional": false,
@@ -9277,8 +8841,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "server_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of server_config</p>"
+            "field": "server_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -9370,8 +8934,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "server_configs.f_check_state",
-            "description": "<p><code>f_check_state</code> of server_config</p>"
+            "field": "server_configs.f_check_status",
+            "description": "<p><code>f_check_status</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -9479,8 +9043,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p><code>f_check_state</code> of server_config</p>"
+            "field": "f_check_status",
+            "description": "<p><code>f_check_status</code> of server_config</p>"
           },
           {
             "group": "Body parameters",
@@ -9550,8 +9114,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "server_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of server_config</p>"
+            "field": "server_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -9631,8 +9195,8 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Boolean",
             "optional": true,
-            "field": "f_check_state",
-            "description": "<p>New value of <code>f_check_state</code> for server_config</p>"
+            "field": "f_check_status",
+            "description": "<p>New value of <code>f_check_status</code> for server_config</p>"
           },
           {
             "group": "Body parameters",
@@ -9702,8 +9266,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "server_config.f_check_state",
-            "description": "<p><code>f_check_state</code> of server_config</p>"
+            "field": "server_config.f_check_status",
+            "description": "<p><code>f_check_status</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -9768,442 +9332,6 @@ define({ "api": [
     "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
     "groupTitle": "Server config",
     "name": "PutApiServer_configIdTokenToken"
-  },
-  {
-    "type": "delete",
-    "url": "/api/server_state_history/:id?token=TOKEN",
-    "title": "5 - Delete",
-    "version": "1.0.0",
-    "description": "<p>Permanently delete a record of <code>server_state_history</code> with <code>id</code></p>",
-    "group": "e_server_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p><code>id</code> of server_state_history to delete</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No server_state_history with ID <code>id</code> found</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Server state history",
-    "name": "DeleteApiServer_state_historyIdTokenToken"
-  },
-  {
-    "type": "get",
-    "url": "/api/server_state_history/:id?token=TOKEN",
-    "title": "2 - Find one",
-    "version": "1.0.0",
-    "description": "<p>Fetch one record of <code>server_state_history</code> with <code>id</code></p>",
-    "group": "e_server_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p>The <code>id</code> of server_state_history to fetch</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "server_state_history",
-            "description": "<p>Object of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_history.id",
-            "description": "<p><code>id</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_history.version",
-            "description": "<p><code>version</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "server_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "server_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No server_state_history with ID <code>id</code> found</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Server state history",
-    "name": "GetApiServer_state_historyIdTokenToken"
-  },
-  {
-    "type": "get",
-    "url": "/api/server_state_history?token=TOKEN&limit=10&offset=0",
-    "title": "1 - Find all",
-    "version": "1.0.0",
-    "description": "<p>Fetch records of <code>server_state_history</code> from <code>offset</code> until <code>limit</code></p>",
-    "group": "e_server_state_history",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "server_state_historys",
-            "description": "<p>List of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_historys.id",
-            "description": "<p><code>id</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_historys.version",
-            "description": "<p><code>version</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "server_state_historys.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "server_state_historys.f_comment",
-            "description": "<p><code>f_comment</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "limit",
-            "description": "<p>Limit used to fetch data</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "offset",
-            "description": "<p>Offset used to fetch data</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "totalCount",
-            "description": "<p>The total count of records for server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Server state history",
-    "name": "GetApiServer_state_historyTokenTokenLimit10Offset0",
-    "parameter": {
-      "fields": {
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          },
-          {
-            "group": "Query parameters",
-            "type": "Integer",
-            "optional": true,
-            "field": "limit",
-            "defaultValue": "50",
-            "description": "<p>The number of rows to be fetched</p>"
-          },
-          {
-            "group": "Query parameters",
-            "type": "Integer",
-            "optional": true,
-            "field": "offset",
-            "defaultValue": "0",
-            "description": "<p>The offset by which rows will be fetched</p>"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "post",
-    "url": "/api/server_state_history/?token=TOKEN",
-    "title": "3 - Create",
-    "version": "1.0.0",
-    "description": "<p>Create a record of <code>server_state_history</code> using values defined in request's <code>body</code></p>",
-    "group": "e_server_state_history",
-    "parameter": {
-      "fields": {
-        "Body parameters": [
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_is_alive",
-            "description": "<p><code>f_is_alive</code> of server_state_history</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Text",
-            "optional": true,
-            "field": "f_comment",
-            "description": "<p><code>f_comment</code> of server_state_history</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "server_state_history",
-            "description": "<p>Created server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_history.id",
-            "description": "<p><code>id</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "server_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "server_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 500": [
-          {
-            "group": "Error 500",
-            "type": "Object",
-            "optional": false,
-            "field": "ServerError",
-            "description": "<p>An error occured when trying to create server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Server state history",
-    "name": "PostApiServer_state_historyTokenToken"
-  },
-  {
-    "type": "put",
-    "url": "/api/server_state_history/:id?token=TOKEN",
-    "title": "4 - Update",
-    "version": "1.0.0",
-    "description": "<p>Update record of <code>server_state_history</code> with <code>id</code> using values defined in request's <code>body</code></p>",
-    "group": "e_server_state_history",
-    "parameter": {
-      "fields": {
-        "Params parameters": [
-          {
-            "group": "Params parameters",
-            "type": "Integer",
-            "optional": false,
-            "field": "id",
-            "description": "<p><code>id</code> of the server_state_history to update</p>"
-          }
-        ],
-        "Body parameters": [
-          {
-            "group": "Body parameters",
-            "type": "Boolean",
-            "optional": true,
-            "field": "f_is_alive",
-            "description": "<p>New value of <code>f_is_alive</code> for server_state_history</p>"
-          },
-          {
-            "group": "Body parameters",
-            "type": "Text",
-            "optional": true,
-            "field": "f_comment",
-            "description": "<p>New value of <code>f_comment</code> for server_state_history</p>"
-          }
-        ],
-        "Query parameters": [
-          {
-            "group": "Query parameters",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>API Bearer Token, required for authentication</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "server_state_history",
-            "description": "<p>Updated server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Integer",
-            "optional": false,
-            "field": "server_state_history.id",
-            "description": "<p><code>id</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "server_state_history.f_is_alive",
-            "description": "<p><code>f_is_alive</code> of server_state_history</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Text",
-            "optional": false,
-            "field": "server_state_history.f_comment",
-            "description": "<p><code>f_comment</code> of server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 404": [
-          {
-            "group": "Error 404",
-            "type": "Object",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>No server_state_history with ID <code>id</code> found</p>"
-          }
-        ],
-        "Error 500": [
-          {
-            "group": "Error 500",
-            "type": "Object",
-            "optional": false,
-            "field": "ServerError",
-            "description": "<p>An error occured when trying to update server_state_history</p>"
-          }
-        ]
-      }
-    },
-    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
-    "groupTitle": "Server state history",
-    "name": "PutApiServer_state_historyIdTokenToken"
   },
   {
     "type": "delete",

@@ -10,24 +10,24 @@
         </li>
         <li>   <a class='sub-module-arianne' href='/default/referentiel'>       {@__ key="module.m_referentiel"/}   </a></li>
         <li class="active">
-            {@__ key="entity.e_server_state_history.name_entity"/}
+            {@__ key="entity.e_application_status_history.name_entity"/}
         </li>
     </ol>
 {/header}
 {<content}
     <div class="row">
         <div class="col-xs-12 connectedSortable">
-            <form action="/server_state_history/create" method="post">
+            <form action="/application_status_history/create" method="post">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">{@__ key="operation.create"/} {@__ key="entity.e_server_state_history.name_entity"/}</h3>
+                        <h3 class="box-title">{@__ key="operation.create"/} {@__ key="entity.e_application_status_history.name_entity"/}</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="box-body">
-                        {>"e_server_state_history/create_fields"/}
+                        {>"e_application_status_history/create_fields"/}
                         <div class="form-group">
                             <input name="version" value="1" type="hidden" />
                         </div>
@@ -35,7 +35,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-default" href="javascript:history.back();">{@__ key="button.cancel"/}</a>&nbsp;&nbsp;
-                        {@actionAccess entity="server_state_history" action="create"}
+                        {@actionAccess entity="application_status_history" action="create"}
                             <button type="submit" class="btn btn-primary">{@__ key="button.save"/}</button>
                         {/actionAccess}
                     </div>
