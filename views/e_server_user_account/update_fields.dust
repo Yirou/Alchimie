@@ -1,0 +1,24 @@
+<div id="fields" class="row">
+    <div data-field="f_account" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_account">
+                {@__ key="entity.e_server_user_account.f_account"/}&nbsp;
+                {@inline_help field="f_account"}
+                <i data-field="f_account" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_user_account.f_account" /}' name="f_account" value="{f_account}" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_group" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_group">
+                {@__ key="entity.e_server_user_account.f_group"/}&nbsp;
+                {@inline_help field="f_group"}
+                <i data-field="f_group" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_user_account.f_group" /}' name="f_group" value="{f_group}" type="text" maxlength="255">
+        </div>
+    </div>
+</div>
