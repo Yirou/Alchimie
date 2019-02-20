@@ -24,14 +24,13 @@ var start = function (serverConfig) {
         ping.promise.probe(serverConfig.url)
                 .then(function (res) {
                     servers[serverConfig.id].isAlive = res.alive;
-            
+
                     if (!res.alive) {
-                        serverConfig.pings_failed_nb++;
+                        servers[serverConfig.id].pings_failed_nb++;
                     } else
                         servers[serverConfig.id].pings_failed_nb = 0;
-                    
-                    alert(serverConfig, res);
                     console.log(servers[serverConfig.id].isAlive);
+                    alert(serverConfig, res);
                 });
     }, serverConfig.interval);
 };
@@ -52,9 +51,10 @@ var alert = function alert(serverConfig, pingResult) {
             if (serverConfig.alert.notification.enabled) {
                 sendNotificationAlert(serverConfig);
             }
-            //create field alert is sent to prevent once and sent date and sent only each hour
             serverConfig.pings_failed_nb = 0;
+
         }
+
         addDBLog(serverConfig, pingResult);
     }
 
@@ -77,6 +77,7 @@ var addDBLog = function (serverConfig, pingResult) {
                     f_time: pingResult.time,
                     f_min: pingResult.min,
                     f_max: pingResult.max
+                }).catch(e => {
                 });
             }
         } else {
@@ -86,8 +87,10 @@ var addDBLog = function (serverConfig, pingResult) {
                 f_time: pingResult.time,
                 f_min: pingResult.min,
                 f_max: pingResult.max
+            }).catch(e => {
             });
         }
+    }).catch(e => {
     });
 }
 
@@ -115,7 +118,7 @@ function sendMailAlert(serverConfig) {
             var options = {
                 to: serverConfig.alert.mail.to,
                 from: 'Alchimie mail alert',
-                subject:'Ping failed'
+                subject: 'Ping failed'
             };
             mailer.sendHtml(html, options, []).then(function () {
                 models.E_server_alert.create({fk_id_server: serverConfig.id, f_type: 'sms', version: 1});
@@ -129,5 +132,5 @@ function sendSMSAlert(serverConfig) {
     console.log("send sms")
 }
 function sendNotificationAlert(serverConfig) {
-
+    console.log("Notification")
 }

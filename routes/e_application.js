@@ -21,7 +21,7 @@ var SELECT_PAGE_SIZE = 10;
 
 // Enum and radio managment
 var enums_radios = require('../utils/enum_radio.js');
-
+var monitor = require('../utils/monitor_helper');
 // Winston logger
 var logger = require('../utils/logger');
 
@@ -248,6 +248,7 @@ router.post('/create', block_access.actionAccessMiddleware("application", "creat
             Promise.all(promises).then(function () {
                 component_helper.setAddressIfComponentExist(e_application, options, req.body).then(function () {
                     res.redirect(redirect);
+                    monitor.addApp(e_application);
                 });
             }).catch(function (err) {
                 entity_helper.error(err, req, res, '/application/create_form');
@@ -323,7 +324,7 @@ router.post('/update', block_access.actionAccessMiddleware("application", "updat
             return res.render('common/error', data);
         }
         component_helper.updateAddressIfComponentExist(e_application, options, req.body);
-        e_application.update(updateObject).then(function () {
+        e_application.update(updateObject).then(function (e_application) {
 
             // We have to find value in req.body that are linked to an hasMany or belongsToMany association
             // because those values are not updated for now
@@ -337,8 +338,8 @@ router.post('/update', block_access.actionAccessMiddleware("application", "updat
                         message: 'message.update.success',
                         level: "success"
                     }];
-
                 res.redirect(redirect);
+                monitor.monitor.addApp(e_application);
             }).catch(function (err) {
                 entity_helper.error(err, req, res, '/application/update_form?id=' + id_e_application);
             });
@@ -725,7 +726,7 @@ router.get('/ajax-list', block_access.actionAccessMiddleware("application", "rea
 router.get('/status-data', block_access.actionAccessMiddleware("application", "read"), function (req, res) {
     var idApplication = req.query.app;
     var today = moment();
-    var todayCopy=today.clone();
+    var todayCopy = today.clone();
     models.E_application_status_history.findAll({
         where: {
             fk_id_application: idApplication,
@@ -733,7 +734,7 @@ router.get('/status-data', block_access.actionAccessMiddleware("application", "r
                 $between: [today.subtract(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'), todayCopy.endOf('day').format('YYYY-MM-DD HH:mm:ss')]
             }
         },
-        attributes:['f_is_alive','createdAt']
+        attributes: ['f_is_alive', 'createdAt']
     }).then(function (statusData) {
         res.status(200).json(statusData);
     }).catch(function (err) {

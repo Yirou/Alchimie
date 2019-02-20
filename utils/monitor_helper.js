@@ -33,12 +33,12 @@ var monitor = {
                                     period: server.r_server_config.f_email_alert_period,
                                     to: server.r_server_config.f_email
                                 },
-                                smsAlert: {
+                                sms: {
                                     enabled: server.r_server_config.f_sms_alert,
                                     period: server.r_server_config.f_sms_alert_period,
                                     to: server.r_server_config.f_phone
                                 },
-                                notificationAlert: {
+                                notification: {
                                     enabled: server.r_server_config.f_notification_alert,
                                     period: server.r_server_config.f_notification_alert_period
                                 },
@@ -63,9 +63,10 @@ var monitor = {
     },
     addApp: function (app) {
         return new Promise(function (resolve, reject) {
-            if (app.f_ip) {
+            if (app.f_url) {
                 var conf = {
-                    url: app.f_ip + (app.f_port ? ':' + app.f_port : ''),
+                    id: app.id,
+                    url: app.f_url,
                     checkstatus: app.f_check_status,
                     interval: app.f_interval || defaultsAppConf.interval,
                     f_alert_pings_failed: app.f_alert_pings_failed || defaultsAppConf.f_alert_pings_failed,
@@ -74,15 +75,20 @@ var monitor = {
                             enabled: app.f_email_alert,
                             period: app.f_email_alert_period
                         },
-                        smsAlert: {
+                        sms: {
                             enabled: app.f_sms_alert,
                             period: app.f_sms_alert_period
                         },
-                        notificationAlert: {
+                        notification: {
                             enabled: app.f_notification_alert,
                             period: app.f_notification_alert_period
+                        },
+                        db: {
+                            enabled: app.f_add_ping_log_in_db,
+                            period: app.f_interval_db_log_store
                         }
                     },
+                    application: app
                 };
                 appMonitor.addApp(conf);
                 return  resolve(conf);

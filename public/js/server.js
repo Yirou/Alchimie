@@ -11,7 +11,7 @@ $(function () {
         var endDate = $('#to_date').val();
         var idServer = $('#select_server_status_visualization').val();
         var idApplication = $('#select_application_status_visualization').val();
-        if (idApplication)
+        if (idApplication && idApplication !== '')
             loadApplicationData(idApplication, startDate, endDate);
         else if (idServer)
             loadServerData(idServer, startDate, endDate);
@@ -33,6 +33,7 @@ $(function () {
             loadApplications(idServer);
         }
     });
+
     var loadApplications = function (idServer) {
         $.ajax({
             url: '/application/ajax-list?server=' + idServer,
@@ -68,7 +69,7 @@ $(function () {
                     offset: serverOffset
                 },
                 success: function (data) {
-                    serverOffset += data.length;
+                    serverOffset += data.rows.length;
                     updatePlot(data);
                 }
             });
@@ -83,13 +84,14 @@ $(function () {
         var color = Chart.helpers.color;
         var cfg = {
             type: 'line',
+            scaleOverride: true,
             data: {
                 labels: chartLabels,
                 datasets: [
                     {
                         label: 'Server name',
-                        backgroundColor: 'red',
-                        borderColor: 'red',
+                        backgroundColor: 'green',
+                        borderColor: 'green',
                         data: chartData,
                         type: 'line',
                         pointRadius: 0,
@@ -121,6 +123,9 @@ $(function () {
                             scaleLabel: {
                                 display: true,
                                 labelString: 'Ping status'
+                            },
+                            ticks: {
+                                min: -0.2
                             }
                         }
                     ]
@@ -151,15 +156,22 @@ $(function () {
             if (labels_year.indexOf(createdAt.format('MMMM YYYY')) < 0)
                 labels_year.push(createdAt.format('MMMM YYYY'));
 
-            if (!firstLaunch)
-                data.shift();
-            if (history_status[i].f_is_alive)
-                data.push({t: createdAt.valueOf(), y: history_status[i].f_time || 5});
-            else
-                data.push({t: createdAt.valueOf(), y: -(history_status[i].f_time || 5)});
-            console.log({t: createdAt.valueOf(), y: history_status[i].f_time || 5})
+
+
+//            console.log({t: createdAt.valueOf(), y: history_status[i].f_time || 5})
             chart.data.datasets.forEach((dataset) => {
-                dataset.data.push({t: createdAt.valueOf(), y: history_status[i].f_time || 5});
+                if (!firstLaunch) {
+                    chart.data.labels.shift();
+                    chart.data.datasets.forEach((dataset) => {
+                        dataset.data.shift();
+                    });
+                }
+                chart.data.labels.push(createdAt.valueOf());
+                if (history_status[i].f_is_alive)
+                    dataset.data.push({t: createdAt.valueOf(), y: history_status[i].f_time || 1});
+                else {
+                    dataset.data.push({t: createdAt.valueOf(), y: randomFloat(-0.1, 0)});
+                }
             });
             chart.update();
         }
@@ -183,16 +195,18 @@ $(function () {
     function update() {
         var idServer = $('#select_server_status_visualization').val();
         var idApplication = $('#select_application_status_visualization').val();
-
+        var startDate = $('#from_date').val();
+        var endDate = $('#to_date').val();
         if (idApplication && idApplication !== '')
-            loadApplicationData(idApplication);
+            loadApplicationData(idApplication, startDate, endDate);
         else if (idServer)
-            loadServerData(idServer);
+            loadServerData(idServer, startDate, endDate);
     }
 
     function updatePlot(data) {
-        addDataOnChart(data);
+        addDataOnChart(data.rows);
         // Since the axes don't change, we don't need to call plot.setupGrid()
+
         if (realtime === 'on')
             setTimeout(update, updateInterval);
     }
