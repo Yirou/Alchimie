@@ -258,3 +258,28 @@
     </div>
     {/entityAccess}
 </div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="alert" }
+
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="server_alert" }
+    <div id="r_server_alert_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_server_alert.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_server_alert e_server_alert=r_server_alert}
+            {@eq key=id value=e_server_alert[0].id}
+            {>"e_server_alert/list_fields" associationAlias="r_server_alert" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_server_alert/list_fields" /}
+            {/r_server_alert}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>

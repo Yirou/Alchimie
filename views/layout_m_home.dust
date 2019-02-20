@@ -84,9 +84,63 @@
         </ul>
     </li>
     {/entityAccess}
+    {@entityAccess entity="alert"}
+    <li id="alert_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_alert.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="alert" action="create"}
+            <li>
+                <a href="/alert/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="alert" action="read"}
+            <li>
+                <a href="/alert/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="application_alert"}
+    <li id="application_alert_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_application_alert.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="application_alert" action="create"}
+            <li>
+                <a href="/application_alert/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="application_alert" action="read"}
+            <li>
+                <a href="/application_alert/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
 </ul>
 {/sidebar}
 {<custom_js}
 <script src="/js/script.js" type="text/javascript"></script>
-    <script src="/js/server.js" type="text/javascript"></script>
+<script src="/js/server.js" type="text/javascript"></script>
 {/custom_js}

@@ -23,6 +23,15 @@
             <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
                 {@__ key="entity.e_server_config.f_notification_alert"/}
             </th>
+            <th data-field="f_email_alert_period" data-col="f_email_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_email_alert_period"/}
+            </th>
+            <th data-field="f_sms_alert_period" data-col="f_sms_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_sms_alert_period"/}
+            </th>
+            <th data-field="f_notification_alert_period" data-col="f_notification_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_notification_alert_period"/}
+            </th>
 
             {@actionAccess entity="server_config" action="read"}
             <th></th>
@@ -59,6 +68,15 @@
             <th data-field="f_notification_alert" data-col="f_notification_alert" data-type="boolean">
                 {@__ key="entity.e_server_config.f_notification_alert"/}
             </th>
+            <th data-field="f_email_alert_period" data-col="f_email_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_email_alert_period"/}
+            </th>
+            <th data-field="f_sms_alert_period" data-col="f_sms_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_sms_alert_period"/}
+            </th>
+            <th data-field="f_notification_alert_period" data-col="f_notification_alert_period" data-type="integer">
+                {@__ key="entity.e_server_config.f_notification_alert_period"/}
+            </th>
 
             {@actionAccess entity="server_config" action="read"}
             <th></th>
@@ -81,6 +99,9 @@
             <td data-field="f_email_alert" data-type="boolean">{f_email_alert}</td>
             <td data-field="f_sms_alert" data-type="boolean">{f_sms_alert}</td>
             <td data-field="f_notification_alert" data-type="boolean">{f_notification_alert}</td>
+            <td data-field="f_email_alert_period" data-type="integer">{f_email_alert_period}</td>
+            <td data-field="f_sms_alert_period" data-type="integer">{f_sms_alert_period}</td>
+            <td data-field="f_notification_alert_period" data-type="integer">{f_notification_alert_period}</td>
 
             {@eq key=for value="fieldset"}
             {@actionAccess entity="server_config" action="update"}

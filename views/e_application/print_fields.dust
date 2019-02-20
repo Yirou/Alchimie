@@ -211,7 +211,9 @@
     {@entityAccess entity="application_status_history" }
     <div id="r_application_status_history_print" class="row">
         <div class="col-xs-12">
-            <h3>{@__ key="entity.e_application_status_history.name_entity" /}</h3>
+            <h3>
+                {@__ key="entity.e_application_status_history.name_entity" /}
+            </h3>
             <hr>
         </div>
         <div class="col-xs-12">
@@ -222,6 +224,26 @@
             {:else}
             {>"e_application_status_history/list_fields" /}
             {/r_application_status_history}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="application_alert" }
+    <div id="r_application_alert_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_application_alert.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_application_alert e_application_alert=r_application_alert}
+            {@eq key=id value=e_application_alert[0].id}
+            {>"e_application_alert/list_fields" associationAlias="r_application_alert" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_application_alert/list_fields" /}
+            {/r_application_alert}
         </div>
         <br>
     </div>

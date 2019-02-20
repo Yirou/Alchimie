@@ -77,6 +77,12 @@
         "ALTER TABLE 1_e_server_status_history ADD COLUMN `f_max` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application_status_history ADD COLUMN `f_time` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application_status_history ADD COLUMN `f_min` VARCHAR(255) DEFAULT null;",
-        "ALTER TABLE 1_e_application_status_history ADD COLUMN `f_max` VARCHAR(255) DEFAULT null;"
+        "ALTER TABLE 1_e_application_status_history ADD COLUMN `f_max` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_alert DROP FOREIGN KEY 1_e_alert_ibfk_1; ALTER TABLE 1_e_alert DROP fk_id_server;",
+        "ALTER TABLE 1_e_server_alert ADD COLUMN `f_type` ENUM('email','sms','notification') DEFAULT null;",
+        "ALTER TABLE 1_e_application_alert ADD COLUMN `f_type` ENUM('email','sms','notification') DEFAULT null;",
+        "ALTER TABLE 1_e_server_config ADD COLUMN `f_email_alert_period` INT DEFAULT null;",
+        "ALTER TABLE 1_e_server_config ADD COLUMN `f_sms_alert_period` INT DEFAULT null;",
+        "ALTER TABLE 1_e_server_config ADD COLUMN `f_notification_alert_period` INT DEFAULT null;"
     ]
 }

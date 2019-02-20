@@ -371,7 +371,9 @@
             "f_is_alive": "Is alive",
             "r_history": "History",
             "r_server_status_history": "Server status history",
-            "r_server_user_account": "Server user account"
+            "r_server_user_account": "Server user account",
+            "r_alert": "Alert",
+            "r_server_alert": "Server alert"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -417,7 +419,8 @@
             "f_email_alert": "Email alert",
             "f_sms_alert": "SMS alert",
             "f_notification_alert": "Notification alert",
-            "r_application_status_history": "Application status history"
+            "r_application_status_history": "Application status history",
+            "r_application_alert": "Application alert"
         },
         "e_history_e_application_s_status": {
             "label_entity": "Historique status application",
@@ -448,7 +451,10 @@
             "f_alert_pings_failed": "Alert Pings failed",
             "f_email_alert": "Email alert",
             "f_sms_alert": "SMS alert",
-            "f_notification_alert": "Notification alert"
+            "f_notification_alert": "Notification alert",
+            "f_email_alert_period": "Email Alert period",
+            "f_sms_alert_period": "SMS Alert period",
+            "f_notification_alert_period": "Notification Alert period"
         },
         "e_application_config": {
             "label_entity": "Application config",
@@ -494,6 +500,26 @@
             "id_entity": "ID",
             "f_account": "Account",
             "f_group": "Groupe"
+        },
+        "e_alert": {
+            "label_entity": "Alert",
+            "name_entity": "Alert",
+            "plural_entity": "Alert",
+            "id_entity": "ID"
+        },
+        "e_application_alert": {
+            "label_entity": "Application alert",
+            "name_entity": "Application alert",
+            "plural_entity": "Application alert",
+            "id_entity": "ID",
+            "f_type": "Type"
+        },
+        "e_server_alert": {
+            "label_entity": "Server alert",
+            "name_entity": "Server alert",
+            "plural_entity": "Server alert",
+            "id_entity": "ID",
+            "f_type": "Type"
         }
     },
     "global_component": {

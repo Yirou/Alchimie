@@ -11,6 +11,26 @@
                     "delete": [],
                     "update": []
                 }
+            },
+            {
+                "name": "alert",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_alert",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
             }
         ]
     },
@@ -353,7 +373,7 @@
                 }
             },
             {
-                "name": "server_state_history",
+                "name": "server_status_history",
                 "groups": [],
                 "actions": {
                     "read": [],
@@ -363,7 +383,97 @@
                 }
             },
             {
-                "name": "application_state_history",
+                "name": "application_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "application_status_history",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "server_alert",
                 "groups": [],
                 "actions": {
                     "read": [],

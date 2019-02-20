@@ -138,6 +138,154 @@
 
 /********************************************
  ********************************************
+ * ALERT
+ ********************************************
+ *******************************************/
+/** @apiDefine e_alert Alert */
+/**
+ * @api {get} /api/alert?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>alert</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_alert
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} alerts List of alert
+ * @apiSuccess {Integer} alerts.id <code>id</code> of alert
+ * @apiSuccess {Integer} alerts.version <code>version</code> of alert
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for alert
+ */
+
+/**
+ * @api {get} /api/alert/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>alert</code> with <code>id</code>
+ * @apiGroup e_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of alert to fetch
+ * @apiSuccess {Object} alert Object of alert
+ * @apiSuccess {Integer} alert.id <code>id</code> of alert
+ * @apiSuccess {Integer} alert.version <code>version</code> of alert
+ * @apiError (Error 404) {Object} NotFound No alert with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/alert/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>alert</code> using values defined in request's <code>body</code>
+ * @apiGroup e_alert
+ * @apiUse token
+ * @apiSuccess {Object} alert Created alert
+ * @apiSuccess {Integer} alert.id <code>id</code> of alert
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create alert
+ */
+
+/**
+ * @api {put} /api/alert/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>alert</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the alert to update
+ * @apiSuccess {Object} alert Updated alert
+ * @apiSuccess {Integer} alert.id <code>id</code> of alert
+ * @apiError (Error 404) {Object} NotFound No alert with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update alert
+ */
+
+/**
+ * @api {delete} /api/alert/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>alert</code> with <code>id</code>
+ * @apiGroup e_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of alert to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No alert with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * APPLICATION ALERT
+ ********************************************
+ *******************************************/
+/** @apiDefine e_application_alert Application alert */
+/**
+ * @api {get} /api/application_alert?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>application_alert</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_application_alert
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} application_alerts List of application_alert
+ * @apiSuccess {Integer} application_alerts.id <code>id</code> of application_alert
+ * @apiSuccess {Integer} application_alerts.version <code>version</code> of application_alert
+ * @apiSuccess {Enum} application_alerts.f_type <code>f_type</code> of application_alert
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for application_alert
+ */
+
+/**
+ * @api {get} /api/application_alert/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>application_alert</code> with <code>id</code>
+ * @apiGroup e_application_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of application_alert to fetch
+ * @apiSuccess {Object} application_alert Object of application_alert
+ * @apiSuccess {Integer} application_alert.id <code>id</code> of application_alert
+ * @apiSuccess {Integer} application_alert.version <code>version</code> of application_alert
+ * @apiSuccess {Enum} application_alert.f_type <code>f_type</code> of application_alert
+ * @apiError (Error 404) {Object} NotFound No application_alert with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/application_alert/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>application_alert</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_alert
+ * @apiUse token
+ * @apiParam (Body parameters) {Enum} [f_type] <code>f_type</code> of application_alert
+ * @apiSuccess {Object} application_alert Created application_alert
+ * @apiSuccess {Integer} application_alert.id <code>id</code> of application_alert
+ * @apiSuccess {Enum} application_alert.f_type <code>f_type</code> of application_alert
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create application_alert
+ */
+
+/**
+ * @api {put} /api/application_alert/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>application_alert</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the application_alert to update
+ * @apiParam (Body parameters) {Enum} [f_type] New value of <code>f_type</code> for application_alert
+ * @apiSuccess {Object} application_alert Updated application_alert
+ * @apiSuccess {Integer} application_alert.id <code>id</code> of application_alert
+ * @apiSuccess {Enum} application_alert.f_type <code>f_type</code> of application_alert
+ * @apiError (Error 404) {Object} NotFound No application_alert with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update application_alert
+ */
+
+/**
+ * @api {delete} /api/application_alert/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>application_alert</code> with <code>id</code>
+ * @apiGroup e_application_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of application_alert to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No application_alert with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
  * USER
  ********************************************
  *******************************************/
@@ -1651,7 +1799,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,server_config,server_status_history,server_user_account} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,server_config,server_status_history,server_user_account,server_alert} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1681,6 +1829,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_status_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_alert to associate
  * @apiSuccess {Object} server Created server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1716,6 +1865,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server_config] <code>id</code> of entity server_config to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_status_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_alert to associate
  * @apiSuccess {Object} server Updated server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1918,7 +2068,7 @@
  * @apiGroup e_application
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the application to which <code>association</code> is related
- * @apiParam (Params parameters) {String=history_e_application_s_status,status,application_status_history} association Name of the related entity
+ * @apiParam (Params parameters) {String=history_e_application_s_status,status,application_status_history,application_alert} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1949,6 +2099,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_status_history to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_alert to associate
  * @apiSuccess {Object} application Created application
  * @apiSuccess {Integer} application.id <code>id</code> of application
  * @apiSuccess {String} application.f_name <code>f_name</code> of application
@@ -1992,6 +2143,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_status_history to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_alert to associate
  * @apiSuccess {Object} application Updated application
  * @apiSuccess {Integer} application.id <code>id</code> of application
  * @apiSuccess {String} application.f_name <code>f_name</code> of application
@@ -2047,6 +2199,9 @@
  * @apiSuccess {Boolean} server_configs.f_email_alert <code>f_email_alert</code> of server_config
  * @apiSuccess {Boolean} server_configs.f_sms_alert <code>f_sms_alert</code> of server_config
  * @apiSuccess {Boolean} server_configs.f_notification_alert <code>f_notification_alert</code> of server_config
+ * @apiSuccess {Integer} server_configs.f_email_alert_period <code>f_email_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_configs.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_configs.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for server_config
@@ -2068,6 +2223,9 @@
  * @apiSuccess {Boolean} server_config.f_email_alert <code>f_email_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_sms_alert <code>f_sms_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_notification_alert <code>f_notification_alert</code> of server_config
+ * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
  * @apiError (Error 404) {Object} NotFound No server_config with ID <code>id</code> found
  */
 
@@ -2083,6 +2241,9 @@
  * @apiParam (Body parameters) {Boolean} [f_email_alert] <code>f_email_alert</code> of server_config
  * @apiParam (Body parameters) {Boolean} [f_sms_alert] <code>f_sms_alert</code> of server_config
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] <code>f_notification_alert</code> of server_config
+ * @apiParam (Body parameters) {Integer} [f_email_alert_period] <code>f_email_alert_period</code> of server_config
+ * @apiParam (Body parameters) {Integer} [f_sms_alert_period] <code>f_sms_alert_period</code> of server_config
+ * @apiParam (Body parameters) {Integer} [f_notification_alert_period] <code>f_notification_alert_period</code> of server_config
  * @apiSuccess {Object} server_config Created server_config
  * @apiSuccess {Integer} server_config.id <code>id</code> of server_config
  * @apiSuccess {Boolean} server_config.f_check_status <code>f_check_status</code> of server_config
@@ -2091,6 +2252,9 @@
  * @apiSuccess {Boolean} server_config.f_email_alert <code>f_email_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_sms_alert <code>f_sms_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_notification_alert <code>f_notification_alert</code> of server_config
+ * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_config
  */
 
@@ -2107,6 +2271,9 @@
  * @apiParam (Body parameters) {Boolean} [f_email_alert] New value of <code>f_email_alert</code> for server_config
  * @apiParam (Body parameters) {Boolean} [f_sms_alert] New value of <code>f_sms_alert</code> for server_config
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] New value of <code>f_notification_alert</code> for server_config
+ * @apiParam (Body parameters) {Integer} [f_email_alert_period] New value of <code>f_email_alert_period</code> for server_config
+ * @apiParam (Body parameters) {Integer} [f_sms_alert_period] New value of <code>f_sms_alert_period</code> for server_config
+ * @apiParam (Body parameters) {Integer} [f_notification_alert_period] New value of <code>f_notification_alert_period</code> for server_config
  * @apiSuccess {Object} server_config Updated server_config
  * @apiSuccess {Integer} server_config.id <code>id</code> of server_config
  * @apiSuccess {Boolean} server_config.f_check_status <code>f_check_status</code> of server_config
@@ -2115,6 +2282,9 @@
  * @apiSuccess {Boolean} server_config.f_email_alert <code>f_email_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_sms_alert <code>f_sms_alert</code> of server_config
  * @apiSuccess {Boolean} server_config.f_notification_alert <code>f_notification_alert</code> of server_config
+ * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
+ * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
  * @apiError (Error 404) {Object} NotFound No server_config with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_config
  */
@@ -2289,6 +2459,285 @@
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  * @apiError (Error 404) {Object} NotFound No history with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * SERVER STATUS HISTORY
+ ********************************************
+ *******************************************/
+/** @apiDefine e_server_status_history Server status history */
+/**
+ * @api {get} /api/server_status_history?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>server_status_history</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_server_status_history
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} server_status_historys List of server_status_history
+ * @apiSuccess {Integer} server_status_historys.id <code>id</code> of server_status_history
+ * @apiSuccess {Integer} server_status_historys.version <code>version</code> of server_status_history
+ * @apiSuccess {Boolean} server_status_historys.f_is_alive <code>f_is_alive</code> of server_status_history
+ * @apiSuccess {Text} server_status_historys.f_comment <code>f_comment</code> of server_status_history
+ * @apiSuccess {String} server_status_historys.f_time <code>f_time</code> of server_status_history
+ * @apiSuccess {String} server_status_historys.f_min <code>f_min</code> of server_status_history
+ * @apiSuccess {String} server_status_historys.f_max <code>f_max</code> of server_status_history
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for server_status_history
+ */
+
+/**
+ * @api {get} /api/server_status_history/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>server_status_history</code> with <code>id</code>
+ * @apiGroup e_server_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of server_status_history to fetch
+ * @apiSuccess {Object} server_status_history Object of server_status_history
+ * @apiSuccess {Integer} server_status_history.id <code>id</code> of server_status_history
+ * @apiSuccess {Integer} server_status_history.version <code>version</code> of server_status_history
+ * @apiSuccess {Boolean} server_status_history.f_is_alive <code>f_is_alive</code> of server_status_history
+ * @apiSuccess {Text} server_status_history.f_comment <code>f_comment</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_time <code>f_time</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_min <code>f_min</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_max <code>f_max</code> of server_status_history
+ * @apiError (Error 404) {Object} NotFound No server_status_history with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/server_status_history/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>server_status_history</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_status_history
+ * @apiUse token
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] <code>f_is_alive</code> of server_status_history
+ * @apiParam (Body parameters) {Text} [f_comment] <code>f_comment</code> of server_status_history
+ * @apiParam (Body parameters) {String} [f_time] <code>f_time</code> of server_status_history
+ * @apiParam (Body parameters) {String} [f_min] <code>f_min</code> of server_status_history
+ * @apiParam (Body parameters) {String} [f_max] <code>f_max</code> of server_status_history
+ * @apiSuccess {Object} server_status_history Created server_status_history
+ * @apiSuccess {Integer} server_status_history.id <code>id</code> of server_status_history
+ * @apiSuccess {Boolean} server_status_history.f_is_alive <code>f_is_alive</code> of server_status_history
+ * @apiSuccess {Text} server_status_history.f_comment <code>f_comment</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_time <code>f_time</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_min <code>f_min</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_max <code>f_max</code> of server_status_history
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_status_history
+ */
+
+/**
+ * @api {put} /api/server_status_history/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>server_status_history</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the server_status_history to update
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] New value of <code>f_is_alive</code> for server_status_history
+ * @apiParam (Body parameters) {Text} [f_comment] New value of <code>f_comment</code> for server_status_history
+ * @apiParam (Body parameters) {String} [f_time] New value of <code>f_time</code> for server_status_history
+ * @apiParam (Body parameters) {String} [f_min] New value of <code>f_min</code> for server_status_history
+ * @apiParam (Body parameters) {String} [f_max] New value of <code>f_max</code> for server_status_history
+ * @apiSuccess {Object} server_status_history Updated server_status_history
+ * @apiSuccess {Integer} server_status_history.id <code>id</code> of server_status_history
+ * @apiSuccess {Boolean} server_status_history.f_is_alive <code>f_is_alive</code> of server_status_history
+ * @apiSuccess {Text} server_status_history.f_comment <code>f_comment</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_time <code>f_time</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_min <code>f_min</code> of server_status_history
+ * @apiSuccess {String} server_status_history.f_max <code>f_max</code> of server_status_history
+ * @apiError (Error 404) {Object} NotFound No server_status_history with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_status_history
+ */
+
+/**
+ * @api {delete} /api/server_status_history/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>server_status_history</code> with <code>id</code>
+ * @apiGroup e_server_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of server_status_history to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No server_status_history with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * APPLICATION STATUS HISTORY
+ ********************************************
+ *******************************************/
+/** @apiDefine e_application_status_history Application status history */
+/**
+ * @api {get} /api/application_status_history?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>application_status_history</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_application_status_history
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} application_status_historys List of application_status_history
+ * @apiSuccess {Integer} application_status_historys.id <code>id</code> of application_status_history
+ * @apiSuccess {Integer} application_status_historys.version <code>version</code> of application_status_history
+ * @apiSuccess {Boolean} application_status_historys.f_is_alive <code>f_is_alive</code> of application_status_history
+ * @apiSuccess {Text} application_status_historys.f_comment <code>f_comment</code> of application_status_history
+ * @apiSuccess {String} application_status_historys.f_time <code>f_time</code> of application_status_history
+ * @apiSuccess {String} application_status_historys.f_min <code>f_min</code> of application_status_history
+ * @apiSuccess {String} application_status_historys.f_max <code>f_max</code> of application_status_history
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for application_status_history
+ */
+
+/**
+ * @api {get} /api/application_status_history/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>application_status_history</code> with <code>id</code>
+ * @apiGroup e_application_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of application_status_history to fetch
+ * @apiSuccess {Object} application_status_history Object of application_status_history
+ * @apiSuccess {Integer} application_status_history.id <code>id</code> of application_status_history
+ * @apiSuccess {Integer} application_status_history.version <code>version</code> of application_status_history
+ * @apiSuccess {Boolean} application_status_history.f_is_alive <code>f_is_alive</code> of application_status_history
+ * @apiSuccess {Text} application_status_history.f_comment <code>f_comment</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_time <code>f_time</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_min <code>f_min</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_max <code>f_max</code> of application_status_history
+ * @apiError (Error 404) {Object} NotFound No application_status_history with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/application_status_history/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>application_status_history</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_status_history
+ * @apiUse token
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] <code>f_is_alive</code> of application_status_history
+ * @apiParam (Body parameters) {Text} [f_comment] <code>f_comment</code> of application_status_history
+ * @apiParam (Body parameters) {String} [f_time] <code>f_time</code> of application_status_history
+ * @apiParam (Body parameters) {String} [f_min] <code>f_min</code> of application_status_history
+ * @apiParam (Body parameters) {String} [f_max] <code>f_max</code> of application_status_history
+ * @apiSuccess {Object} application_status_history Created application_status_history
+ * @apiSuccess {Integer} application_status_history.id <code>id</code> of application_status_history
+ * @apiSuccess {Boolean} application_status_history.f_is_alive <code>f_is_alive</code> of application_status_history
+ * @apiSuccess {Text} application_status_history.f_comment <code>f_comment</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_time <code>f_time</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_min <code>f_min</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_max <code>f_max</code> of application_status_history
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create application_status_history
+ */
+
+/**
+ * @api {put} /api/application_status_history/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>application_status_history</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_application_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the application_status_history to update
+ * @apiParam (Body parameters) {Boolean} [f_is_alive] New value of <code>f_is_alive</code> for application_status_history
+ * @apiParam (Body parameters) {Text} [f_comment] New value of <code>f_comment</code> for application_status_history
+ * @apiParam (Body parameters) {String} [f_time] New value of <code>f_time</code> for application_status_history
+ * @apiParam (Body parameters) {String} [f_min] New value of <code>f_min</code> for application_status_history
+ * @apiParam (Body parameters) {String} [f_max] New value of <code>f_max</code> for application_status_history
+ * @apiSuccess {Object} application_status_history Updated application_status_history
+ * @apiSuccess {Integer} application_status_history.id <code>id</code> of application_status_history
+ * @apiSuccess {Boolean} application_status_history.f_is_alive <code>f_is_alive</code> of application_status_history
+ * @apiSuccess {Text} application_status_history.f_comment <code>f_comment</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_time <code>f_time</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_min <code>f_min</code> of application_status_history
+ * @apiSuccess {String} application_status_history.f_max <code>f_max</code> of application_status_history
+ * @apiError (Error 404) {Object} NotFound No application_status_history with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update application_status_history
+ */
+
+/**
+ * @api {delete} /api/application_status_history/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>application_status_history</code> with <code>id</code>
+ * @apiGroup e_application_status_history
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of application_status_history to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No application_status_history with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * SERVER ALERT
+ ********************************************
+ *******************************************/
+/** @apiDefine e_server_alert Server alert */
+/**
+ * @api {get} /api/server_alert?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>server_alert</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_server_alert
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} server_alerts List of server_alert
+ * @apiSuccess {Integer} server_alerts.id <code>id</code> of server_alert
+ * @apiSuccess {Integer} server_alerts.version <code>version</code> of server_alert
+ * @apiSuccess {Enum} server_alerts.f_type <code>f_type</code> of server_alert
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for server_alert
+ */
+
+/**
+ * @api {get} /api/server_alert/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>server_alert</code> with <code>id</code>
+ * @apiGroup e_server_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of server_alert to fetch
+ * @apiSuccess {Object} server_alert Object of server_alert
+ * @apiSuccess {Integer} server_alert.id <code>id</code> of server_alert
+ * @apiSuccess {Integer} server_alert.version <code>version</code> of server_alert
+ * @apiSuccess {Enum} server_alert.f_type <code>f_type</code> of server_alert
+ * @apiError (Error 404) {Object} NotFound No server_alert with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/server_alert/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>server_alert</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_alert
+ * @apiUse token
+ * @apiParam (Body parameters) {Enum} [f_type] <code>f_type</code> of server_alert
+ * @apiSuccess {Object} server_alert Created server_alert
+ * @apiSuccess {Integer} server_alert.id <code>id</code> of server_alert
+ * @apiSuccess {Enum} server_alert.f_type <code>f_type</code> of server_alert
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_alert
+ */
+
+/**
+ * @api {put} /api/server_alert/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>server_alert</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_server_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the server_alert to update
+ * @apiParam (Body parameters) {Enum} [f_type] New value of <code>f_type</code> for server_alert
+ * @apiSuccess {Object} server_alert Updated server_alert
+ * @apiSuccess {Integer} server_alert.id <code>id</code> of server_alert
+ * @apiSuccess {Enum} server_alert.f_type <code>f_type</code> of server_alert
+ * @apiError (Error 404) {Object} NotFound No server_alert with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_alert
+ */
+
+/**
+ * @api {delete} /api/server_alert/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>server_alert</code> with <code>id</code>
+ * @apiGroup e_server_alert
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of server_alert to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No server_alert with ID <code>id</code> found
  */
 
 

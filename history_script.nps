@@ -125,3 +125,16 @@ select entity Application state history
 add field Time with type double
 add field Min With type double
 add field Max with type double
+entity Server has many Alert
+entity Application has many Application alert
+select entity Server
+delete tab Alert
+entity Server has many Server alert
+select entity Server alert
+add field Type with type enum with values Email,SMS,Notification
+select entity Application alert
+add field Type with type enum with values Email,SMS,Notification
+select entity Server config
+add field Email Alert period with type integer
+add field SMS Alert period with type integer
+add field Notification Alert period with type integer

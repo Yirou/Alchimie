@@ -37,5 +37,20 @@
         "type": "BOOLEAN",
         "newmipsType": "boolean",
         "defaultValue": null
+    },
+    "f_email_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
+    },
+    "f_sms_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
+    },
+    "f_notification_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
     }
 }

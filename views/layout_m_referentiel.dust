@@ -352,5 +352,32 @@
         </ul>
     </li>
     {/entityAccess}
+    {@entityAccess entity="server_alert"}
+    <li id="server_alert_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_server_alert.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="server_alert" action="create"}
+            <li>
+                <a href="/server_alert/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="server_alert" action="read"}
+            <li>
+                <a href="/server_alert/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
 </ul>
 {/sidebar}

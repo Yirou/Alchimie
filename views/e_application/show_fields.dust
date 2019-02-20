@@ -11,7 +11,11 @@
 
         {/entityAccess}
         {@entityAccess entity="application_status_history"}
-        <li><a id="r_application_status_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_application_status_history">{@__ key="entity.e_application.r_application_status_history" /}</a></li>
+        <li><a id="r_application_status_history-click" data-toggle="tab" data-tabtype="hasMany" href="#r_application_status_history">
+                {@__ key="entity.e_application.r_application_status_history" /}</a></li>
+        {/entityAccess}
+        {@entityAccess entity="application_alert"}
+        <li><a id="r_application_alert-click" data-toggle="tab" data-tabtype="hasMany" href="#r_application_alert">{@__ key="entity.e_application.r_application_alert" /}</a></li>
         {/entityAccess}
     </ul>
     {/hideTab}
@@ -255,6 +259,13 @@
         {^hideTab}
         {@entityAccess entity="application_status_history"}
         <div id="r_application_status_history" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_application_status_history" data-asso-foreignkey="fk_id_application" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="application_alert"}
+        <div id="r_application_alert" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_application_alert" data-asso-foreignkey="fk_id_application" data-asso-flag="{id}" data-asso-source="e_application" data-asso-url="application">
             <div class="ajax-content sub-tab-table"></div>
         </div>
         {/entityAccess}

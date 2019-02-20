@@ -28,5 +28,13 @@
         "as": "r_application_status_history",
         "showAs": "Application status history",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_application_alert",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_application",
+        "as": "r_application_alert",
+        "showAs": "Application alert",
+        "structureType": "hasMany"
     }
 ]

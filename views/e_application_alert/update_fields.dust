@@ -1,0 +1,22 @@
+<div id="fields" class="row">
+    <div data-field="f_type" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_type">
+                {@__ key="entity.e_application_alert.f_type"/}&nbsp;
+                {@inline_help field="f_type"}
+                <i data-field="f_type" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="form-control select" name="f_type" width="100%">
+                <option value="">{@__ key="select.default" /}</option>
+                {#enum_radio.e_application_alert.f_type}
+                {@eq key=f_type value="{.value}" }
+                <option value="{.value}" selected=""> {.translation} </option>
+                {:else}
+                <option value="{.value}"> {.translation} </option>
+                {/eq}
+                {/enum_radio.e_application_alert.f_type}
+            </select>
+        </div>
+    </div>
+</div>

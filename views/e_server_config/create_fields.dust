@@ -74,4 +74,37 @@
             <input class="form-control input" name="f_notification_alert" type="checkbox">
         </div>
     </div>
+    <div data-field="f_email_alert_period" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_email_alert_period">
+                {@__ key="entity.e_server_config.f_email_alert_period"/}&nbsp;
+                {@inline_help field="f_email_alert_period"}
+                <i data-field="f_email_alert_period" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_email_alert_period" /}' name="f_email_alert_period" value="" type="number" max="2147483648">
+        </div>
+    </div>
+    <div data-field="f_sms_alert_period" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_sms_alert_period">
+                {@__ key="entity.e_server_config.f_sms_alert_period"/}&nbsp;
+                {@inline_help field="f_sms_alert_period"}
+                <i data-field="f_sms_alert_period" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_sms_alert_period" /}' name="f_sms_alert_period" value="" type="number" max="2147483648">
+        </div>
+    </div>
+    <div data-field="f_notification_alert_period" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_notification_alert_period">
+                {@__ key="entity.e_server_config.f_notification_alert_period"/}&nbsp;
+                {@inline_help field="f_notification_alert_period"}
+                <i data-field="f_notification_alert_period" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_notification_alert_period" /}' name="f_notification_alert_period" value="" type="number" max="2147483648">
+        </div>
+    </div>
 </div>

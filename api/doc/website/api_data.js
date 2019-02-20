@@ -656,6 +656,354 @@ define({ "api": [
   },
   {
     "type": "delete",
+    "url": "/api/alert/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>alert</code> with <code>id</code></p>",
+    "group": "e_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of alert to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Alert",
+    "name": "DeleteApiAlertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/alert/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>alert</code> with <code>id</code></p>",
+    "group": "e_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of alert to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "alert",
+            "description": "<p>Object of alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alert.id",
+            "description": "<p><code>id</code> of alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alert.version",
+            "description": "<p><code>version</code> of alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Alert",
+    "name": "GetApiAlertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/alert?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>alert</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_alert",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "alerts",
+            "description": "<p>List of alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alerts.id",
+            "description": "<p><code>id</code> of alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alerts.version",
+            "description": "<p><code>version</code> of alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Alert",
+    "name": "GetApiAlertTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/alert/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>alert</code> using values defined in request's <code>body</code></p>",
+    "group": "e_alert",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "alert",
+            "description": "<p>Created alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alert.id",
+            "description": "<p><code>id</code> of alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Alert",
+    "name": "PostApiAlertTokenToken",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "put",
+    "url": "/api/alert/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>alert</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the alert to update</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "alert",
+            "description": "<p>Updated alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "alert.id",
+            "description": "<p><code>id</code> of alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No alert with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Alert",
+    "name": "PutApiAlertIdTokenToken"
+  },
+  {
+    "type": "delete",
     "url": "/api/application/:id?token=TOKEN",
     "title": "5 - Delete",
     "version": "1.0.0",
@@ -732,7 +1080,8 @@ define({ "api": [
             "allowedValues": [
               "history_e_application_s_status",
               "status",
-              "application_status_history"
+              "application_status_history",
+              "application_alert"
             ],
             "optional": false,
             "field": "association",
@@ -1746,6 +2095,400 @@ define({ "api": [
   },
   {
     "type": "delete",
+    "url": "/api/application_alert/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>application_alert</code> with <code>id</code></p>",
+    "group": "e_application_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of application_alert to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application alert",
+    "name": "DeleteApiApplication_alertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/application_alert/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>application_alert</code> with <code>id</code></p>",
+    "group": "e_application_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of application_alert to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_alert",
+            "description": "<p>Object of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alert.id",
+            "description": "<p><code>id</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alert.version",
+            "description": "<p><code>version</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "application_alert.f_type",
+            "description": "<p><code>f_type</code> of application_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application alert",
+    "name": "GetApiApplication_alertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/application_alert?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>application_alert</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_application_alert",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "application_alerts",
+            "description": "<p>List of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alerts.id",
+            "description": "<p><code>id</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alerts.version",
+            "description": "<p><code>version</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "application_alerts.f_type",
+            "description": "<p><code>f_type</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for application_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application alert",
+    "name": "GetApiApplication_alertTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/application_alert/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>application_alert</code> using values defined in request's <code>body</code></p>",
+    "group": "e_application_alert",
+    "parameter": {
+      "fields": {
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Enum",
+            "optional": true,
+            "field": "f_type",
+            "description": "<p><code>f_type</code> of application_alert</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_alert",
+            "description": "<p>Created application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alert.id",
+            "description": "<p><code>id</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "application_alert.f_type",
+            "description": "<p><code>f_type</code> of application_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create application_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application alert",
+    "name": "PostApiApplication_alertTokenToken"
+  },
+  {
+    "type": "put",
+    "url": "/api/application_alert/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>application_alert</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_application_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the application_alert to update</p>"
+          }
+        ],
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Enum",
+            "optional": true,
+            "field": "f_type",
+            "description": "<p>New value of <code>f_type</code> for application_alert</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_alert",
+            "description": "<p>Updated application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_alert.id",
+            "description": "<p><code>id</code> of application_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "application_alert.f_type",
+            "description": "<p><code>f_type</code> of application_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_alert with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update application_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application alert",
+    "name": "PutApiApplication_alertIdTokenToken"
+  },
+  {
+    "type": "delete",
     "url": "/api/application_config/:id?token=TOKEN",
     "title": "5 - Delete",
     "version": "1.0.0",
@@ -2221,6 +2964,568 @@ define({ "api": [
     "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
     "groupTitle": "Application config",
     "name": "PutApiApplication_configIdTokenToken"
+  },
+  {
+    "type": "delete",
+    "url": "/api/application_status_history/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>application_status_history</code> with <code>id</code></p>",
+    "group": "e_application_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of application_status_history to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_status_history with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application status history",
+    "name": "DeleteApiApplication_status_historyIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/application_status_history/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>application_status_history</code> with <code>id</code></p>",
+    "group": "e_application_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of application_status_history to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_status_history",
+            "description": "<p>Object of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_history.id",
+            "description": "<p><code>id</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_history.version",
+            "description": "<p><code>version</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "application_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_time",
+            "description": "<p><code>f_time</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_min",
+            "description": "<p><code>f_min</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_max",
+            "description": "<p><code>f_max</code> of application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_status_history with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application status history",
+    "name": "GetApiApplication_status_historyIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/application_status_history?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>application_status_history</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_application_status_history",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "application_status_historys",
+            "description": "<p>List of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_historys.id",
+            "description": "<p><code>id</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_historys.version",
+            "description": "<p><code>version</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application_status_historys.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "application_status_historys.f_comment",
+            "description": "<p><code>f_comment</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_historys.f_time",
+            "description": "<p><code>f_time</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_historys.f_min",
+            "description": "<p><code>f_min</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_historys.f_max",
+            "description": "<p><code>f_max</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application status history",
+    "name": "GetApiApplication_status_historyTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/application_status_history/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>application_status_history</code> using values defined in request's <code>body</code></p>",
+    "group": "e_application_status_history",
+    "parameter": {
+      "fields": {
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_is_alive",
+            "description": "<p><code>f_is_alive</code> of application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Text",
+            "optional": true,
+            "field": "f_comment",
+            "description": "<p><code>f_comment</code> of application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_time",
+            "description": "<p><code>f_time</code> of application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_min",
+            "description": "<p><code>f_min</code> of application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_max",
+            "description": "<p><code>f_max</code> of application_status_history</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_status_history",
+            "description": "<p>Created application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_history.id",
+            "description": "<p><code>id</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "application_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_time",
+            "description": "<p><code>f_time</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_min",
+            "description": "<p><code>f_min</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_max",
+            "description": "<p><code>f_max</code> of application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application status history",
+    "name": "PostApiApplication_status_historyTokenToken"
+  },
+  {
+    "type": "put",
+    "url": "/api/application_status_history/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>application_status_history</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_application_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the application_status_history to update</p>"
+          }
+        ],
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_is_alive",
+            "description": "<p>New value of <code>f_is_alive</code> for application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Text",
+            "optional": true,
+            "field": "f_comment",
+            "description": "<p>New value of <code>f_comment</code> for application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_time",
+            "description": "<p>New value of <code>f_time</code> for application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_min",
+            "description": "<p>New value of <code>f_min</code> for application_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_max",
+            "description": "<p>New value of <code>f_max</code> for application_status_history</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "application_status_history",
+            "description": "<p>Updated application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application_status_history.id",
+            "description": "<p><code>id</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "application_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_time",
+            "description": "<p><code>f_time</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_min",
+            "description": "<p><code>f_min</code> of application_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application_status_history.f_max",
+            "description": "<p><code>f_max</code> of application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No application_status_history with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update application_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Application status history",
+    "name": "PutApiApplication_status_historyIdTokenToken"
   },
   {
     "type": "delete",
@@ -7561,7 +8866,8 @@ define({ "api": [
               "organization",
               "server_config",
               "server_status_history",
-              "server_user_account"
+              "server_user_account",
+              "server_alert"
             ],
             "optional": false,
             "field": "association",
@@ -8337,6 +9643,400 @@ define({ "api": [
   },
   {
     "type": "delete",
+    "url": "/api/server_alert/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>server_alert</code> with <code>id</code></p>",
+    "group": "e_server_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of server_alert to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server alert",
+    "name": "DeleteApiServer_alertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/server_alert/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>server_alert</code> with <code>id</code></p>",
+    "group": "e_server_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of server_alert to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_alert",
+            "description": "<p>Object of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alert.id",
+            "description": "<p><code>id</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alert.version",
+            "description": "<p><code>version</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "server_alert.f_type",
+            "description": "<p><code>f_type</code> of server_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_alert with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server alert",
+    "name": "GetApiServer_alertIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/server_alert?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>server_alert</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_server_alert",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "server_alerts",
+            "description": "<p>List of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alerts.id",
+            "description": "<p><code>id</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alerts.version",
+            "description": "<p><code>version</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "server_alerts.f_type",
+            "description": "<p><code>f_type</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for server_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server alert",
+    "name": "GetApiServer_alertTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/server_alert/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>server_alert</code> using values defined in request's <code>body</code></p>",
+    "group": "e_server_alert",
+    "parameter": {
+      "fields": {
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Enum",
+            "optional": true,
+            "field": "f_type",
+            "description": "<p><code>f_type</code> of server_alert</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_alert",
+            "description": "<p>Created server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alert.id",
+            "description": "<p><code>id</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "server_alert.f_type",
+            "description": "<p><code>f_type</code> of server_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create server_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server alert",
+    "name": "PostApiServer_alertTokenToken"
+  },
+  {
+    "type": "put",
+    "url": "/api/server_alert/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>server_alert</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_server_alert",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the server_alert to update</p>"
+          }
+        ],
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Enum",
+            "optional": true,
+            "field": "f_type",
+            "description": "<p>New value of <code>f_type</code> for server_alert</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_alert",
+            "description": "<p>Updated server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_alert.id",
+            "description": "<p><code>id</code> of server_alert</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Enum",
+            "optional": false,
+            "field": "server_alert.f_type",
+            "description": "<p><code>f_type</code> of server_alert</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_alert with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update server_alert</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server alert",
+    "name": "PutApiServer_alertIdTokenToken"
+  },
+  {
+    "type": "delete",
     "url": "/api/server_category/:id?token=TOKEN",
     "title": "5 - Delete",
     "version": "1.0.0",
@@ -8878,6 +10578,27 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
           }
         ]
       }
@@ -8971,6 +10692,27 @@ define({ "api": [
             "optional": false,
             "field": "server_configs.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_configs.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_configs.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_configs.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -9080,6 +10822,27 @@ define({ "api": [
             "optional": true,
             "field": "f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
           }
         ],
         "Query parameters": [
@@ -9151,6 +10914,27 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
           }
         ]
       }
@@ -9232,6 +11016,27 @@ define({ "api": [
             "optional": true,
             "field": "f_notification_alert",
             "description": "<p>New value of <code>f_notification_alert</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_email_alert_period",
+            "description": "<p>New value of <code>f_email_alert_period</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_sms_alert_period",
+            "description": "<p>New value of <code>f_sms_alert_period</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_notification_alert_period",
+            "description": "<p>New value of <code>f_notification_alert_period</code> for server_config</p>"
           }
         ],
         "Query parameters": [
@@ -9303,6 +11108,27 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
           }
         ]
       }
@@ -9332,6 +11158,568 @@ define({ "api": [
     "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
     "groupTitle": "Server config",
     "name": "PutApiServer_configIdTokenToken"
+  },
+  {
+    "type": "delete",
+    "url": "/api/server_status_history/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>server_status_history</code> with <code>id</code></p>",
+    "group": "e_server_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of server_status_history to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_status_history with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server status history",
+    "name": "DeleteApiServer_status_historyIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/server_status_history/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>server_status_history</code> with <code>id</code></p>",
+    "group": "e_server_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of server_status_history to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_status_history",
+            "description": "<p>Object of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_history.id",
+            "description": "<p><code>id</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_history.version",
+            "description": "<p><code>version</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "server_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_time",
+            "description": "<p><code>f_time</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_min",
+            "description": "<p><code>f_min</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_max",
+            "description": "<p><code>f_max</code> of server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_status_history with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server status history",
+    "name": "GetApiServer_status_historyIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/server_status_history?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>server_status_history</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_server_status_history",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "server_status_historys",
+            "description": "<p>List of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_historys.id",
+            "description": "<p><code>id</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_historys.version",
+            "description": "<p><code>version</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_status_historys.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "server_status_historys.f_comment",
+            "description": "<p><code>f_comment</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_historys.f_time",
+            "description": "<p><code>f_time</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_historys.f_min",
+            "description": "<p><code>f_min</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_historys.f_max",
+            "description": "<p><code>f_max</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server status history",
+    "name": "GetApiServer_status_historyTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/server_status_history/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>server_status_history</code> using values defined in request's <code>body</code></p>",
+    "group": "e_server_status_history",
+    "parameter": {
+      "fields": {
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_is_alive",
+            "description": "<p><code>f_is_alive</code> of server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Text",
+            "optional": true,
+            "field": "f_comment",
+            "description": "<p><code>f_comment</code> of server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_time",
+            "description": "<p><code>f_time</code> of server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_min",
+            "description": "<p><code>f_min</code> of server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_max",
+            "description": "<p><code>f_max</code> of server_status_history</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_status_history",
+            "description": "<p>Created server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_history.id",
+            "description": "<p><code>id</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "server_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_time",
+            "description": "<p><code>f_time</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_min",
+            "description": "<p><code>f_min</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_max",
+            "description": "<p><code>f_max</code> of server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server status history",
+    "name": "PostApiServer_status_historyTokenToken"
+  },
+  {
+    "type": "put",
+    "url": "/api/server_status_history/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>server_status_history</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_server_status_history",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the server_status_history to update</p>"
+          }
+        ],
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_is_alive",
+            "description": "<p>New value of <code>f_is_alive</code> for server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Text",
+            "optional": true,
+            "field": "f_comment",
+            "description": "<p>New value of <code>f_comment</code> for server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_time",
+            "description": "<p>New value of <code>f_time</code> for server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_min",
+            "description": "<p>New value of <code>f_min</code> for server_status_history</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_max",
+            "description": "<p>New value of <code>f_max</code> for server_status_history</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "server_status_history",
+            "description": "<p>Updated server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_status_history.id",
+            "description": "<p><code>id</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_status_history.f_is_alive",
+            "description": "<p><code>f_is_alive</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Text",
+            "optional": false,
+            "field": "server_status_history.f_comment",
+            "description": "<p><code>f_comment</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_time",
+            "description": "<p><code>f_time</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_min",
+            "description": "<p><code>f_min</code> of server_status_history</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_status_history.f_max",
+            "description": "<p><code>f_max</code> of server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No server_status_history with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update server_status_history</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/1/api/doc/doc_descriptor.js",
+    "groupTitle": "Server status history",
+    "name": "PutApiServer_status_historyIdTokenToken"
   },
   {
     "type": "delete",

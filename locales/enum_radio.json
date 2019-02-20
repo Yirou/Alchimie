@@ -66,5 +66,55 @@
                 }
             }
         ]
+    },
+    "e_server_alert": {
+        "f_type": [
+            {
+                "value": "email",
+                "translations": {
+                    "fr-FR": "Email",
+                    "en-EN": "Email"
+                }
+            },
+            {
+                "value": "sms",
+                "translations": {
+                    "fr-FR": "SMS",
+                    "en-EN": "SMS"
+                }
+            },
+            {
+                "value": "notification",
+                "translations": {
+                    "fr-FR": "Notification",
+                    "en-EN": "Notification"
+                }
+            }
+        ]
+    },
+    "e_application_alert": {
+        "f_type": [
+            {
+                "value": "email",
+                "translations": {
+                    "fr-FR": "Email",
+                    "en-EN": "Email"
+                }
+            },
+            {
+                "value": "sms",
+                "translations": {
+                    "fr-FR": "SMS",
+                    "en-EN": "SMS"
+                }
+            },
+            {
+                "value": "notification",
+                "translations": {
+                    "fr-FR": "Notification",
+                    "en-EN": "Notification"
+                }
+            }
+        ]
     }
 }

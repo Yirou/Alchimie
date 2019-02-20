@@ -1,0 +1,20 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_type": {
+        "type": "ENUM",
+        "values": [
+            "email",
+            "sms",
+            "notification"
+        ],
+        "defaultValue": null
+    }
+}

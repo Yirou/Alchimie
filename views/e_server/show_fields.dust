@@ -37,6 +37,12 @@
         <li><a id="r_server_user_account-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_user_account">
                 {@__ key="entity.e_server.r_server_user_account" /}</a></li>
         {/entityAccess}
+        {@entityAccess entity="alert"}
+
+        {/entityAccess}
+        {@entityAccess entity="server_alert"}
+        <li><a id="r_server_alert-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_alert">{@__ key="entity.e_server.r_server_alert" /}</a></li>
+        {/entityAccess}
     </ul>
     {/hideTab}
     <div class="tab-content" style="min-height:275px;">
@@ -239,6 +245,18 @@
         {^hideTab}
         {@entityAccess entity="server_user_account"}
         <div id="r_server_user_account" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_server_user_account" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="alert"}
+
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="server_alert"}
+        <div id="r_server_alert" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_server_alert" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
             <div class="ajax-content sub-tab-table"></div>
         </div>
         {/entityAccess}
