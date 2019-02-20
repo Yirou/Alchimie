@@ -119,7 +119,7 @@ var monitor = {
         });
     }
 };
-exports.loadServersOnStart = function () {
+exports.loadServersSupervisorOnStart = function () {
     models.E_server.findAll({
         attributes: ['id'],
         include: [
@@ -139,7 +139,7 @@ exports.loadServersOnStart = function () {
     });
 }
 
-exports.loadApplicationsOnStart = function () {
+exports.loadApplicationsSupervisorOnStart = function () {
     models.E_application.findAll({
         where: {f_check_status: true}
     }).then(function (applications) {
