@@ -454,7 +454,11 @@
             "f_notification_alert": "Notification alert",
             "f_email_alert_period": "Email Alert period",
             "f_sms_alert_period": "SMS Alert period",
-            "f_notification_alert_period": "Notification Alert period"
+            "f_notification_alert_period": "Notification Alert period",
+            "f_email": "Email",
+            "f_phone": "Phone",
+            "f_add_ping_log_in_db": "Add ping log in DB",
+            "f_interval_db_log_store": "Interval DB log store"
         },
         "e_application_config": {
             "label_entity": "Application config",

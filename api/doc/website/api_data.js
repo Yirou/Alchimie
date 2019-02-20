@@ -10599,6 +10599,34 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert_period",
             "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_email",
+            "description": "<p><code>f_email</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_phone",
+            "description": "<p><code>f_phone</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_config.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of server_config</p>"
           }
         ]
       }
@@ -10713,6 +10741,34 @@ define({ "api": [
             "optional": false,
             "field": "server_configs.f_notification_alert_period",
             "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_configs.f_email",
+            "description": "<p><code>f_email</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_configs.f_phone",
+            "description": "<p><code>f_phone</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_configs.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_configs.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of server_config</p>"
           },
           {
             "group": "Success 200",
@@ -10843,6 +10899,34 @@ define({ "api": [
             "optional": true,
             "field": "f_notification_alert_period",
             "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_email",
+            "description": "<p><code>f_email</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_phone",
+            "description": "<p><code>f_phone</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of server_config</p>"
           }
         ],
         "Query parameters": [
@@ -10935,6 +11019,34 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert_period",
             "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_email",
+            "description": "<p><code>f_email</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_phone",
+            "description": "<p><code>f_phone</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_config.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of server_config</p>"
           }
         ]
       }
@@ -11037,6 +11149,34 @@ define({ "api": [
             "optional": true,
             "field": "f_notification_alert_period",
             "description": "<p>New value of <code>f_notification_alert_period</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_email",
+            "description": "<p>New value of <code>f_email</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_phone",
+            "description": "<p>New value of <code>f_phone</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_add_ping_log_in_db",
+            "description": "<p>New value of <code>f_add_ping_log_in_db</code> for server_config</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_interval_db_log_store",
+            "description": "<p>New value of <code>f_interval_db_log_store</code> for server_config</p>"
           }
         ],
         "Query parameters": [
@@ -11129,6 +11269,34 @@ define({ "api": [
             "optional": false,
             "field": "server_config.f_notification_alert_period",
             "description": "<p><code>f_notification_alert_period</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_email",
+            "description": "<p><code>f_email</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server_config.f_phone",
+            "description": "<p><code>f_phone</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "server_config.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of server_config</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "server_config.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of server_config</p>"
           }
         ]
       }

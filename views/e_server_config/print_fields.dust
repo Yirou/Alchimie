@@ -115,4 +115,62 @@
             <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_notification_alert_period" /}' name="f_notification_alert_period_print" value="{f_notification_alert_period}" type="number" max="2147483648" readonly="">
         </div>
     </div>
+    <div data-field="f_email" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_email">
+                {@__ key="entity.e_server_config.f_email"/}&nbsp;
+                {@inline_help field="f_email"}
+                <i data-field="f_email" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_email" /}' name="f_email_print" value="{f_email}" type="text" data-type="email" readonly="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_phone" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_phone">
+                {@__ key="entity.e_server_config.f_phone"/}&nbsp;
+                {@inline_help field="f_phone"}
+                <i data-field="f_phone" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_phone" /}' name="f_phone_print" value="{f_phone}" type="tel" readonly="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_add_ping_log_in_db" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_add_ping_log_in_db">
+                {@__ key="entity.e_server_config.f_add_ping_log_in_db"/}&nbsp;
+                {@inline_help field="f_add_ping_log_in_db"}
+                <i data-field="f_add_ping_log_in_db" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_add_ping_log_in_db} <input class="form-control input" name="f_add_ping_log_in_db_print" value="{f_add_ping_log_in_db}" type="checkbox" checked="" disabled="">
+            {:else} <input class="form-control input" name="f_add_ping_log_in_db_print" value="{f_add_ping_log_in_db}" type="checkbox" disabled="">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_interval_db_log_store" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_interval_db_log_store">
+                {@__ key="entity.e_server_config.f_interval_db_log_store"/}&nbsp;
+                {@inline_help field="f_interval_db_log_store"}
+                <i data-field="f_interval_db_log_store" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_server_config.f_interval_db_log_store" /}' name="f_interval_db_log_store_print" value="{f_interval_db_log_store}" type="number" max="2147483648" readonly="">
+        </div>
+    </div>
 </div>

@@ -1,37 +1,11 @@
 $(function () {
-//    function loadData(organization) {
-//        if (organization)
-//            $.ajax({
-//                url: '/default/get-organization-data?organization=' + organization,
-//                success: function (data) {
-//                    if (data) {
-//                        console.log(data);
-//                        var config = {
-//                            dataSource: data,
-//                            cluster: true,
-//                            clusterColours: ["#DD79FF", "#00FF30", "#5168FF", "#f83f00", "#ff8d8f"],
-//                            forceLocked: false,
-//                            nodeCaption: "title",
-//                            edgeCaption: "relatedness",
-//                            nodeCaptionsOnByDefault: true,
-//                            nodeTypes: {"type": ["philosopher"]},
-//                            directedEdges: true,
-//                            nodeStyle: {
-//                                "philosopher": {
-//                                    "radius": 18
-//                                }
-//                            },
-//                            initialScale: 0.7,
-//                            initialTranslate: [250, 150]
-//                        };
-//
-//                        alchemy = new Alchemy(config);
-//                        console.log(alchemy)
-//                    }
-//
-//                }
-//            });
-//    }
+    var serverOffset = 0;
+    var applicationOffset = 0;
+    var chartData = [], chartLabels = [], chart;
+    var firstLaunch = true;
+    var updateInterval = 500; //Fetch data ever x milliseconds
+    var realtime = 'on'; //If == to on then fetch data every x seconds. else stop fetching
+
     $('#from_date,#to_date').on('changeDate', function () {
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
@@ -90,69 +64,82 @@ $(function () {
                 url: '/server/status-data?server=' + idServer,
                 data: {
                     startDate: startDate,
-                    endDate: endDate
+                    endDate: endDate,
+                    offset: serverOffset
                 },
                 success: function (data) {
+                    serverOffset += data.length;
                     updatePlot(data);
                 }
             });
     };
 
 
-    var data = [], labels = [], chart;
-    var lastServerHistoryID, lastApplicationHistoryID;
 
-    function initChart(data, labels) {
+    function initChart() {
+        if (chart)
+            chart.destroy();
         var ctx = $("#interactive");
-
         var color = Chart.helpers.color;
         var cfg = {
-            type: 'bar',
-            responsive: true,
+            type: 'line',
             data: {
-                labels: labels,
-                datasets: [{
+                labels: chartLabels,
+                datasets: [
+                    {
                         label: 'Server name',
                         backgroundColor: 'red',
                         borderColor: 'red',
-                        data: data,
+                        data: chartData,
                         type: 'line',
                         pointRadius: 0,
                         fill: false,
                         lineTension: 0,
                         borderWidth: 2
-                    }]
+                    }
+                ]
             },
             options: {
+                responsive: true,
+                animation: {
+                    duration: 200 * 1.5,
+                    easing: 'linear'
+                },
                 scales: {
-                    xAxes: [{
+                    xAxes: [
+                        {
                             type: 'time',
                             distribution: 'series',
+                            display: true,
                             ticks: {
                                 source: 'labels'
                             }
-                        }],
-                    yAxes: [{
+                        }
+                    ],
+                    yAxes: [
+                        {
                             scaleLabel: {
                                 display: true,
                                 labelString: 'Ping status'
                             }
-                        }]
+                        }
+                    ]
                 }
             }
         };
         chart = new Chart(ctx, cfg);
     }
+
     if ($('#interactive').length) {
-        initChart([], []);
-//        formatData([]);
+        initChart();
     }
-    function formatData(history_status) {
+    function addDataOnChart(history_status) {
         var labels_hours = [];
         var labels_month = [];
         var labels_year = [];
-
+        var data = [];
         for (var i = 0; i < history_status.length; i++) {
+
             var createdAt = moment(new Date(history_status[i].createdAt));
 
             if (labels_hours.indexOf(createdAt.format('HH')) < 0)
@@ -164,53 +151,56 @@ $(function () {
             if (labels_year.indexOf(createdAt.format('MMMM YYYY')) < 0)
                 labels_year.push(createdAt.format('MMMM YYYY'));
 
+            if (!firstLaunch)
+                data.shift();
             if (history_status[i].f_is_alive)
-                data.push({t: createdAt.valueOf(), y: randomFloat(0, 50)});
+                data.push({t: createdAt.valueOf(), y: history_status[i].f_time || 5});
             else
-                data.push({t: createdAt.valueOf(), y: randomFloat(-50, 0)});
+                data.push({t: createdAt.valueOf(), y: -(history_status[i].f_time || 5)});
+            console.log({t: createdAt.valueOf(), y: history_status[i].f_time || 5})
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push({t: createdAt.valueOf(), y: history_status[i].f_time || 5});
+            });
+            chart.update();
         }
 
         if (labels_year.length > 1) {
-            labels = labels_year;
+            chartLabels = labels_year;
             return;
         } else if (labels_month.length > 1) {
-            labels = labels_month;
+            chartLabels = labels_month;
             return;
         } else {
-            labels = labels_hours;
+            chartLabels = labels_hours;
         }
-        initChart(data, labels);
+        firstLaunch = false;
     }
 
     var randomFloat = function (min, max) {
         return (Math.random() * (max - min) + min).toFixed(2);
     }
 
-
-    var updateInterval = 500; //Fetch data ever x milliseconds
-    var realtime = 'on'; //If == to on then fetch data every x seconds. else stop fetching
-
     function update() {
         var idServer = $('#select_server_status_visualization').val();
         var idApplication = $('#select_application_status_visualization').val();
-        if (idApplication)
+
+        if (idApplication && idApplication !== '')
             loadApplicationData(idApplication);
         else if (idServer)
             loadServerData(idServer);
     }
 
     function updatePlot(data) {
-        chart.destroy();
-        formatData(data);
+        addDataOnChart(data);
         // Since the axes don't change, we don't need to call plot.setupGrid()
         if (realtime === 'on')
             setTimeout(update, updateInterval);
     }
 
     //INITIALIZE REALTIME DATA FETCHING
-    if (realtime === 'on') {
-        update();
-    }
+//    if (realtime === 'on') {
+//        update();
+//    }
     //REALTIME TOGGLE
     $('#realtime .btn').click(function () {
         if ($(this).data('toggle') === 'on') {

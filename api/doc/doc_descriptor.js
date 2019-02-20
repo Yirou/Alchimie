@@ -2202,6 +2202,10 @@
  * @apiSuccess {Integer} server_configs.f_email_alert_period <code>f_email_alert_period</code> of server_config
  * @apiSuccess {Integer} server_configs.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
  * @apiSuccess {Integer} server_configs.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
+ * @apiSuccess {String} server_configs.f_email <code>f_email</code> of server_config
+ * @apiSuccess {String} server_configs.f_phone <code>f_phone</code> of server_config
+ * @apiSuccess {Boolean} server_configs.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of server_config
+ * @apiSuccess {Integer} server_configs.f_interval_db_log_store <code>f_interval_db_log_store</code> of server_config
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for server_config
@@ -2226,6 +2230,10 @@
  * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
+ * @apiSuccess {String} server_config.f_email <code>f_email</code> of server_config
+ * @apiSuccess {String} server_config.f_phone <code>f_phone</code> of server_config
+ * @apiSuccess {Boolean} server_config.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of server_config
+ * @apiSuccess {Integer} server_config.f_interval_db_log_store <code>f_interval_db_log_store</code> of server_config
  * @apiError (Error 404) {Object} NotFound No server_config with ID <code>id</code> found
  */
 
@@ -2244,6 +2252,10 @@
  * @apiParam (Body parameters) {Integer} [f_email_alert_period] <code>f_email_alert_period</code> of server_config
  * @apiParam (Body parameters) {Integer} [f_sms_alert_period] <code>f_sms_alert_period</code> of server_config
  * @apiParam (Body parameters) {Integer} [f_notification_alert_period] <code>f_notification_alert_period</code> of server_config
+ * @apiParam (Body parameters) {String} [f_email] <code>f_email</code> of server_config
+ * @apiParam (Body parameters) {String} [f_phone] <code>f_phone</code> of server_config
+ * @apiParam (Body parameters) {Boolean} [f_add_ping_log_in_db] <code>f_add_ping_log_in_db</code> of server_config
+ * @apiParam (Body parameters) {Integer} [f_interval_db_log_store] <code>f_interval_db_log_store</code> of server_config
  * @apiSuccess {Object} server_config Created server_config
  * @apiSuccess {Integer} server_config.id <code>id</code> of server_config
  * @apiSuccess {Boolean} server_config.f_check_status <code>f_check_status</code> of server_config
@@ -2255,6 +2267,10 @@
  * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
+ * @apiSuccess {String} server_config.f_email <code>f_email</code> of server_config
+ * @apiSuccess {String} server_config.f_phone <code>f_phone</code> of server_config
+ * @apiSuccess {Boolean} server_config.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of server_config
+ * @apiSuccess {Integer} server_config.f_interval_db_log_store <code>f_interval_db_log_store</code> of server_config
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create server_config
  */
 
@@ -2274,6 +2290,10 @@
  * @apiParam (Body parameters) {Integer} [f_email_alert_period] New value of <code>f_email_alert_period</code> for server_config
  * @apiParam (Body parameters) {Integer} [f_sms_alert_period] New value of <code>f_sms_alert_period</code> for server_config
  * @apiParam (Body parameters) {Integer} [f_notification_alert_period] New value of <code>f_notification_alert_period</code> for server_config
+ * @apiParam (Body parameters) {String} [f_email] New value of <code>f_email</code> for server_config
+ * @apiParam (Body parameters) {String} [f_phone] New value of <code>f_phone</code> for server_config
+ * @apiParam (Body parameters) {Boolean} [f_add_ping_log_in_db] New value of <code>f_add_ping_log_in_db</code> for server_config
+ * @apiParam (Body parameters) {Integer} [f_interval_db_log_store] New value of <code>f_interval_db_log_store</code> for server_config
  * @apiSuccess {Object} server_config Updated server_config
  * @apiSuccess {Integer} server_config.id <code>id</code> of server_config
  * @apiSuccess {Boolean} server_config.f_check_status <code>f_check_status</code> of server_config
@@ -2285,6 +2305,10 @@
  * @apiSuccess {Integer} server_config.f_email_alert_period <code>f_email_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_sms_alert_period <code>f_sms_alert_period</code> of server_config
  * @apiSuccess {Integer} server_config.f_notification_alert_period <code>f_notification_alert_period</code> of server_config
+ * @apiSuccess {String} server_config.f_email <code>f_email</code> of server_config
+ * @apiSuccess {String} server_config.f_phone <code>f_phone</code> of server_config
+ * @apiSuccess {Boolean} server_config.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of server_config
+ * @apiSuccess {Integer} server_config.f_interval_db_log_store <code>f_interval_db_log_store</code> of server_config
  * @apiError (Error 404) {Object} NotFound No server_config with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update server_config
  */

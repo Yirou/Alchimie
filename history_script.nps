@@ -138,3 +138,8 @@ select entity Server config
 add field Email Alert period with type integer
 add field SMS Alert period with type integer
 add field Notification Alert period with type integer
+//ERROR: add field Email alert with type email (database.field.error.alreadyExist)
+add field Email with type email
+add field  Phone with type tel
+add field Add ping log in DB with type boolean
+add field Interval DB log store with type number

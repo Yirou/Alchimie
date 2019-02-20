@@ -18,7 +18,7 @@ var fs = require('fs-extra');
 var dust = require('dustjs-linkedin');
 var moment = require("moment");
 var SELECT_PAGE_SIZE = 10;
-
+var monitor = require('../utils/monitor_helper');
 // Enum and radio managment
 var enums_radios = require('../utils/enum_radio.js');
 
@@ -324,7 +324,7 @@ router.post('/update', block_access.actionAccessMiddleware("server", "update"), 
         }
         component_helper.updateAddressIfComponentExist(e_server, options, req.body);
         e_server.update(updateObject).then(function () {
-
+            monitor.monitor.addServer(id_e_server);
             // We have to find value in req.body that are linked to an hasMany or belongsToMany association
             // because those values are not updated for now
             model_builder.setAssocationManyValues(e_server, req.body, updateObject, options).then(function () {
@@ -740,13 +740,11 @@ router.get('/status-data', block_access.actionAccessMiddleware("server", "read")
             $gt: lastID
         };
     models.E_server_status_history.findAll({
-        where: {
-            fk_id_server: idServer,
-            createdAt: whereCreatedAt
-        },
-        attributes: ['f_is_alive', 'createdAt'],
+        where: where,
+        attributes: ['f_is_alive', 'createdAt', 'f_time'],
         limit: 100,
-        order: [['id', 'DESC']]
+        offset: parseInt(req.query.offset || 0),
+        order: [['id', 'ASC']]
     }).then(function (statusData) {
         res.status(200).json(statusData);
     }).catch(function (err) {

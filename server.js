@@ -38,7 +38,7 @@ var extend = require('util')._extend;
 var https = require('https');
 var http = require('http');
 var fs = require('fs-extra');
-
+var monitor = require('./utils/monitor_helper');
 // Winston logger
 var logger = require('./utils/logger');
 
@@ -448,7 +448,8 @@ models.sequelize.sync({logging: false, hooks: false}).then(function () {
 
         // Handle access.json file for various situation
         block_access.accessFileManagment();
-
+        monitor.loadServersOnStart();
+        monitor.loadApplicationsOnStart();
         server.listen(port);
         console.log("Started " + protocol + " on " + port + " !");
     }).catch(function (err) {

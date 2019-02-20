@@ -32,6 +32,18 @@
             <th data-field="f_notification_alert_period" data-col="f_notification_alert_period" data-type="integer">
                 {@__ key="entity.e_server_config.f_notification_alert_period"/}
             </th>
+            <th data-field="f_email" data-col="f_email" data-type="email">
+                {@__ key="entity.e_server_config.f_email"/}
+            </th>
+            <th data-field="f_phone" data-col="f_phone" data-type="tel">
+                {@__ key="entity.e_server_config.f_phone"/}
+            </th>
+            <th data-field="f_add_ping_log_in_db" data-col="f_add_ping_log_in_db" data-type="boolean">
+                {@__ key="entity.e_server_config.f_add_ping_log_in_db"/}
+            </th>
+            <th data-field="f_interval_db_log_store" data-col="f_interval_db_log_store" data-type="integer">
+                {@__ key="entity.e_server_config.f_interval_db_log_store"/}
+            </th>
 
             {@actionAccess entity="server_config" action="read"}
             <th></th>
@@ -77,6 +89,18 @@
             <th data-field="f_notification_alert_period" data-col="f_notification_alert_period" data-type="integer">
                 {@__ key="entity.e_server_config.f_notification_alert_period"/}
             </th>
+            <th data-field="f_email" data-col="f_email" data-type="email">
+                {@__ key="entity.e_server_config.f_email"/}
+            </th>
+            <th data-field="f_phone" data-col="f_phone" data-type="tel">
+                {@__ key="entity.e_server_config.f_phone"/}
+            </th>
+            <th data-field="f_add_ping_log_in_db" data-col="f_add_ping_log_in_db" data-type="boolean">
+                {@__ key="entity.e_server_config.f_add_ping_log_in_db"/}
+            </th>
+            <th data-field="f_interval_db_log_store" data-col="f_interval_db_log_store" data-type="integer">
+                {@__ key="entity.e_server_config.f_interval_db_log_store"/}
+            </th>
 
             {@actionAccess entity="server_config" action="read"}
             <th></th>
@@ -102,6 +126,10 @@
             <td data-field="f_email_alert_period" data-type="integer">{f_email_alert_period}</td>
             <td data-field="f_sms_alert_period" data-type="integer">{f_sms_alert_period}</td>
             <td data-field="f_notification_alert_period" data-type="integer">{f_notification_alert_period}</td>
+            <td data-field="f_email" data-type="email">{f_email}</td>
+            <td data-field="f_phone" data-type="tel">{f_phone}</td>
+            <td data-field="f_add_ping_log_in_db" data-type="boolean">{f_add_ping_log_in_db}</td>
+            <td data-field="f_interval_db_log_store" data-type="integer">{f_interval_db_log_store}</td>
 
             {@eq key=for value="fieldset"}
             {@actionAccess entity="server_config" action="update"}
