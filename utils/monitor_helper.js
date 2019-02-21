@@ -63,10 +63,10 @@ var monitor = {
     },
     addApp: function (app) {
         return new Promise(function (resolve, reject) {
-            if (app.f_url) {
+            if (app.f_url || app.f_ip) {
                 var conf = {
                     id: app.id,
-                    url: app.f_url,
+                    url: (app.f_url ? app.f_url : app.f_ip + (app.f_port ? (':' + app.f_port) : '')),
                     checkstatus: app.f_check_status,
                     interval: app.f_interval || defaultsAppConf.interval,
                     f_alert_pings_failed: app.f_alert_pings_failed || defaultsAppConf.f_alert_pings_failed,

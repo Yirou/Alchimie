@@ -397,7 +397,14 @@
             "f_sms_alert": "SMS alert",
             "f_notification_alert": "Notification alert",
             "r_application_status_history": "Application status history",
-            "r_application_alert": "Application alert"
+            "r_application_alert": "Application alert",
+            "f_email_alert_period": "Email Alert period",
+            "f_sms_alert_period": "SMS Alert period",
+            "f_notification_alert_period": "Notification Alert period",
+            "f_email": "Email",
+            "f_phone": "Phone",
+            "f_add_ping_log_in_db": "Add ping log in DB",
+            "f_interval_db_log_store": "Interval DB log store"
         },
         "e_history_e_application_s_status": {
             "label_entity": "History application status",

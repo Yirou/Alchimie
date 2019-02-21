@@ -143,3 +143,11 @@ add field Email with type email
 add field  Phone with type tel
 add field Add ping log in DB with type boolean
 add field Interval DB log store with type number
+select entity Application
+add field Email Alert period  with type integer
+add field SMS Alert period with type integer
+add field Notification Alert period with type integer
+add field Email with type mail
+add field Phone with type tel
+add field Add ping log in DB with type boolean
+add field Interval DB log store with type integer

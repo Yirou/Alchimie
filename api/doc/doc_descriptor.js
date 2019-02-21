@@ -2029,6 +2029,13 @@
  * @apiSuccess {Boolean} applications.f_email_alert <code>f_email_alert</code> of application
  * @apiSuccess {Boolean} applications.f_sms_alert <code>f_sms_alert</code> of application
  * @apiSuccess {Boolean} applications.f_notification_alert <code>f_notification_alert</code> of application
+ * @apiSuccess {Integer} applications.f_email_alert_period <code>f_email_alert_period</code> of application
+ * @apiSuccess {Integer} applications.f_sms_alert_period <code>f_sms_alert_period</code> of application
+ * @apiSuccess {Integer} applications.f_notification_alert_period <code>f_notification_alert_period</code> of application
+ * @apiSuccess {String} applications.f_email <code>f_email</code> of application
+ * @apiSuccess {String} applications.f_phone <code>f_phone</code> of application
+ * @apiSuccess {Boolean} applications.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of application
+ * @apiSuccess {Integer} applications.f_interval_db_log_store <code>f_interval_db_log_store</code> of application
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for application
@@ -2058,6 +2065,13 @@
  * @apiSuccess {Boolean} application.f_email_alert <code>f_email_alert</code> of application
  * @apiSuccess {Boolean} application.f_sms_alert <code>f_sms_alert</code> of application
  * @apiSuccess {Boolean} application.f_notification_alert <code>f_notification_alert</code> of application
+ * @apiSuccess {Integer} application.f_email_alert_period <code>f_email_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_sms_alert_period <code>f_sms_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_notification_alert_period <code>f_notification_alert_period</code> of application
+ * @apiSuccess {String} application.f_email <code>f_email</code> of application
+ * @apiSuccess {String} application.f_phone <code>f_phone</code> of application
+ * @apiSuccess {Boolean} application.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of application
+ * @apiSuccess {Integer} application.f_interval_db_log_store <code>f_interval_db_log_store</code> of application
  * @apiError (Error 404) {Object} NotFound No application with ID <code>id</code> found
  */
 
@@ -2096,6 +2110,13 @@
  * @apiParam (Body parameters) {Boolean} [f_email_alert] <code>f_email_alert</code> of application
  * @apiParam (Body parameters) {Boolean} [f_sms_alert] <code>f_sms_alert</code> of application
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] <code>f_notification_alert</code> of application
+ * @apiParam (Body parameters) {Integer} [f_email_alert_period] <code>f_email_alert_period</code> of application
+ * @apiParam (Body parameters) {Integer} [f_sms_alert_period] <code>f_sms_alert_period</code> of application
+ * @apiParam (Body parameters) {Integer} [f_notification_alert_period] <code>f_notification_alert_period</code> of application
+ * @apiParam (Body parameters) {String} [f_email] <code>f_email</code> of application
+ * @apiParam (Body parameters) {String} [f_phone] <code>f_phone</code> of application
+ * @apiParam (Body parameters) {Boolean} [f_add_ping_log_in_db] <code>f_add_ping_log_in_db</code> of application
+ * @apiParam (Body parameters) {Integer} [f_interval_db_log_store] <code>f_interval_db_log_store</code> of application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_status_history to associate
@@ -2116,6 +2137,13 @@
  * @apiSuccess {Boolean} application.f_email_alert <code>f_email_alert</code> of application
  * @apiSuccess {Boolean} application.f_sms_alert <code>f_sms_alert</code> of application
  * @apiSuccess {Boolean} application.f_notification_alert <code>f_notification_alert</code> of application
+ * @apiSuccess {Integer} application.f_email_alert_period <code>f_email_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_sms_alert_period <code>f_sms_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_notification_alert_period <code>f_notification_alert_period</code> of application
+ * @apiSuccess {String} application.f_email <code>f_email</code> of application
+ * @apiSuccess {String} application.f_phone <code>f_phone</code> of application
+ * @apiSuccess {Boolean} application.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of application
+ * @apiSuccess {Integer} application.f_interval_db_log_store <code>f_interval_db_log_store</code> of application
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create application
  */
 
@@ -2140,6 +2168,13 @@
  * @apiParam (Body parameters) {Boolean} [f_email_alert] New value of <code>f_email_alert</code> for application
  * @apiParam (Body parameters) {Boolean} [f_sms_alert] New value of <code>f_sms_alert</code> for application
  * @apiParam (Body parameters) {Boolean} [f_notification_alert] New value of <code>f_notification_alert</code> for application
+ * @apiParam (Body parameters) {Integer} [f_email_alert_period] New value of <code>f_email_alert_period</code> for application
+ * @apiParam (Body parameters) {Integer} [f_sms_alert_period] New value of <code>f_sms_alert_period</code> for application
+ * @apiParam (Body parameters) {Integer} [f_notification_alert_period] New value of <code>f_notification_alert_period</code> for application
+ * @apiParam (Body parameters) {String} [f_email] New value of <code>f_email</code> for application
+ * @apiParam (Body parameters) {String} [f_phone] New value of <code>f_phone</code> for application
+ * @apiParam (Body parameters) {Boolean} [f_add_ping_log_in_db] New value of <code>f_add_ping_log_in_db</code> for application
+ * @apiParam (Body parameters) {Integer} [f_interval_db_log_store] New value of <code>f_interval_db_log_store</code> for application
  * @apiParam (Body parameters) {Integer} [fk_id_application_history_status] <code>id</code> of entity history_e_application_s_status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_status_status] <code>id</code> of entity status to associate
  * @apiParam (Body parameters) {Integer} [fk_id_application] <code>id</code> of entity application_status_history to associate
@@ -2160,6 +2195,13 @@
  * @apiSuccess {Boolean} application.f_email_alert <code>f_email_alert</code> of application
  * @apiSuccess {Boolean} application.f_sms_alert <code>f_sms_alert</code> of application
  * @apiSuccess {Boolean} application.f_notification_alert <code>f_notification_alert</code> of application
+ * @apiSuccess {Integer} application.f_email_alert_period <code>f_email_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_sms_alert_period <code>f_sms_alert_period</code> of application
+ * @apiSuccess {Integer} application.f_notification_alert_period <code>f_notification_alert_period</code> of application
+ * @apiSuccess {String} application.f_email <code>f_email</code> of application
+ * @apiSuccess {String} application.f_phone <code>f_phone</code> of application
+ * @apiSuccess {Boolean} application.f_add_ping_log_in_db <code>f_add_ping_log_in_db</code> of application
+ * @apiSuccess {Integer} application.f_interval_db_log_store <code>f_interval_db_log_store</code> of application
  * @apiError (Error 404) {Object} NotFound No application with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update application
  */

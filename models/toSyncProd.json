@@ -87,6 +87,13 @@
         "ALTER TABLE 1_e_server_config ADD COLUMN `f_email` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_server_config ADD COLUMN `f_phone` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_server_config ADD COLUMN `f_add_ping_log_in_db` BOOLEAN DEFAULT null;",
-        "ALTER TABLE 1_e_server_config ADD COLUMN `f_interval_db_log_store` INT DEFAULT null;"
+        "ALTER TABLE 1_e_server_config ADD COLUMN `f_interval_db_log_store` INT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_email_alert_period` INT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_sms_alert_period` INT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_notification_alert_period` INT DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_email` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_phone` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_add_ping_log_in_db` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 1_e_application ADD COLUMN `f_interval_db_log_store` INT DEFAULT null;"
     ]
 }

@@ -77,5 +77,40 @@
         "type": "BOOLEAN",
         "newmipsType": "boolean",
         "defaultValue": null
+    },
+    "f_email_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
+    },
+    "f_sms_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
+    },
+    "f_notification_alert_period": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
+    },
+    "f_email": {
+        "type": "STRING",
+        "newmipsType": "mail",
+        "defaultValue": null
+    },
+    "f_phone": {
+        "type": "STRING",
+        "newmipsType": "tel",
+        "defaultValue": null
+    },
+    "f_add_ping_log_in_db": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_interval_db_log_store": {
+        "type": "INTEGER",
+        "newmipsType": "integer",
+        "defaultValue": null
     }
 }

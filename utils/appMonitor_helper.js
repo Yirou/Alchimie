@@ -49,23 +49,19 @@ var alert = function alert(appConfig, pingResult) {
         if (appConfig.alert.notification) {
 
         }
-        try {
-            addDBLog(appConfig, pingResult);
-        } catch (e) {
-            console.log(e)
-        }
-
+        addDBLog(appConfig, pingResult);
     }
 
 };
 
 var addDBLog = function (appConfig, pingResult) {
     /*add log in db each hour*/
-    console.log("add log")
     models.E_application_status_history.findOne({
         where: {fk_id_application: appConfig.id},
         order: [['id', 'DESC']]
     }).then(function (e_application_status_history) {
+       
+        appConfig.application.update({f_is_alive: apps[appConfig.id].isAlive});
         if (e_application_status_history) {
             var now = moment();
             if (now.diff(moment(new Date(e_application_status_history.createdAt)), 'minutes') > appConfig.alert.db.period) {
@@ -76,7 +72,6 @@ var addDBLog = function (appConfig, pingResult) {
                     f_min: pingResult.min,
                     f_max: pingResult.max
                 });
-                appConfig.application.update({f_is_alive: apps[appConfig.id].isAlive});
             }
         } else {
             models.E_application_status_history.create({

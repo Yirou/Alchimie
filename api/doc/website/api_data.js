@@ -1316,6 +1316,55 @@ define({ "api": [
             "optional": false,
             "field": "application.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_email",
+            "description": "<p><code>f_email</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_phone",
+            "description": "<p><code>f_phone</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of application</p>"
           }
         ]
       }
@@ -1465,6 +1514,55 @@ define({ "api": [
             "optional": false,
             "field": "applications.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "applications.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "applications.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "applications.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "applications.f_email",
+            "description": "<p><code>f_email</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "applications.f_phone",
+            "description": "<p><code>f_phone</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "applications.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "applications.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of application</p>"
           },
           {
             "group": "Success 200",
@@ -1635,6 +1733,55 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Integer",
             "optional": true,
+            "field": "f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_email",
+            "description": "<p><code>f_email</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_phone",
+            "description": "<p><code>f_phone</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
             "field": "fk_id_application_history_status",
             "description": "<p><code>id</code> of entity history_e_application_s_status to associate</p>"
           },
@@ -1778,6 +1925,55 @@ define({ "api": [
             "optional": false,
             "field": "application.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_email",
+            "description": "<p><code>f_email</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_phone",
+            "description": "<p><code>f_phone</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of application</p>"
           }
         ]
       }
@@ -1915,6 +2111,55 @@ define({ "api": [
             "optional": true,
             "field": "f_notification_alert",
             "description": "<p>New value of <code>f_notification_alert</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_email_alert_period",
+            "description": "<p>New value of <code>f_email_alert_period</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_sms_alert_period",
+            "description": "<p>New value of <code>f_sms_alert_period</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_notification_alert_period",
+            "description": "<p>New value of <code>f_notification_alert_period</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_email",
+            "description": "<p>New value of <code>f_email</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_phone",
+            "description": "<p>New value of <code>f_phone</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "f_add_ping_log_in_db",
+            "description": "<p>New value of <code>f_add_ping_log_in_db</code> for application</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_interval_db_log_store",
+            "description": "<p>New value of <code>f_interval_db_log_store</code> for application</p>"
           },
           {
             "group": "Body parameters",
@@ -2063,6 +2308,55 @@ define({ "api": [
             "optional": false,
             "field": "application.f_notification_alert",
             "description": "<p><code>f_notification_alert</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_email_alert_period",
+            "description": "<p><code>f_email_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_sms_alert_period",
+            "description": "<p><code>f_sms_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_notification_alert_period",
+            "description": "<p><code>f_notification_alert_period</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_email",
+            "description": "<p><code>f_email</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "application.f_phone",
+            "description": "<p><code>f_phone</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "application.f_add_ping_log_in_db",
+            "description": "<p><code>f_add_ping_log_in_db</code> of application</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "application.f_interval_db_log_store",
+            "description": "<p><code>f_interval_db_log_store</code> of application</p>"
           }
         ]
       }
