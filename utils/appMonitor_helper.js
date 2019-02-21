@@ -119,9 +119,9 @@ function sendMailAlert(appConfig) {
         });
     });
 }
-function sendSMSAlert(serverConfig) {
+function sendSMSAlert(appConfig) {
     console.log("send sms")
 }
-function sendNotificationAlert(serverConfig) {
+function sendNotificationAlert(appConfig) {
     console.log("Notification")
 }

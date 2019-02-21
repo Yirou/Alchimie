@@ -28,7 +28,7 @@ exports.buildData = function (organization) {
 
 var addServerToOrganization = function (organization, data) {
     organization.r_server.forEach(function (server) {
-        
+
         if (data[organization.f_name].dependedOnBy.indexOf("Server " + server.f_name) < 0)
             data[organization.f_name].dependedOnBy.push("Server " + server.f_name);
 
@@ -38,7 +38,8 @@ var addServerToOrganization = function (organization, data) {
                 "name": "Server " + server.f_name,
                 "docs": '',
                 "hasFile": server.f_file !== null,
-                "dependedOnBy": []
+                "dependedOnBy": [],
+                "depends": []
             };
         if (typeof data["Server " + server.f_name].depends === 'undefined')
             data["Server " + server.f_name].depends = [];
@@ -49,6 +50,7 @@ var addServerToOrganization = function (organization, data) {
         buildDoc('server', data["Server " + server.f_name], server);
         addApplicationToServer(server, data);
         addServiceToServer(server, data);
+        addServerToServer(server, data);
     });
 };
 
@@ -94,6 +96,29 @@ var addServiceToServer = function (server, data) {
         if (data["Service " + service.f_name].depends.indexOf("Server " + server.f_name) < 0)
             data["Service " + service.f_name].depends.push("Server " + server.f_name);
         buildDoc('service', data["Service " + service.f_name], service);
+    });
+}
+
+function addServerToServer(server, data) {
+    server.r_server.forEach(function (_server) {
+        if (typeof data["Server " + _server.f_name] === 'undefined')
+            data["Server " + _server.f_name] = {
+                "type": "server",
+                "name": "Server " + _server.f_name,
+                "docs": '',
+                "hasFile": _server.f_file !== null,
+                "dependedOnBy": [],
+                "depends": []
+            };
+
+        if (data["Server " + server.f_name].dependedOnBy.indexOf("Server " + _server.f_name) < 0)
+            data["Server " + server.f_name].dependedOnBy.push("Server " + _server.f_name);
+
+        if (typeof data["Server " + _server.f_name].depends === 'undefined')
+            data["Server " + _server.f_name].depends = [];
+
+        if (data["Server " + _server.f_name].depends.indexOf("Server " + server.f_name) < 0)
+            data["Server " + _server.f_name].depends.push("Server " + server.f_name);
     });
 }
 var buildDoc = function (type, elt, object) {

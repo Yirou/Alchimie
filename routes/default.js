@@ -71,7 +71,8 @@ router.get('/get-organization-data', block_access.isLoggedIn, function (req, res
                 required: true,
                 include: [
                     {model: models.E_application, as: 'r_application'},
-                    {model: models.E_service, as: 'r_service'}
+                    {model: models.E_service, as: 'r_service'},
+                    {model: models.E_server, as: 'r_server'}
                 ]
             }
         ]

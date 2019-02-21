@@ -448,8 +448,8 @@ models.sequelize.sync({logging: false, hooks: false}).then(function () {
 
         // Handle access.json file for various situation
         block_access.accessFileManagment();
-        monitor.loadServersSupervisorOnStart();
-        monitor.loadApplicationsSupervisorOnStart();
+//        monitor.loadServersSupervisorOnStart();
+//        monitor.loadApplicationsSupervisorOnStart();
         server.listen(port);
         console.log("Started " + protocol + " on " + port + " !");
     }).catch(function (err) {

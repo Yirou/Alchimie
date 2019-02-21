@@ -715,7 +715,8 @@ router.get('/ajax-list', block_access.actionAccessMiddleware("application", "rea
     models.E_application.findAll({
         where: {
             fk_id_server: idServer
-        }
+        },
+        attributes: ['id', 'f_name']
     }).then(function (applications) {
         res.status(200).json(applications);
     }).catch(function (err) {
@@ -727,14 +728,40 @@ router.get('/status-data', block_access.actionAccessMiddleware("application", "r
     var idApplication = req.query.app;
     var today = moment();
     var todayCopy = today.clone();
-    models.E_application_status_history.findAll({
-        where: {
-            fk_id_application: idApplication,
-            createdAt: {
-                $between: [today.subtract(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'), todayCopy.endOf('day').format('YYYY-MM-DD HH:mm:ss')]
-            }
-        },
-        attributes: ['f_is_alive', 'createdAt']
+    var lastID = req.query.last;
+
+    var whereCreatedAt = {
+        $between: [today.subtract(1, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'), todayCopy.endOf('day').format('YYYY-MM-DD HH:mm:ss')]
+    };
+    if (req.query.startDate && !req.query.endDate)
+        whereCreatedAt = {
+            $gte: moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+        };
+    if (!req.query.startDate && req.query.endDate)
+        whereCreatedAt = {
+            $lte: moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+        };
+    if (req.query.startDate && req.query.endDate)
+        whereCreatedAt = {
+            $between: [
+                moment(req.query.startDate, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                moment(req.query.endDate, 'DD/MM/YYYY').format('YYYY-MM-DD')
+            ]
+        };
+    var where = {
+        fk_id_application: idApplication,
+        createdAt: whereCreatedAt
+    };
+    if (lastID)
+        where.id = {
+            $gt: lastID
+        };
+    models.E_application_status_history.findAndCountAll({
+        where: where,
+        attributes: ['f_is_alive', 'createdAt', 'f_time'],
+        limit: 100,
+        offset: parseInt(req.query.offset || 0),
+        order: [['id', 'ASC']]
     }).then(function (statusData) {
         res.status(200).json(statusData);
     }).catch(function (err) {

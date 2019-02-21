@@ -11,6 +11,7 @@ $(function () {
         var endDate = $('#to_date').val();
         var idServer = $('#select_server_status_visualization').val();
         var idApplication = $('#select_application_status_visualization').val();
+        resetData();
         if (idApplication && idApplication !== '')
             loadApplicationData(idApplication, startDate, endDate);
         else if (idServer)
@@ -20,20 +21,36 @@ $(function () {
         var idApplication = $(this).val();
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
-        if (idApplication)
+        var idServer = $('#select_server_status_visualization').val();
+        resetData();
+        if (idApplication && idApplication !== '') {
             loadApplicationData(idApplication, startDate, endDate);
+        } else if (idServer) {
+            loadServerData(idServer, startDate, endDate);
+        }
     });
     $('#select_server_status_visualization').change(function () {
         var idServer = $(this).val();
         var startDate = $('#from_date').val();
         var endDate = $('#to_date').val();
         $('#select_application_status_visualization').empty();
+        resetData();
         if (idServer) {
-            loadServerData(idServer, startDate, endDate);
             loadApplications(idServer);
+            loadServerData(idServer, startDate, endDate);
         }
     });
 
+    function resetData() {
+        firstLaunch = true;
+        applicationOffset = 0;
+        serverOffset = 0;
+        chartData = [];
+        chartLabels = [];
+        if ($('#interactive').length) {
+            initChart();
+        }
+    }
     var loadApplications = function (idServer) {
         $.ajax({
             url: '/application/ajax-list?server=' + idServer,
@@ -43,23 +60,36 @@ $(function () {
                     $('#select_application_status_visualization').append('<option value=' + application.id + '>' + application.f_name + '</option>');
                 });
             }
-        })
-    }
+        });
+    };
 
     var loadApplicationData = function (idApplication, startDate, endDate) {
         $.ajax({
             url: '/application/status-data?app=' + idApplication,
             data: {
                 startDate: startDate,
-                endDate: endDate
+                endDate: endDate,
+                offset: applicationOffset
             },
             success: function (data) {
+                applicationOffset += data.rows.length;
+                if (endDate) {
+                    var today = moment();
+                    var _endDate = moment(endDate, 'DD/MM/YYYY');
+                    if (today.diff(_endDate.startOf('day'), 'days') === 0) {
+                        /*if today enable realtime*/
+                        realtime = 'on';
+                    } else {
+                        realtime = 'off';
+                        console.log("disable realtime");
+                    }
+                }
                 updatePlot(data);
             }
         });
     };
 
-    var loadServerData = function (idServer, startDate, endDate) {
+    var loadServerData = function (idServer, startDate, endDate, direction) {
         if (idServer)
             $.ajax({
                 url: '/server/status-data?server=' + idServer,
@@ -70,16 +100,81 @@ $(function () {
                 },
                 success: function (data) {
                     serverOffset += data.rows.length;
-                    updatePlot(data);
+                    if (endDate) {
+                        var today = moment();
+                        var _endDate = moment(endDate, 'DD/MM/YYYY');
+                        if (today.diff(_endDate.startOf('day'), 'days') === 0) {
+                            /*if it's today enable realtim*/
+                            realtime = 'on';
+                        } else {
+                            realtime = 'off';
+                            console.log("disable realtime");
+                        }
+                    }
+                    updatePlot(data, direction);
                 }
             });
     };
 
+    function updatePlot(data, direction) {
+        addDataOnChart(data.rows, direction);
+        // Since the axes don't change, we don't need to call plot.setupGrid()
 
+        if (realtime === 'on')
+            setTimeout(update, updateInterval);
+    }
+
+    function update() {
+        var idServer = $('#select_server_status_visualization').val();
+        var idApplication = $('#select_application_status_visualization').val();
+        var startDate = $('#from_date').val();
+        var endDate = $('#to_date').val();
+
+        if (idApplication && idApplication !== '') {
+            loadApplicationData(idApplication, startDate, endDate);
+        } else if (idServer) {
+            loadServerData(idServer, startDate, endDate);
+        }
+    }
+
+    $('#chart-prev-data').click(function () {
+        var idServer = $('#select_server_status_visualization').val();
+        var idApplication = $('#select_application_status_visualization').val();
+        var startDate = $('#from_date').val();
+        var endDate = $('#to_date').val();
+
+        if (idApplication && idApplication !== '') {
+            applicationOffset -= 100;
+            if (applicationOffset < 0)
+                applicationOffset = 0;
+            loadApplicationData(idApplication, startDate, endDate, 'previous');
+        } else {
+            serverOffset -= 100;
+            if (serverOffset < 0)
+                serverOffset = 0;
+            loadServerData(idServer, startDate, endDate, 'previous');
+        }
+    });
+    $('#chart-next-data').click(function () {
+        var idServer = $('#select_server_status_visualization').val();
+        var idApplication = $('#select_application_status_visualization').val();
+        var startDate = $('#from_date').val();
+        var endDate = $('#to_date').val();
+
+        if (idApplication && idApplication !== '') {
+            applicationOffset += 100;
+            loadApplicationData(idApplication, startDate, endDate, 'next');
+        } else {
+            serverOffset += 100;
+            loadServerData(idServer, startDate, endDate, 'next');
+        }
+    });
 
     function initChart() {
-        if (chart)
+        if (chart) {
+            chart.clear();
             chart.destroy();
+        }
         var ctx = $("#interactive");
         var color = Chart.helpers.color;
         var cfg = {
@@ -104,7 +199,7 @@ $(function () {
             options: {
                 responsive: true,
                 animation: {
-                    duration: 200 * 1.5,
+//                    duration: 200 * 1.5,
                     easing: 'linear'
                 },
                 scales: {
@@ -135,16 +230,12 @@ $(function () {
         chart = new Chart(ctx, cfg);
     }
 
-    if ($('#interactive').length) {
-        initChart();
-    }
-    function addDataOnChart(history_status) {
+
+    function addDataOnChart(history_status, direction) {
         var labels_hours = [];
         var labels_month = [];
         var labels_year = [];
-        var data = [];
         for (var i = 0; i < history_status.length; i++) {
-
             var createdAt = moment(new Date(history_status[i].createdAt));
 
             if (labels_hours.indexOf(createdAt.format('HH')) < 0)
@@ -157,8 +248,6 @@ $(function () {
                 labels_year.push(createdAt.format('MMMM YYYY'));
 
 
-
-//            console.log({t: createdAt.valueOf(), y: history_status[i].f_time || 5})
             chart.data.datasets.forEach((dataset) => {
                 if (!firstLaunch) {
                     chart.data.labels.shift();
@@ -192,25 +281,6 @@ $(function () {
         return (Math.random() * (max - min) + min).toFixed(2);
     }
 
-    function update() {
-        var idServer = $('#select_server_status_visualization').val();
-        var idApplication = $('#select_application_status_visualization').val();
-        var startDate = $('#from_date').val();
-        var endDate = $('#to_date').val();
-        if (idApplication && idApplication !== '')
-            loadApplicationData(idApplication, startDate, endDate);
-        else if (idServer)
-            loadServerData(idServer, startDate, endDate);
-    }
-
-    function updatePlot(data) {
-        addDataOnChart(data.rows);
-        // Since the axes don't change, we don't need to call plot.setupGrid()
-
-        if (realtime === 'on')
-            setTimeout(update, updateInterval);
-    }
-
     //INITIALIZE REALTIME DATA FETCHING
 //    if (realtime === 'on') {
 //        update();
@@ -222,7 +292,7 @@ $(function () {
         } else {
             realtime = 'off';
         }
-        update()
+        update();
     });
 
 
