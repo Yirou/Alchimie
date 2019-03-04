@@ -41,7 +41,11 @@
 
         {/entityAccess}
         {@entityAccess entity="server_alert"}
-        <li><a id="r_server_alert-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_alert">{@__ key="entity.e_server.r_server_alert" /}</a></li>
+        <li><a id="r_server_alert-click" data-toggle="tab" data-tabtype="hasMany" href="#r_server_alert">
+                {@__ key="entity.e_server.r_server_alert" /}</a></li>
+        {/entityAccess}
+        {@entityAccess entity="partitions"}
+        <li><a id="r_partitions-click" data-toggle="tab" data-tabtype="hasMany" href="#r_partitions">{@__ key="entity.e_server.r_partitions" /}</a></li>
         {/entityAccess}
     </ul>
     {/hideTab}
@@ -257,6 +261,13 @@
         {^hideTab}
         {@entityAccess entity="server_alert"}
         <div id="r_server_alert" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_server_alert" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+        {^hideTab}
+        {@entityAccess entity="partitions"}
+        <div id="r_partitions" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_partitions" data-asso-foreignkey="fk_id_server" data-asso-flag="{id}" data-asso-source="e_server" data-asso-url="server">
             <div class="ajax-content sub-tab-table"></div>
         </div>
         {/entityAccess}

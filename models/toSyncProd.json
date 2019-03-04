@@ -94,6 +94,9 @@
         "ALTER TABLE 1_e_application ADD COLUMN `f_email` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_phone` VARCHAR(255) DEFAULT null;",
         "ALTER TABLE 1_e_application ADD COLUMN `f_add_ping_log_in_db` BOOLEAN DEFAULT null;",
-        "ALTER TABLE 1_e_application ADD COLUMN `f_interval_db_log_store` INT DEFAULT null;"
+        "ALTER TABLE 1_e_application ADD COLUMN `f_interval_db_log_store` INT DEFAULT null;",
+        "ALTER TABLE 1_e_partitions ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_partitions ADD COLUMN `f_size` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 1_e_partitions ADD COLUMN `f_mount_point` VARCHAR(255) DEFAULT null;"
     ]
 }

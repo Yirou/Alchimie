@@ -267,7 +267,9 @@
     {@entityAccess entity="server_alert" }
     <div id="r_server_alert_print" class="row">
         <div class="col-xs-12">
-            <h3>{@__ key="entity.e_server_alert.name_entity" /}</h3>
+            <h3>
+                {@__ key="entity.e_server_alert.name_entity" /}
+            </h3>
             <hr>
         </div>
         <div class="col-xs-12">
@@ -278,6 +280,26 @@
             {:else}
             {>"e_server_alert/list_fields" /}
             {/r_server_alert}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="partitions" }
+    <div id="r_partitions_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_partitions.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_partitions e_partitions=r_partitions}
+            {@eq key=id value=e_partitions[0].id}
+            {>"e_partitions/list_fields" associationAlias="r_partitions" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_partitions/list_fields" /}
+            {/r_partitions}
         </div>
         <br>
     </div>

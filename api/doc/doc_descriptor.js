@@ -1799,7 +1799,7 @@
  * @apiGroup e_server
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the server to which <code>association</code> is related
- * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,server_config,server_status_history,server_user_account,server_alert} association Name of the related entity
+ * @apiParam (Params parameters) {String=address_16,history_e_server_s_status,status,server_category,server,service,application,organization,server_config,server_status_history,server_user_account,server_alert,partitions} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1830,6 +1830,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_status_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_alert to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity partitions to associate
  * @apiSuccess {Object} server Created server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -1866,6 +1867,7 @@
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_status_history to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_user_account to associate
  * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity server_alert to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_server] <code>id</code> of entity partitions to associate
  * @apiSuccess {Object} server Updated server
  * @apiSuccess {Integer} server.id <code>id</code> of server
  * @apiSuccess {String} server.f_name <code>f_name</code> of server
@@ -2804,6 +2806,95 @@
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  * @apiError (Error 404) {Object} NotFound No server_alert with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * PARTITIONS
+ ********************************************
+ *******************************************/
+/** @apiDefine e_partitions Partitions */
+/**
+ * @api {get} /api/partitions?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>partitions</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_partitions
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} partitionss List of partitions
+ * @apiSuccess {Integer} partitionss.id <code>id</code> of partitions
+ * @apiSuccess {Integer} partitionss.version <code>version</code> of partitions
+ * @apiSuccess {String} partitionss.f_name <code>f_name</code> of partitions
+ * @apiSuccess {String} partitionss.f_size <code>f_size</code> of partitions
+ * @apiSuccess {String} partitionss.f_mount_point <code>f_mount_point</code> of partitions
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for partitions
+ */
+
+/**
+ * @api {get} /api/partitions/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>partitions</code> with <code>id</code>
+ * @apiGroup e_partitions
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of partitions to fetch
+ * @apiSuccess {Object} partitions Object of partitions
+ * @apiSuccess {Integer} partitions.id <code>id</code> of partitions
+ * @apiSuccess {Integer} partitions.version <code>version</code> of partitions
+ * @apiSuccess {String} partitions.f_name <code>f_name</code> of partitions
+ * @apiSuccess {String} partitions.f_size <code>f_size</code> of partitions
+ * @apiSuccess {String} partitions.f_mount_point <code>f_mount_point</code> of partitions
+ * @apiError (Error 404) {Object} NotFound No partitions with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/partitions/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>partitions</code> using values defined in request's <code>body</code>
+ * @apiGroup e_partitions
+ * @apiUse token
+ * @apiParam (Body parameters) {String} [f_name] <code>f_name</code> of partitions
+ * @apiParam (Body parameters) {String} [f_size] <code>f_size</code> of partitions
+ * @apiParam (Body parameters) {String} [f_mount_point] <code>f_mount_point</code> of partitions
+ * @apiSuccess {Object} partitions Created partitions
+ * @apiSuccess {Integer} partitions.id <code>id</code> of partitions
+ * @apiSuccess {String} partitions.f_name <code>f_name</code> of partitions
+ * @apiSuccess {String} partitions.f_size <code>f_size</code> of partitions
+ * @apiSuccess {String} partitions.f_mount_point <code>f_mount_point</code> of partitions
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create partitions
+ */
+
+/**
+ * @api {put} /api/partitions/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>partitions</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_partitions
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the partitions to update
+ * @apiParam (Body parameters) {String} [f_name] New value of <code>f_name</code> for partitions
+ * @apiParam (Body parameters) {String} [f_size] New value of <code>f_size</code> for partitions
+ * @apiParam (Body parameters) {String} [f_mount_point] New value of <code>f_mount_point</code> for partitions
+ * @apiSuccess {Object} partitions Updated partitions
+ * @apiSuccess {Integer} partitions.id <code>id</code> of partitions
+ * @apiSuccess {String} partitions.f_name <code>f_name</code> of partitions
+ * @apiSuccess {String} partitions.f_size <code>f_size</code> of partitions
+ * @apiSuccess {String} partitions.f_mount_point <code>f_mount_point</code> of partitions
+ * @apiError (Error 404) {Object} NotFound No partitions with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update partitions
+ */
+
+/**
+ * @api {delete} /api/partitions/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>partitions</code> with <code>id</code>
+ * @apiGroup e_partitions
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of partitions to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No partitions with ID <code>id</code> found
  */
 
 

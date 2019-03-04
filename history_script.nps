@@ -151,3 +151,9 @@ add field Email with type mail
 add field Phone with type tel
 add field Add ping log in DB with type boolean
 add field Interval DB log store with type integer
+select entity server
+entity server has many Partitions
+select entity Partitions
+add field Name
+add field Size with type double
+add field Mount point

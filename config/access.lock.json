@@ -481,6 +481,16 @@
                     "delete": [],
                     "update": []
                 }
+            },
+            {
+                "name": "partitions",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
             }
         ]
     }

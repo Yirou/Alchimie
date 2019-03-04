@@ -373,7 +373,8 @@
             "r_server_status_history": "Server status history",
             "r_server_user_account": "Server user account",
             "r_alert": "Alert",
-            "r_server_alert": "Server alert"
+            "r_server_alert": "Server alert",
+            "r_partitions": "Partitions"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -531,6 +532,15 @@
             "plural_entity": "Server alert",
             "id_entity": "ID",
             "f_type": "Type"
+        },
+        "e_partitions": {
+            "label_entity": "Partitions",
+            "name_entity": "Partitions",
+            "plural_entity": "Partitions",
+            "id_entity": "ID",
+            "f_name": "Name",
+            "f_size": "Size",
+            "f_mount_point": "Mount point"
         }
     },
     "global_component": {

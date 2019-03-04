@@ -129,5 +129,13 @@
         "as": "r_server_alert",
         "showAs": "Server alert",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_partitions",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_server",
+        "as": "r_partitions",
+        "showAs": "Partitions",
+        "structureType": "hasMany"
     }
 ]
