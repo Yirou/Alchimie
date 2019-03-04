@@ -1,0 +1,26 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_size": {
+        "type": "STRING",
+        "newmipsType": "double",
+        "defaultValue": null
+    },
+    "f_mount_point": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    }
+}

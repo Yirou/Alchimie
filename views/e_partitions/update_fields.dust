@@ -1,0 +1,35 @@
+<div id="fields" class="row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_partitions.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_partitions.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_size" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_size">
+                {@__ key="entity.e_partitions.f_size"/}&nbsp;
+                {@inline_help field="f_size"}
+                <i data-field="f_size" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" data-custom-type="decimal" placeholder='{@__ key="entity.e_partitions.f_size" /}' name="f_size" value="{f_size}" type="text">
+        </div>
+    </div>
+    <div data-field="f_mount_point" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_mount_point">
+                {@__ key="entity.e_partitions.f_mount_point"/}&nbsp;
+                {@inline_help field="f_mount_point"}
+                <i data-field="f_mount_point" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_partitions.f_mount_point" /}' name="f_mount_point" value="{f_mount_point}" type="text" maxlength="255">
+        </div>
+    </div>
+</div>
