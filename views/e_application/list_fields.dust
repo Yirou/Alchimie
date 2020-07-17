@@ -8,6 +8,9 @@
             <th data-field="f_name" data-col="f_name" data-type="string">
                 {@__ key="entity.e_application.f_name"/}
             </th>
+            <th data-field="f_name" data-col="r_server.f_name" data-type="string">
+                {@__ key="entity.e_server.label_entity"/}
+            </th>
             <th data-field="f_description" data-col="f_description" data-type="text">
                 {@__ key="entity.e_application.f_description"/}
             </th>
@@ -90,6 +93,9 @@
             </th>
             <th data-field="f_name" data-col="f_name" data-type="string">
                 {@__ key="entity.e_application.f_name"/}
+            </th>
+            <th data-field="f_name" data-col="r_server.f_name" data-type="string">
+                {@__ key="entity.e_server.label_entity"/}
             </th>
             <th data-field="f_description" data-col="f_description" data-type="text">
                 {@__ key="entity.e_application.f_description"/}

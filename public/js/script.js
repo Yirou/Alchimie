@@ -12,30 +12,37 @@ $(function () {
         $('body').addClass('firefox');
     }
     var data = {};
-    function loadData(organization) {
-        if (organization)
-            $.ajax({
-                url: '/default/get-organization-data?organization=' + organization,
-                data: data,
-                success: function (data) {
-                    if (data) {
-                        graph.data = data.data;
-                        config = data.config;
-                        drawGraph();
-                    } else {
-                        alert('Data error(s):\n\n' + data.errors.join('\n'));
-                        return;
-                    }
-
-                },
-                error: function (data) {
-                    if (data && data.responseJSON)
-                        toastr.error(data.responseJSON.message);
+    function loadData(organization, server) {
+        if (!organization)
+            return;
+        var url = '/default/get-organization-data?organization=' + organization;
+        if (server)
+            url += '&server=' + server;
+        $.ajax({
+            url: url,
+            data: data,
+            success: function (data) {
+                if (data) {
+                    graph.data = data.data;
+                    config = data.config;
+                    drawGraph();
+                } else {
+                    alert('Data error(s):\n\n' + data.errors.join('\n'));
+                    return;
                 }
-            });
+
+            },
+            error: function (data) {
+                if (data && data.responseJSON)
+                    toastr.error(data.responseJSON.message);
+            }
+        });
     }
     $('#select_organization_visualization').change(function () {
         loadData($(this).val());
+    });
+    $('#select_server_visualization').change(function () {
+        loadData($('#select_organization_visualization').val(), $(this).val());
     });
 
     $('input[name=f_show_application_entities],input[name=f_show_entities_fields]').on('ifChecked', function () {

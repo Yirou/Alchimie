@@ -109,6 +109,33 @@
         </ul>
     </li>
     {/entityAccess}
+    {@entityAccess entity="application"}
+    <li id="server_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_application.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="server" action="create"}
+<!--            <li>
+                <a href="/server/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>-->
+            {/actionAccess}
+            {@actionAccess entity="application" action="read"}
+            <li>
+                <a href="/application/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
     {@entityAccess entity="history_16_62"}
     <li id="history_16_62_menu_item" style="display:none;" class="treeview">
         <a href="#">

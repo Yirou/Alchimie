@@ -63,12 +63,14 @@ router.get('/administration', block_access.isLoggedIn, block_access.moduleAccess
 router.get('/get-organization-data', block_access.isLoggedIn, function (req, res) {
 
     var id = req.query.organization || req.session.organization;
+    let whereServer = req.query.server ? {id: req.query.server} : {};
     models.E_organization.findOne({
         where: {id: id},
         include: [
             {
                 model: models.E_server, as: 'r_server',
                 required: true,
+                where: whereServer,
                 include: [
                     {model: models.E_application, as: 'r_application'},
                     {model: models.E_service, as: 'r_service'},

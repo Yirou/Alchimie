@@ -22,6 +22,13 @@
         ]
     },
     {
+        "target": "e_server",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_server",
+        "as": "r_server",
+        "structureType": "relatedTo"
+    },
+    {
         "target": "e_application_status_history",
         "relation": "hasMany",
         "foreignKey": "fk_id_application",

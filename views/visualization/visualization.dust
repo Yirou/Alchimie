@@ -17,6 +17,24 @@
             </select>
         </div>
     </div>
+    <div data-field="f_server" class="fieldLineHeight col-xs-12 col-md-10">
+        <div class="form-group">
+            <label for="r_server">
+                {@__ key="entity.e_server.r_server" /}&nbsp;
+                {@inline_help field="r_server"}
+                <i data-field="r_server" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_server" data-source="server" data-using="f_name" width="100%" id="select_server_visualization">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_server}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_server}
+            </select>
+        </div>
+    </div>
     <div class="col-xs-12 col-md-2">
 
     </div>
@@ -58,3 +76,12 @@
 
 </div>!}
 
+<script type="text/javascript">
+    $(function () {
+        $('select[name="r_organization"]').change(function () {
+            console.log("check");
+            $('select[name="r_server"]').data('customwhere', '{"fk_id_organization_organization":' + $(this).val() + '}');
+        })
+    })
+
+</script>
