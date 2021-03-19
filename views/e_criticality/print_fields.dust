@@ -1,0 +1,73 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_criticality.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_criticality.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_instruction" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_instruction">
+                {@__ key="entity.e_criticality.f_instruction"/}&nbsp;
+                {@inline_help field="f_instruction"}
+                <i data-field="f_instruction" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_instruction|s}</div>
+        </div>
+    </div>
+    <div data-field="f_start_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_command">
+                {@__ key="entity.e_criticality.f_start_command"/}&nbsp;
+                {@inline_help field="f_start_command"}
+                <i data-field="f_start_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_criticality.f_start_command" /}' name="f_start_command_print" value="{f_start_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_stop_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_stop_command">
+                {@__ key="entity.e_criticality.f_stop_command"/}&nbsp;
+                {@inline_help field="f_stop_command"}
+                <i data-field="f_stop_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_criticality.f_stop_command" /}' name="f_stop_command_print" value="{f_stop_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_restart_command" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_restart_command">
+                {@__ key="entity.e_criticality.f_restart_command"/}&nbsp;
+                {@inline_help field="f_restart_command"}
+                <i data-field="f_restart_command" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_criticality.f_restart_command" /}' name="f_restart_command_print" value="{f_restart_command}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_file" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_file">
+                {@__ key="entity.e_criticality.f_file"/}&nbsp;
+                {@inline_help field="f_file"}
+                <i data-field="f_file" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-download"></i>
+                </div>
+                <a href="/default/download?entity=e_criticality&amp;f={f_file}" class="form-control text-left" name="f_file">{f_file|filename}</a>
+            </div>
+        </div>
+    </div>
+</div>

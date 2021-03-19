@@ -374,7 +374,8 @@
             "r_server_user_account": "Server user account",
             "r_alert": "Alert",
             "r_server_alert": "Server alert",
-            "r_partitions": "Partitions"
+            "r_partitions": "Partitions",
+            "r_criticality": "Criticality"
         },
         "e_history_e_server_s_status": {
             "label_entity": "Historique status server",
@@ -397,6 +398,13 @@
             "f_stop_command": "Stop command",
             "f_restart_command": "Restart command",
             "f_file": "File"
+        },
+        "e_criticality": {
+            "label_entity": "Criticality",
+            "name_entity": "Criticality",
+            "plural_entity": "Criticalities",
+            "id_entity": "ID",
+            "f_name": "Name"
         },
         "e_application": {
             "label_entity": "Application",
@@ -428,7 +436,8 @@
             "f_email": "Email",
             "f_phone": "Phone",
             "f_add_ping_log_in_db": "Add ping log in DB",
-            "f_interval_db_log_store": "Interval DB log store"
+            "f_interval_db_log_store": "Interval DB log store",
+            "r_criticality": "Criticality"
         },
         "e_history_e_application_s_status": {
             "label_entity": "Historique status application",

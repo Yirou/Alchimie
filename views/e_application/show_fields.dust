@@ -97,6 +97,13 @@
                         <input class="form-control input" placeholder='{@__ key="entity.e_application.f_port" /}' name="f_port" value="{f_port}" type="number" max="2147483648" readonly="">
                     </div>
                 </div>
+                <div data-field="f_criticality" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="r_criticality">
+                            {@__ key="entity.e_server.r_criticality"/} </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_server.r_criticality" /}' name="r_criticality" value="{r_criticality.f_name|string}" type="text" readonly="">
+                    </div>
+                </div>
                 <div data-field="f_file" class="fieldLineHeight col-xs-12">
                     <div class="form-group">
                         <label for="f_file">

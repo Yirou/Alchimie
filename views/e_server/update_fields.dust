@@ -21,6 +21,24 @@
             <input class="form-control input" placeholder='{@__ key="entity.e_server.f_ip" /}' name="f_ip" value="{f_ip}" type="text" maxlength="255">
         </div>
     </div>
+     <div data-field="f_criticality" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_criticality">
+                {@__ key="entity.e_server.r_criticality" /}&nbsp;
+                {@inline_help field="r_criticality"}
+                <i data-field="r_criticality" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select class="ajax form-control" name="r_criticality" data-source="criticality" data-using="f_name" width="100%">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_criticality}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_criticality}
+            </select>
+        </div>
+    </div>
     <div data-field="f_location" class="fieldLineHeight col-xs-12">
         <div class="form-group">
             <label for="f_location">

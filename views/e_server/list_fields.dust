@@ -8,6 +8,9 @@
             <th data-field="f_name" data-col="f_name" data-type="string">
                 {@__ key="entity.e_server.f_name"/}
             </th>
+            <th data-field="r_criticality" data-col="r_criticality.f_name" data-type="string">
+                {@__ key="entity.e_application.r_criticality"/}
+            </th>
             <th data-field="f_ip" data-col="f_ip" data-type="string">
                 {@__ key="entity.e_server.f_ip"/}
             </th>
@@ -57,6 +60,9 @@
             </th>
             <th data-field="f_name" data-col="f_name" data-type="string">
                 {@__ key="entity.e_server.f_name"/}
+            </th>
+            <th data-field="r_criticality" data-col="r_criticality.f_name" data-type="string">
+                {@__ key="entity.e_application.r_criticality"/}
             </th>
             <th data-field="f_ip" data-col="f_ip" data-type="string">
                 {@__ key="entity.e_server.f_ip"/}

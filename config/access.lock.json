@@ -273,6 +273,16 @@
                 }
             },
             {
+                "name": "criticality",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
                 "name": "supervisor",
                 "groups": [],
                 "actions": {

@@ -17,6 +17,19 @@
         "structureType": "hasMany"
     },
     {
+        "target": "e_criticality",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_criticality",
+        "as": "r_criticality",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            }
+        ]
+    },
+    {
         "target": "e_status",
         "relation": "belongsTo",
         "foreignKey": "fk_id_status_status",
